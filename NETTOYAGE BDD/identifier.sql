@@ -21,7 +21,7 @@ FROM
 ;
 -- 661
 
--- Ces doublons sont ceux ci :
+-- Ces doublons sont :
 SELECT
    C.ARTICLE_CODE
   ,C.COLOR_CODE
@@ -34,6 +34,18 @@ GROUP BY
   HAVING
     count(*) > 1
 ;
+
+SELECT
+  *
+FROM
+  ARTICLE_COLOR_LOOKUP C
+WHERE
+  C.ARTICLE_CODE=170016
+AND (
+  C.COLOR_CODE=210
+OR
+  C.COLOR_CODE=902);
+
 
 --
 -- II)
