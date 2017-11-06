@@ -343,3 +343,140 @@ CREATE TABLE [dbo].[ARTICLE_COLOR_LOOKUP_REJECT](
   [FAMILY_NAME] [nvarchar](20) NULL,
   [FAMILY_CODE] [nvarchar](3) NULL
 ) ON [PRIMARY]
+
+
+--=====================================================================================
+-- PACKAGE 2
+--=====================================================================================
+
+--------------------------------------------
+--Creation d'un tablespace pour EMODE_INC
+--------------------------------------------
+CREATE TABLESPACE EMODE_INC_DATA
+DATAFILE 'E:\app\oracle\oradata\prod\EMODE_INC.dbf' size 100M
+AUTOEXTEND ON
+NEXT 1M
+MAXSIZE 1024M
+EXTENT MANAGEMENT LOCAL AUTOALLOCATE
+SEGMENT SPACE MANAGEMENT AUTO;
+
+--------------------------------------------
+--Creation du User EMODE_INC
+--------------------------------------------
+CREATE USER EMODE_INC
+IDENTIFIED BY EMODE_INC
+DEFAULT TABLESPACE EMODE_INC_DATA;
+
+-- rôles
+GRANT connect, resource to EMODE_INC;
+
+-- connexion à la nouvelle base
+CONNECT EMODE_INC/EMODE_INC;
+
+--------------------------------------------
+--Creation des nouvelles tables EMODE_INC
+--------------------------------------------
+
+CREATE TABLE ARTICLE_COLOR_LOOKUP_INC (
+   ARTICLE_CODE   NUMBER(6)
+  ,COLOR_CODE     NUMBER(4)
+  ,ARTICLE_LABEL  VARCHAR2(45)
+  ,COLOR_LABEL    VARCHAR2(30)
+  ,CATEGORY       VARCHAR2(25)
+  ,SALE_PRICE     NUMBER(8,2)
+  ,FAMILY_NAME    VARCHAR2(20)
+  ,FAMILY_CODE    VARCHAR2(3)
+  ,OPERATION      VARCHAR2(1)
+  ,CONSTRAINT ACLI_CHECK_OPERATION CHECK (OPERATION IN('I' , 'D' , 'U' ))
+);
+
+
+CREATE TABLE SHOP_FACTS_INC (
+   ID             NUMBER(5)
+  ,ARTICLE_CODE   NUMBER(6)
+  ,COLOR_CODE     NUMBER(4)
+  ,WEEK_KEY       NUMBER(3)
+  ,SHOP_CODE      NUMBER(4)
+  ,MARGIN         NUMBER(13,2)
+  ,AMOUNT_SOLD    NUMBER(13,2)
+  ,QUANTITY_SOLD  NUMBER(13,2)
+  ,OPERATION      VARCHAR2(1)
+  ,CONSTRAINT SFI_CHECK_OPERATION CHECK (OPERATION IN('I' , 'D' , 'U' ))
+);
+
+CREATE TABLE OUTLET_LOOKUP_INC (
+   SHOP_NAME           VARCHAR2(30) 
+  ,ADDRESS_1           VARCHAR2(20) 
+  ,MANAGER             VARCHAR2(10) 
+  ,DATE_OPEN           DATE         
+  ,OPEN                VARCHAR2(1)  
+  ,OWNED_OUTRIGHT      VARCHAR2(1)  
+  ,FLOOR_SPACE         NUMBER(4)    
+  ,ZIP_CODE            VARCHAR2(6)  
+  ,CITY                VARCHAR2(20) 
+  ,STATE               VARCHAR2(20) 
+  ,SHOP_CODE           NUMBER(3)
+  ,OPERATION VARCHAR2(1)
+  ,CONSTRAINT OLI_CHECK_OPERATION CHECK (OPERATION IN('I' , 'D' , 'U' ))
+);
+
+CREATE TABLE ARTICLE_LOOKUP_INC (
+   ARTICLE_CODE       NUMBER(6)    
+  ,ARTICLE_LABEL      VARCHAR2(45) 
+  ,CATEGORY           VARCHAR2(25) 
+  ,SALE_PRICE         NUMBER(8,2)  
+  ,FAMILY_NAME        VARCHAR2(20) 
+  ,FAMILY_CODE        VARCHAR2(3) 
+  ,OPERATION VARCHAR2(1)
+  ,CONSTRAINT ALI_CHECK_OPERATION CHECK (OPERATION IN('I' , 'D' , 'U' ))
+);
+
+CREATE TABLE CALENDAR_YEAR_LOOKUP_INC (
+   WEEK_KEY           NUMBER(3)    
+  ,WEEK_IN_YEAR       NUMBER(2)    
+  ,YEAR               NUMBER(4)    
+  ,FISCAL_PERIOD      VARCHAR2(4)  
+  ,YEAR_WEEK          VARCHAR2(7)  
+  ,QUARTER            NUMBER(1)    
+  ,MONTH_NAME         VARCHAR2(10) 
+  ,MONTH              NUMBER(2)    
+  ,HOLIDAY_FLAG       VARCHAR2(1) 
+  ,OPERATION VARCHAR2(1)
+  ,CONSTRAINT CYLI_CHECK_OPERATION CHECK (OPERATION IN('I' , 'D' , 'U' ))
+);
+
+
+--------------------------------------------
+--Attribution des privilèges à EMODE
+--------------------------------------------
+GRANT select, delete, insert, update on ARTICLE_COLOR_LOOKUP_INC to EMODE;
+GRANT select, delete, insert, update on ARTICLE_LOOKUP_INC to EMODE;
+GRANT select, delete, insert, update on OUTLET_LOOKUP_INC to EMODE;
+GRANT select, delete, insert, update on SHOP_FACTS_INC to EMODE;
+GRANT select, delete, insert, update on CALENDAR_YEAR_LOOKUP_INC to EMODE;
+
+ALTER USER EMODE quota unlimited on EMODE_INC_DATA; 
+ALTER USER EMODE_INC quota unlimited on EMODE_INC_DATA; 
+
+--------------------------------------------------------
+-- DDL for Trigger TRIGGER_ARTICLE_COLOR_LOOKUP
+--------------------------------------------------------
+CREATE OR REPLACE TRIGGER "TR_ARTICLE_COLOR_LOOKUP"
+AFTER INSERT OR UPDATE OR DELETE ON ARTICLE_COLOR_LOOKUP
+FOR EACH ROW
+BEGIN
+CASE
+WHEN INSERTING THEN
+INSERT INTO EMODE_INC.ARTICLE_COLOR_LOOKUP_INC (ARTICLE_CODE, COLOR_CODE, ARTICLE_LABEL, COLOR_LABEL, CATEGORY, SALE_PRICE, FAMILY_NAME, FAMILY_CODE, OPERATION)
+VALUES (:NEW.ARTICLE_CODE, :NEW.COLOR_CODE,:NEW.ARTICLE_LABEL, :NEW.COLOR_LABEL, :NEW.CATEGORY, :NEW.SALE_PRICE, :NEW.FAMILY_NAME, :NEW.FAMILY_CODE, 'I' );
+WHEN UPDATING THEN
+INSERT INTO EMODE_INC.ARTICLE_COLOR_LOOKUP_INC (ARTICLE_CODE, COLOR_CODE, ARTICLE_LABEL, COLOR_LABEL, CATEGORY, SALE_PRICE, FAMILY_NAME, FAMILY_CODE, OPERATION)
+VALUES (:NEW.ARTICLE_CODE, :NEW.COLOR_CODE,:NEW.ARTICLE_LABEL, :NEW.COLOR_LABEL, :NEW.CATEGORY, :NEW.SALE_PRICE, :NEW.FAMILY_NAME, :NEW.FAMILY_CODE, 'U' );
+WHEN DELETING THEN
+INSERT INTO EMODE_INC.ARTICLE_COLOR_LOOKUP_INC (ARTICLE_CODE,COLOR_CODE, ARTICLE_LABEL, COLOR_LABEL, CATEGORY, SALE_PRICE, FAMILY_NAME, FAMILY_CODE, OPERATION)
+VALUES(:OLD.ARTICLE_CODE, :OLD.COLOR_CODE,:OLD.ARTICLE_LABEL, :OLD.COLOR_LABEL, :OLD.CATEGORY, :OLD.SALE_PRICE,:OLD.FAMILY_NAME, :OLD.FAMILY_CODE, 'D' );
+END CASE;
+END TR_ARTICLE_COLOR_LOOKUP ;
+
+-- /!\ Après modification : il faut COMMIT pour lancer les triggers dans EMODE_INC /!\ 
+
