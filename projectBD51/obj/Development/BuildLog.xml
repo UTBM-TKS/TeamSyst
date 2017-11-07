@@ -2,18 +2,18 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>projectBD51</Name>
-    <LastWriteTime>2017-11-03T16:53:57.290051Z</LastWriteTime>
+    <LastWriteTime>2017-11-07T14:07:04.0267199Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>Package1_truncate.dtsx</Name>
-      <LastWriteTime>2017-11-04T12:22:28.6068914Z</LastWriteTime>
+      <LastWriteTime>2017-11-07T13:38:15.3421632Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Package2_create.dtsx</Name>
-      <LastWriteTime>2017-11-03T16:44:40.3546215Z</LastWriteTime>
+      <LastWriteTime>2017-11-07T14:54:26.727534Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

@@ -455,6 +455,7 @@ GRANT select, delete, insert, update on OUTLET_LOOKUP_INC to EMODE;
 GRANT select, delete, insert, update on SHOP_FACTS_INC to EMODE;
 GRANT select, delete, insert, update on CALENDAR_YEAR_LOOKUP_INC to EMODE;
 
+-- A FAIRE DANS EMODE
 ALTER USER EMODE quota unlimited on EMODE_INC_DATA; 
 ALTER USER EMODE_INC quota unlimited on EMODE_INC_DATA; 
 
@@ -480,3 +481,11 @@ END TR_ARTICLE_COLOR_LOOKUP ;
 
 -- /!\ Après modification : il faut COMMIT pour lancer les triggers dans EMODE_INC /!\ 
 
+-- TESTS
+  INSERT INTO ARTICLE_COLOR_LOOKUP 
+    VALUES(100,627,'Long-Sleeved Crewneck T-Shirt','Tomato','T-Shirts',188,'Sweat-T-Shirts','F36')  ;
+
+    delete ARTICLE_COLOR_LOOKUP where ARTICLE_CODE=100;
+    update ARTICLE_COLOR_LOOKUP set COLOR_LABEL='YOLO' where ARTICLE_CODE=100;
+      
+    commit;
