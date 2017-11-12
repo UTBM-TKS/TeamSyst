@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="10/9/2017 4:55:47 PM"
@@ -28,7 +28,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPfeB7ttWvUOzL0op0ZkWuQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADxM9U5B69GQfWTgAbsm0Ebwuq9dwsPf6UB+YJ2qTLr7QAAAAAOgAAAAAIAACAAAAD1sVP7OoMpRPtMtUA7llubQ4LF6lVqPWXM7fWqG0F6ZiAAAADbJ5b7BZeR1JHq8OuuH71Yc9fEowlb8QJOLvlPP9kFJEAAAACGeXuVajOODXqqlJAcWbdEaAhmbGIgGpWTMT3JGfKA5wooT4PPB9KfLf8tMvNHfLUf/C2LrKdEpVdcs/9TDqXR</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPfeB7ttWvUOzL0op0ZkWuQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADh8vWf5qRwix1gZt2nXJLgu2yzYfsn+NSoZq+HS4NPBAAAAAAOgAAAAAIAACAAAABftMt/vLqAyuQgdKytE+5YkuVPeiHE4IChnnHfrzjHKCAAAABzhjRMtjkGsoSU9hWFszrfS3T8W8iePOpPBneQmE/+7kAAAADFpYaGk/6DZ8Gs2dNgr21/oKwSoosz6vPATGy34DCllwkcO9fwvwLnmyLdi6cEOmJ9lh/HoX8iBoB13vwmsRds</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -3302,19 +3302,19 @@ AND
               startId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\SPLIT.Outputs[insert]" />
             <path
               refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Error Output1]"
-              endId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DELETE ERROR.Inputs[OLE DB Command Input]"
-              name="OLE DB Command Error Output"
-              startId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO DELETE.Outputs[OLE DB Command Error Output]" />
-            <path
-              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
               endId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE ERROR.Inputs[OLE DB Command Input]"
               name="OLE DB Command Error Output"
               startId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Outputs[OLE DB Command Error Output]" />
             <path
-              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Error Output]"
+              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
               endId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\INSERT ERROR.Inputs[OLE DB Command Input]"
               name="OLE DB Command Error Output"
               startId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Outputs[OLE DB Command Error Output]" />
+            <path
+              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Error Output]"
+              endId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DELETE ERROR.Inputs[OLE DB Command Input]"
+              name="OLE DB Command Error Output"
+              startId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO DELETE.Outputs[OLE DB Command Error Output]" />
             <path
               refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Output]"
               endId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\COUNT INSERT.Inputs[Aggregate Input 1]"
@@ -6298,19 +6298,19 @@ AND
               startId="Package\TRANSFER ARTICLE_LOOKUP_INC\SPLIT.Outputs[insert]" />
             <path
               refId="Package\TRANSFER ARTICLE_LOOKUP_INC.Paths[OLE DB Command Error Output1]"
-              endId="Package\TRANSFER ARTICLE_LOOKUP_INC\DELETE ERROR.Inputs[OLE DB Command Input]"
-              name="OLE DB Command Error Output"
-              startId="Package\TRANSFER ARTICLE_LOOKUP_INC\DO DELETE.Outputs[OLE DB Command Error Output]" />
-            <path
-              refId="Package\TRANSFER ARTICLE_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
               endId="Package\TRANSFER ARTICLE_LOOKUP_INC\UPDATE ERROR.Inputs[OLE DB Command Input]"
               name="OLE DB Command Error Output"
               startId="Package\TRANSFER ARTICLE_LOOKUP_INC\DO UPDATE.Outputs[OLE DB Command Error Output]" />
             <path
-              refId="Package\TRANSFER ARTICLE_LOOKUP_INC.Paths[OLE DB Command Error Output]"
+              refId="Package\TRANSFER ARTICLE_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
               endId="Package\TRANSFER ARTICLE_LOOKUP_INC\INSERT ERROR.Inputs[OLE DB Command Input]"
               name="OLE DB Command Error Output"
               startId="Package\TRANSFER ARTICLE_LOOKUP_INC\DO INSERT.Outputs[OLE DB Command Error Output]" />
+            <path
+              refId="Package\TRANSFER ARTICLE_LOOKUP_INC.Paths[OLE DB Command Error Output]"
+              endId="Package\TRANSFER ARTICLE_LOOKUP_INC\DELETE ERROR.Inputs[OLE DB Command Input]"
+              name="OLE DB Command Error Output"
+              startId="Package\TRANSFER ARTICLE_LOOKUP_INC\DO DELETE.Outputs[OLE DB Command Error Output]" />
             <path
               refId="Package\TRANSFER ARTICLE_LOOKUP_INC.Paths[OLE DB Command Output]"
               endId="Package\TRANSFER ARTICLE_LOOKUP_INC\COUNT INSERT.Inputs[Aggregate Input 1]"
@@ -9606,19 +9606,19 @@ AND
               startId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\SPLIT.Outputs[insert]" />
             <path
               refId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC.Paths[OLE DB Command Error Output1]"
-              endId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\DELETE ERROR.Inputs[OLE DB Command Input]"
-              name="OLE DB Command Error Output"
-              startId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\DO DELETE.Outputs[OLE DB Command Error Output]" />
-            <path
-              refId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
               endId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\INSERT ERROR.Inputs[OLE DB Command Input]"
               name="OLE DB Command Error Output"
               startId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\DO INSERT.Outputs[OLE DB Command Error Output]" />
             <path
-              refId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC.Paths[OLE DB Command Error Output]"
+              refId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
               endId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\UPDATE ERROR.Inputs[OLE DB Command Input]"
               name="OLE DB Command Error Output"
               startId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\DO UPDATE.Outputs[OLE DB Command Error Output]" />
+            <path
+              refId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC.Paths[OLE DB Command Error Output]"
+              endId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\DELETE ERROR.Inputs[OLE DB Command Input]"
+              name="OLE DB Command Error Output"
+              startId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\DO DELETE.Outputs[OLE DB Command Error Output]" />
             <path
               refId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC.Paths[OLE DB Command Output]"
               endId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\UNION ERRORS.Inputs[Union All Input 2]"
@@ -10324,7 +10324,7 @@ AND
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
+          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Error Output1]"
           TopLeft="903.333333333333,283">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -10360,7 +10360,7 @@ AND
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Error Output1]"
+          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Error Output]"
           TopLeft="554,289">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -10396,7 +10396,7 @@ AND
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Error Output]"
+          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
           TopLeft="228.666666666667,287">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -11043,7 +11043,7 @@ AND
           Id="Package\TRANSFER ARTICLE_LOOKUP_INC\INSERT ERROR"
           TopLeft="49,432" />
         <EdgeLayout
-          Id="Package\TRANSFER ARTICLE_LOOKUP_INC.Paths[OLE DB Command Error Output]"
+          Id="Package\TRANSFER ARTICLE_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
           TopLeft="273.666666666667,310">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -11083,7 +11083,7 @@ AND
           Id="Package\TRANSFER ARTICLE_LOOKUP_INC\DELETE ERROR"
           TopLeft="575.5,364.749702474162" />
         <EdgeLayout
-          Id="Package\TRANSFER ARTICLE_LOOKUP_INC.Paths[OLE DB Command Error Output1]"
+          Id="Package\TRANSFER ARTICLE_LOOKUP_INC.Paths[OLE DB Command Error Output]"
           TopLeft="542,320">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -11123,7 +11123,7 @@ AND
           Id="Package\TRANSFER ARTICLE_LOOKUP_INC\UPDATE ERROR"
           TopLeft="916.5,361.749702474162" />
         <EdgeLayout
-          Id="Package\TRANSFER ARTICLE_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
+          Id="Package\TRANSFER ARTICLE_LOOKUP_INC.Paths[OLE DB Command Error Output1]"
           TopLeft="798.333333333333,309">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -11594,7 +11594,7 @@ AND
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
+          Id="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC.Paths[OLE DB Command Error Output1]"
           TopLeft="210.666666666667,328">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -11630,7 +11630,7 @@ AND
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC.Paths[OLE DB Command Error Output1]"
+          Id="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC.Paths[OLE DB Command Error Output]"
           TopLeft="566,338">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -11666,7 +11666,7 @@ AND
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC.Paths[OLE DB Command Error Output]"
+          Id="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
           TopLeft="931.333333333333,338">
           <EdgeLayout.Curve>
             <mssgle:Curve
