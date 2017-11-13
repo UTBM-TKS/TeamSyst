@@ -576,14 +576,14 @@ commit;
 
 -----------
 insert into CALENDAR_YEAR_LOOKUP values (263,1,2001,'FY01','2001/1',1,'January',1,'n');
-insert into CALENDAR_YEAR_LOOKUP values (264,2,2001,'FY01','2001/2',,1,'January',1,'n');
+insert into CALENDAR_YEAR_LOOKUP values (264,2,2001,'FY01','2001/2',1,'January',1,'n');
 delete CALENDAR_YEAR_LOOKUP where WEEK_KEY=263;
 update CALENDAR_YEAR_LOOKUP set MONTH_NAME='YOLO' where WEEK_KEY=264;
 commit;
 
 -----------
 insert into OUTLET_LOOKUP values ('e-Fashion BELFORT','10, BELFORT Avenue','Lucie','21/11/95','Y','N',1950,280941,'BELFORT','France',400);
-insert into OUTLET_LOOKUP values ('e-Fashion STRASBOURG','11, STRASBOURG Avenue','Mika','21/11/94','Y','Y',1950,280941,'STRASBOURG','France',401);
+insert into OUTLET_LOOKUP values ('e-Fashion STRASBOURG','11, STRASBOURG Avn','Mika','21/11/94','Y','Y',1950,280941,'STRASBOURG','France',401);
 delete OUTLET_LOOKUP where SHOP_CODE=400;
 update OUTLET_LOOKUP set SHOP_NAME='YOLO' where SHOP_CODE=401;
 commit;
@@ -591,8 +591,8 @@ commit;
 -----------
 insert into SHOP_FACTS values (90000,150850,212,158,110,20.6,99,1);
 insert into SHOP_FACTS values (90001,150850,212,158,110,40,199,11);
-delete SHOP_FACTS where ID=102;
-update SHOP_FACTS set COLOR_CODE=606 where ID=103;
+delete SHOP_FACTS where ID=90000;
+update SHOP_FACTS set COLOR_CODE=606 where ID=90001;
 commit;
 
 -------------------------------------------
