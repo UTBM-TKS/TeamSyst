@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">PC-GI-2012-BDD</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPfeB7ttWvUOzL0op0ZkWuQAAAAACAAAAAAAQZgAAAAEAACAAAAB46ZZEP/0WS8AeGcrP/XeQxX3ac6dBzaO4prIeXjO+cgAAAAAOgAAAAAIAACAAAABmC+CxZNHA75F1fQogf/S74N2i//2mq7AEs1dgHL06aJAAAABr35I/Ze26OI5U/Ov1iUox2Zu6P3Hd+nSWHNEnKS9ERhS6nEq4Q494yCE1UGYu0+Pe83hADNmXsNNd8MjfIzr7Pq55+LZvx2r889EE3KrrIgemcGgb1wxHjTOlW5KtT2A/cPC85nEiCL7b9J0Ac8tIm5DoxMRhEYmlhB2DJheg5IHLpwexQZjqw9Mc2xgvJLZAAAAA/HXolsvjQpSDKOoVhhoFceUuGrsMyM6nMN1oPXs80vXeiuAFMcEDDXYEIr3dv0vMWVeTs+uLnrtr/+R3xzN+JQ==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPfeB7ttWvUOzL0op0ZkWuQAAAAACAAAAAAAQZgAAAAEAACAAAAAXNmqDddv2rIIahI6PHzpUxgm3/Ivnh9rDsnzeptIALAAAAAAOgAAAAAIAACAAAAAnTP6BedWhpNr8o32ew8o0+HvOP9unizNJZan5LnvTMZAAAACZ2kB/5k31sySvk3TRch+XE7BIIn1ybfBZrHN11YNSE7PsWiqoNrVy31biYwiTmSsSoXLqdfjQ2pTxQt9FcYPWqofjb5Gc58u4jO94VANutBLCJvOSu6q+n6MUWiRpk38DOP2cId/8EuQ+SHLY6aLKBSBZmD+cKiKhDHbabdT5jo8iyf4Em0T1abwrzKD+w7xAAAAAdpBi6JPRm3UjF1hvJgU2OIdxNJGfDwL5e6P5ritwUOZy8utYnRYOFC7nb+X+R3HQlKGLG+qR6W2F3ztcLvevdQ==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -43,10 +43,10 @@
                 <SSIS:Property SSIS:Name="Name">Package3</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">65</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">70</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{4E0A661A-62C6-40D7-A283-60D721F13490}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{2CA1EECA-5701-4F41-B2F0-E77A9B2EE817}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">Transfert Emode 5 tables data from Oracle to SQL Server</SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
