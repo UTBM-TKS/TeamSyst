@@ -12,37 +12,10 @@
   DTS:LocaleID="1036"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="Package3"
-  DTS:VersionBuild="99"
-  DTS:VersionGUID="{FD419AE2-2D73-48DD-888C-252D559F80EF}">
+  DTS:VersionBuild="103"
+  DTS:VersionGUID="{DDF111D1-1D6B-4EA0-B8D5-A904BB406EF2}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[oracle source INC]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{D422D29F-B4B0-4957-B807-137608E31F9A}"
-      DTS:ObjectName="oracle source INC">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=prod;User ID=EMODE_INC;Provider=OraOLEDB.Oracle.1;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPfeB7ttWvUOzL0op0ZkWuQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADO17ViDFywGxmIe+/kKIRG9rEaePJOzyg9yJIOIOViBAAAAAAOgAAAAAIAACAAAAAT5nez1fHIIEnlemqeJJgM0ygXL2749CtQ8GlXCBswjSAAAABcjd/D+nWBN4sokF2vQNSSaqiqTLVkxeT5X50lhH0+2UAAAAAr1sSeEJMTZYXVmKrird0mwl9pZ8eY/1bPtnqya81ihaKBcMO9Nn/5AFZGnTuEFJSNOn4xXxtb691/AQ2KXfhH</DTS:Password>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[sqlServer destination]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}"
-      DTS:ObjectName="sqlServer destination">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=PC-GI-2012-BDD\SQL2016;Initial Catalog=EMODE;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-  </DTS:ConnectionManagers>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
@@ -326,8 +299,8 @@
               <connections>
                 <connection
                   refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOOKUP_INC.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[oracle source INC]"
-                  connectionManagerRefId="Package.ConnectionManagers[oracle source INC]"
+                  connectionManagerID="{D422D29F-B4B0-4957-B807-137608E31F9A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[oracle source INC]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1073,8 +1046,8 @@
               <connections>
                 <connection
                   refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DELETE ERROR.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1209,8 +1182,8 @@ and COLOR_CODE=?</property>
               <connections>
                 <connection
                   refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO DELETE.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1326,8 +1299,8 @@ VALUES (?,?,?,?,?,?,?,?)</property>
               <connections>
                 <connection
                   refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1578,8 +1551,8 @@ COLOR_CODE=?</property>
               <connections>
                 <connection
                   refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1821,8 +1794,8 @@ COLOR_CODE=?</property>
               <connections>
                 <connection
                   refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\INSERT ERROR.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -2744,8 +2717,8 @@ COLOR_CODE=?</property>
               <connections>
                 <connection
                   refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE ERROR.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -2884,8 +2857,8 @@ AND
               <connections>
                 <connection
                   refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_D.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -3004,8 +2977,8 @@ AND
               <connections>
                 <connection
                   refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_E.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -3124,8 +3097,8 @@ AND
               <connections>
                 <connection
                   refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_I.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -3244,8 +3217,8 @@ AND
               <connections>
                 <connection
                   refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_U.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -3370,19 +3343,19 @@ AND
               startId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\SPLIT.Outputs[insert]" />
             <path
               refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Error Output1]"
-              endId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DELETE ERROR.Inputs[OLE DB Command Input]"
-              name="OLE DB Command Error Output"
-              startId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO DELETE.Outputs[OLE DB Command Error Output]" />
-            <path
-              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
               endId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE ERROR.Inputs[OLE DB Command Input]"
               name="OLE DB Command Error Output"
               startId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Outputs[OLE DB Command Error Output]" />
             <path
-              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Error Output]"
+              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
               endId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\INSERT ERROR.Inputs[OLE DB Command Input]"
               name="OLE DB Command Error Output"
               startId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Outputs[OLE DB Command Error Output]" />
+            <path
+              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Error Output]"
+              endId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DELETE ERROR.Inputs[OLE DB Command Input]"
+              name="OLE DB Command Error Output"
+              startId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO DELETE.Outputs[OLE DB Command Error Output]" />
             <path
               refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Output]"
               endId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\COUNT INSERT.Inputs[Aggregate Input 1]"
@@ -3570,8 +3543,8 @@ AND
               <connections>
                 <connection
                   refId="Package\TRANSFER ARTICLE_LOOKUP_INC\ARTICLE_LOOKUP_INC.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[oracle source INC]"
-                  connectionManagerRefId="Package.ConnectionManagers[oracle source INC]"
+                  connectionManagerID="{D422D29F-B4B0-4957-B807-137608E31F9A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[oracle source INC]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -4272,8 +4245,8 @@ AND
               <connections>
                 <connection
                   refId="Package\TRANSFER ARTICLE_LOOKUP_INC\DELETE ERROR.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -4407,8 +4380,8 @@ where ARTICLE_CODE=?</property>
               <connections>
                 <connection
                   refId="Package\TRANSFER ARTICLE_LOOKUP_INC\DO DELETE.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -4505,8 +4478,8 @@ VALUES (?,?,?,?,?,?)</property>
               <connections>
                 <connection
                   refId="Package\TRANSFER ARTICLE_LOOKUP_INC\DO INSERT.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -4714,8 +4687,8 @@ ARTICLE_CODE=?</property>
               <connections>
                 <connection
                   refId="Package\TRANSFER ARTICLE_LOOKUP_INC\DO UPDATE.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -4917,8 +4890,8 @@ ARTICLE_CODE=?</property>
               <connections>
                 <connection
                   refId="Package\TRANSFER ARTICLE_LOOKUP_INC\INSERT ERROR.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -5740,8 +5713,8 @@ ARTICLE_CODE=?</property>
               <connections>
                 <connection
                   refId="Package\TRANSFER ARTICLE_LOOKUP_INC\UPDATE ERROR.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -5880,8 +5853,8 @@ AND
               <connections>
                 <connection
                   refId="Package\TRANSFER ARTICLE_LOOKUP_INC\UPDATE LINE_AUDIT_D.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -6000,8 +5973,8 @@ AND
               <connections>
                 <connection
                   refId="Package\TRANSFER ARTICLE_LOOKUP_INC\UPDATE LINE_AUDIT_E.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -6120,8 +6093,8 @@ AND
               <connections>
                 <connection
                   refId="Package\TRANSFER ARTICLE_LOOKUP_INC\UPDATE LINE_AUDIT_I.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -6240,8 +6213,8 @@ AND
               <connections>
                 <connection
                   refId="Package\TRANSFER ARTICLE_LOOKUP_INC\UPDATE LINE_AUDIT_U.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -6366,19 +6339,19 @@ AND
               startId="Package\TRANSFER ARTICLE_LOOKUP_INC\SPLIT.Outputs[insert]" />
             <path
               refId="Package\TRANSFER ARTICLE_LOOKUP_INC.Paths[OLE DB Command Error Output1]"
-              endId="Package\TRANSFER ARTICLE_LOOKUP_INC\DELETE ERROR.Inputs[OLE DB Command Input]"
-              name="OLE DB Command Error Output"
-              startId="Package\TRANSFER ARTICLE_LOOKUP_INC\DO DELETE.Outputs[OLE DB Command Error Output]" />
-            <path
-              refId="Package\TRANSFER ARTICLE_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
               endId="Package\TRANSFER ARTICLE_LOOKUP_INC\UPDATE ERROR.Inputs[OLE DB Command Input]"
               name="OLE DB Command Error Output"
               startId="Package\TRANSFER ARTICLE_LOOKUP_INC\DO UPDATE.Outputs[OLE DB Command Error Output]" />
             <path
-              refId="Package\TRANSFER ARTICLE_LOOKUP_INC.Paths[OLE DB Command Error Output]"
+              refId="Package\TRANSFER ARTICLE_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
               endId="Package\TRANSFER ARTICLE_LOOKUP_INC\INSERT ERROR.Inputs[OLE DB Command Input]"
               name="OLE DB Command Error Output"
               startId="Package\TRANSFER ARTICLE_LOOKUP_INC\DO INSERT.Outputs[OLE DB Command Error Output]" />
+            <path
+              refId="Package\TRANSFER ARTICLE_LOOKUP_INC.Paths[OLE DB Command Error Output]"
+              endId="Package\TRANSFER ARTICLE_LOOKUP_INC\DELETE ERROR.Inputs[OLE DB Command Input]"
+              name="OLE DB Command Error Output"
+              startId="Package\TRANSFER ARTICLE_LOOKUP_INC\DO DELETE.Outputs[OLE DB Command Error Output]" />
             <path
               refId="Package\TRANSFER ARTICLE_LOOKUP_INC.Paths[OLE DB Command Output]"
               endId="Package\TRANSFER ARTICLE_LOOKUP_INC\COUNT INSERT.Inputs[Aggregate Input 1]"
@@ -6566,8 +6539,8 @@ AND
               <connections>
                 <connection
                   refId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\CALENDAR_YEAR_LOOKUP_INC.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[oracle source INC]"
-                  connectionManagerRefId="Package.ConnectionManagers[oracle source INC]"
+                  connectionManagerID="{D422D29F-B4B0-4957-B807-137608E31F9A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[oracle source INC]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -7328,8 +7301,8 @@ AND
               <connections>
                 <connection
                   refId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\DELETE ERROR.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -7463,8 +7436,8 @@ where WEEK_KEY=?</property>
               <connections>
                 <connection
                   refId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\DO DELETE.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -7561,8 +7534,8 @@ values (?,?,?,?,?,?,?,?,?)</property>
               <connections>
                 <connection
                   refId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\DO INSERT.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -7827,8 +7800,8 @@ where WEEK_KEY=?</property>
               <connections>
                 <connection
                   refId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\DO UPDATE.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -8085,8 +8058,8 @@ where WEEK_KEY=?</property>
               <connections>
                 <connection
                   refId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\INSERT ERROR.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -9048,8 +9021,8 @@ where WEEK_KEY=?</property>
               <connections>
                 <connection
                   refId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\UPDATE ERROR.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -9188,8 +9161,8 @@ AND
               <connections>
                 <connection
                   refId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\UPDATE LINE_AUDIT_D.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -9308,8 +9281,8 @@ AND
               <connections>
                 <connection
                   refId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\UPDATE LINE_AUDIT_E.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -9428,8 +9401,8 @@ AND
               <connections>
                 <connection
                   refId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\UPDATE LINE_AUDIT_I.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -9548,8 +9521,8 @@ AND
               <connections>
                 <connection
                   refId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\UPDATE LINE_AUDIT_U.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -9674,19 +9647,19 @@ AND
               startId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\SPLIT.Outputs[insert]" />
             <path
               refId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC.Paths[OLE DB Command Error Output1]"
-              endId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\DELETE ERROR.Inputs[OLE DB Command Input]"
-              name="OLE DB Command Error Output"
-              startId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\DO DELETE.Outputs[OLE DB Command Error Output]" />
-            <path
-              refId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
               endId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\INSERT ERROR.Inputs[OLE DB Command Input]"
               name="OLE DB Command Error Output"
               startId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\DO INSERT.Outputs[OLE DB Command Error Output]" />
             <path
-              refId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC.Paths[OLE DB Command Error Output]"
+              refId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
               endId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\UPDATE ERROR.Inputs[OLE DB Command Input]"
               name="OLE DB Command Error Output"
               startId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\DO UPDATE.Outputs[OLE DB Command Error Output]" />
+            <path
+              refId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC.Paths[OLE DB Command Error Output]"
+              endId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\DELETE ERROR.Inputs[OLE DB Command Input]"
+              name="OLE DB Command Error Output"
+              startId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\DO DELETE.Outputs[OLE DB Command Error Output]" />
             <path
               refId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC.Paths[OLE DB Command Output]"
               endId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\UNION ERRORS.Inputs[Union All Input 2]"
@@ -10323,8 +10296,8 @@ AND
               <connections>
                 <connection
                   refId="Package\TRANSFER OUTLET_LOOKUP_INC\DELETE ERROR.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -10457,8 +10430,8 @@ AND
               <connections>
                 <connection
                   refId="Package\TRANSFER OUTLET_LOOKUP_INC\DO DELETE.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -10555,8 +10528,8 @@ values (?,?,?,?,?,?,?,?,?,?,?)</property>
               <connections>
                 <connection
                   refId="Package\TRANSFER OUTLET_LOOKUP_INC\DO INSERT.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -10867,8 +10840,8 @@ where SHOP_CODE=?</property>
               <connections>
                 <connection
                   refId="Package\TRANSFER OUTLET_LOOKUP_INC\DO UPDATE.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -11169,8 +11142,8 @@ where SHOP_CODE=?</property>
               <connections>
                 <connection
                   refId="Package\TRANSFER OUTLET_LOOKUP_INC\INSERT ERROR.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -11327,8 +11300,8 @@ where SHOP_CODE=?</property>
               <connections>
                 <connection
                   refId="Package\TRANSFER OUTLET_LOOKUP_INC\OUTLET_LOOKUP_INC.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[oracle source INC]"
-                  connectionManagerRefId="Package.ConnectionManagers[oracle source INC]"
+                  connectionManagerID="{D422D29F-B4B0-4957-B807-137608E31F9A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[oracle source INC]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -12604,8 +12577,8 @@ where SHOP_CODE=?</property>
               <connections>
                 <connection
                   refId="Package\TRANSFER OUTLET_LOOKUP_INC\UPDATE ERROR.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -12744,8 +12717,8 @@ AND
               <connections>
                 <connection
                   refId="Package\TRANSFER OUTLET_LOOKUP_INC\UPDATE LINE_AUDIT_D.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -12864,8 +12837,8 @@ AND
               <connections>
                 <connection
                   refId="Package\TRANSFER OUTLET_LOOKUP_INC\UPDATE LINE_AUDIT_E.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -12984,8 +12957,8 @@ AND
               <connections>
                 <connection
                   refId="Package\TRANSFER OUTLET_LOOKUP_INC\UPDATE LINE_AUDIT_I.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -13104,8 +13077,8 @@ AND
               <connections>
                 <connection
                   refId="Package\TRANSFER OUTLET_LOOKUP_INC\UPDATE LINE_AUDIT_U.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -13230,19 +13203,19 @@ AND
               startId="Package\TRANSFER OUTLET_LOOKUP_INC\SPLIT.Outputs[insert]" />
             <path
               refId="Package\TRANSFER OUTLET_LOOKUP_INC.Paths[OLE DB Command Error Output1]"
-              endId="Package\TRANSFER OUTLET_LOOKUP_INC\INSERT ERROR.Inputs[OLE DB Command Input]"
-              name="OLE DB Command Error Output"
-              startId="Package\TRANSFER OUTLET_LOOKUP_INC\DO INSERT.Outputs[OLE DB Command Error Output]" />
-            <path
-              refId="Package\TRANSFER OUTLET_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
               endId="Package\TRANSFER OUTLET_LOOKUP_INC\UPDATE ERROR.Inputs[OLE DB Command Input]"
               name="OLE DB Command Error Output"
               startId="Package\TRANSFER OUTLET_LOOKUP_INC\DO UPDATE.Outputs[OLE DB Command Error Output]" />
             <path
-              refId="Package\TRANSFER OUTLET_LOOKUP_INC.Paths[OLE DB Command Error Output]"
+              refId="Package\TRANSFER OUTLET_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
               endId="Package\TRANSFER OUTLET_LOOKUP_INC\DELETE ERROR.Inputs[OLE DB Command Input]"
               name="OLE DB Command Error Output"
               startId="Package\TRANSFER OUTLET_LOOKUP_INC\DO DELETE.Outputs[OLE DB Command Error Output]" />
+            <path
+              refId="Package\TRANSFER OUTLET_LOOKUP_INC.Paths[OLE DB Command Error Output]"
+              endId="Package\TRANSFER OUTLET_LOOKUP_INC\INSERT ERROR.Inputs[OLE DB Command Input]"
+              name="OLE DB Command Error Output"
+              startId="Package\TRANSFER OUTLET_LOOKUP_INC\DO INSERT.Outputs[OLE DB Command Error Output]" />
             <path
               refId="Package\TRANSFER OUTLET_LOOKUP_INC.Paths[OLE DB Command Output]"
               endId="Package\TRANSFER OUTLET_LOOKUP_INC\UNION ERRORS.Inputs[Union All Input 2]"
@@ -13878,8 +13851,8 @@ AND
               <connections>
                 <connection
                   refId="Package\TRANSFER SHOP_FACTS_INC\DELETE.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -13976,8 +13949,8 @@ AND
               <connections>
                 <connection
                   refId="Package\TRANSFER SHOP_FACTS_INC\DELETE ERROR.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -14110,8 +14083,8 @@ AND
               <connections>
                 <connection
                   refId="Package\TRANSFER SHOP_FACTS_INC\DO INSERT.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -14354,8 +14327,8 @@ where ID=?</property>
               <connections>
                 <connection
                   refId="Package\TRANSFER SHOP_FACTS_INC\DO UPDATE.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -14591,8 +14564,8 @@ where ID=?</property>
               <connections>
                 <connection
                   refId="Package\TRANSFER SHOP_FACTS_INC\INSERT ERROR.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -14749,8 +14722,8 @@ where ID=?</property>
               <connections>
                 <connection
                   refId="Package\TRANSFER SHOP_FACTS_INC\SHOP_FACTS_INC.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[oracle source INC]"
-                  connectionManagerRefId="Package.ConnectionManagers[oracle source INC]"
+                  connectionManagerID="{D422D29F-B4B0-4957-B807-137608E31F9A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[oracle source INC]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -15791,8 +15764,8 @@ where ID=?</property>
               <connections>
                 <connection
                   refId="Package\TRANSFER SHOP_FACTS_INC\UPDATE ERROR.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -15931,8 +15904,8 @@ AND
               <connections>
                 <connection
                   refId="Package\TRANSFER SHOP_FACTS_INC\UPDATE LINE_AUDIT_D.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -16051,8 +16024,8 @@ AND
               <connections>
                 <connection
                   refId="Package\TRANSFER SHOP_FACTS_INC\UPDATE LINE_AUDIT_E.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -16171,8 +16144,8 @@ AND
               <connections>
                 <connection
                   refId="Package\TRANSFER SHOP_FACTS_INC\UPDATE LINE_AUDIT_I.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -16291,8 +16264,8 @@ AND
               <connections>
                 <connection
                   refId="Package\TRANSFER SHOP_FACTS_INC\UPDATE LINE_AUDIT_U.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
-                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -16417,19 +16390,19 @@ AND
               startId="Package\TRANSFER SHOP_FACTS_INC\SPLIT.Outputs[insert]" />
             <path
               refId="Package\TRANSFER SHOP_FACTS_INC.Paths[OLE DB Command Error Output1]"
-              endId="Package\TRANSFER SHOP_FACTS_INC\INSERT ERROR.Inputs[OLE DB Command Input]"
-              name="OLE DB Command Error Output"
-              startId="Package\TRANSFER SHOP_FACTS_INC\DO INSERT.Outputs[OLE DB Command Error Output]" />
-            <path
-              refId="Package\TRANSFER SHOP_FACTS_INC.Paths[OLE DB Command Error Output2]"
               endId="Package\TRANSFER SHOP_FACTS_INC\UPDATE ERROR.Inputs[OLE DB Command Input]"
               name="OLE DB Command Error Output"
               startId="Package\TRANSFER SHOP_FACTS_INC\DO UPDATE.Outputs[OLE DB Command Error Output]" />
             <path
-              refId="Package\TRANSFER SHOP_FACTS_INC.Paths[OLE DB Command Error Output]"
+              refId="Package\TRANSFER SHOP_FACTS_INC.Paths[OLE DB Command Error Output2]"
               endId="Package\TRANSFER SHOP_FACTS_INC\DELETE ERROR.Inputs[OLE DB Command Input]"
               name="OLE DB Command Error Output"
               startId="Package\TRANSFER SHOP_FACTS_INC\DELETE.Outputs[OLE DB Command Error Output]" />
+            <path
+              refId="Package\TRANSFER SHOP_FACTS_INC.Paths[OLE DB Command Error Output]"
+              endId="Package\TRANSFER SHOP_FACTS_INC\INSERT ERROR.Inputs[OLE DB Command Input]"
+              name="OLE DB Command Error Output"
+              startId="Package\TRANSFER SHOP_FACTS_INC\DO INSERT.Outputs[OLE DB Command Error Output]" />
             <path
               refId="Package\TRANSFER SHOP_FACTS_INC.Paths[OLE DB Command Output]"
               endId="Package\TRANSFER SHOP_FACTS_INC\UNION ERRORS.Inputs[Union All Input 2]"
@@ -16607,6 +16580,22 @@ AND
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="268,42"
+          Id="Package\DELETE ARTICLE_COLOR_LOOKUP_INC"
+          TopLeft="649,78" />
+        <NodeLayout
+          Size="229,42"
+          Id="Package\DELETE ARTICLE_LOOKUP_INC"
+          TopLeft="671,157" />
+        <NodeLayout
+          Size="270,42"
+          Id="Package\DELETE CALENDAR_YEAR_LOOKUP_INC"
+          TopLeft="647,227" />
+        <NodeLayout
+          Size="226,42"
+          Id="Package\DELETE OUTLET_LOOKUP_INC"
+          TopLeft="665,296" />
+        <NodeLayout
           Size="205,42"
           Id="Package\DELETE SHOP_FACTS_INC"
           TopLeft="678,367" />
@@ -16683,19 +16672,19 @@ AND
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="570.5,390.5">
+          Id="Package.PrecedenceConstraints[Constraint 10]"
+          TopLeft="784.25,157">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="107.5,0"
+              EndConnector="0,-37"
               Start="0,0"
-              End="100,0">
+              End="0,-29.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="100,0" />
+                    End="0,-29.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -16704,22 +16693,6 @@ AND
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="268,42"
-          Id="Package\DELETE ARTICLE_COLOR_LOOKUP_INC"
-          TopLeft="649,78" />
-        <NodeLayout
-          Size="229,42"
-          Id="Package\DELETE ARTICLE_LOOKUP_INC"
-          TopLeft="671,157" />
-        <NodeLayout
-          Size="270,42"
-          Id="Package\DELETE CALENDAR_YEAR_LOOKUP_INC"
-          TopLeft="647,227" />
-        <NodeLayout
-          Size="226,42"
-          Id="Package\DELETE OUTLET_LOOKUP_INC"
-          TopLeft="665,296" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="450.75,137.5">
@@ -16809,6 +16782,28 @@ AND
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="570.5,390.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="107.5,0"
+              Start="0,0"
+              End="100,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="100,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 7]"
           TopLeft="779.25,367">
           <EdgeLayout.Curve>
@@ -16866,28 +16861,6 @@ AND
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,-20.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 10]"
-          TopLeft="784.25,157">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,-37"
-              Start="0,0"
-              End="0,-29.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,-29.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -17250,6 +17223,42 @@ AND
         </EdgeLayout>
         <EdgeLayout
           Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
+          TopLeft="228.666666666667,287">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-85.6666666666667,43"
+              Start="0,0"
+              End="-85.6666666666667,35.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.5066864784547" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.5066864784547"
+                    Point2="0,17.5066864784547"
+                    Point3="-4,17.5066864784547" />
+                  <mssgle:LineSegment
+                    End="-81.6666666666667,17.5066864784547" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-81.6666666666667,17.5066864784547"
+                    Point2="-85.6666666666667,17.5066864784547"
+                    Point3="-85.6666666666667,21.5066864784547" />
+                  <mssgle:LineSegment
+                    End="-85.6666666666667,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-113.542239583333,22.5066864784547,141.4178125,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Error Output1]"
           TopLeft="903.333333333333,283">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -17285,7 +17294,7 @@ AND
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Error Output1]"
+          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Error Output]"
           TopLeft="554,289">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -17317,42 +17326,6 @@ AND
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="-13.70890625,17.6194690265487,141.4178125,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Error Output]"
-          TopLeft="228.666666666667,287">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-85.6666666666667,43"
-              Start="0,0"
-              End="-85.6666666666667,35.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,13.5066864784547" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,13.5066864784547"
-                    Point2="0,17.5066864784547"
-                    Point3="-4,17.5066864784547" />
-                  <mssgle:LineSegment
-                    End="-81.6666666666667,17.5066864784547" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-81.6666666666667,17.5066864784547"
-                    Point2="-85.6666666666667,17.5066864784547"
-                    Point3="-85.6666666666667,21.5066864784547" />
-                  <mssgle:LineSegment
-                    End="-85.6666666666667,35.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-113.542239583333,22.5066864784547,141.4178125,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -17698,7 +17671,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -17732,7 +17707,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -17766,7 +17743,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -17788,7 +17767,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -17822,7 +17803,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -17856,7 +17839,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -17890,7 +17875,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -17924,11 +17911,49 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\TRANSFER ARTICLE_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
+          TopLeft="273.666666666667,310">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-148.666666666667,122"
+              Start="0,0"
+              End="-148.666666666667,114.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.6701337295691" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,45.6701337295691"
+                    Point2="0,49.6701337295691"
+                    Point3="-4,49.6701337295691" />
+                  <mssgle:LineSegment
+                    End="-144.666666666667,49.6701337295691" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-144.666666666667,49.6701337295691"
+                    Point2="-148.666666666667,49.6701337295691"
+                    Point3="-148.666666666667,53.6701337295691" />
+                  <mssgle:LineSegment
+                    End="-148.666666666667,114.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-145.042239583333,54.6701337295691,141.4178125,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\TRANSFER ARTICLE_LOOKUP_INC.Paths[OLE DB Command Error Output1]"
           TopLeft="798.333333333333,309">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -17964,7 +17989,7 @@ AND
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TRANSFER ARTICLE_LOOKUP_INC.Paths[OLE DB Command Error Output1]"
+          Id="Package\TRANSFER ARTICLE_LOOKUP_INC.Paths[OLE DB Command Error Output]"
           TopLeft="542,320">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -17996,42 +18021,6 @@ AND
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="-15.95890625,23.2166930425793,141.4178125,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\TRANSFER ARTICLE_LOOKUP_INC.Paths[OLE DB Command Error Output]"
-          TopLeft="273.666666666667,310">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-148.666666666667,122"
-              Start="0,0"
-              End="-148.666666666667,114.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,45.6701337295691" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,45.6701337295691"
-                    Point2="0,49.6701337295691"
-                    Point3="-4,49.6701337295691" />
-                  <mssgle:LineSegment
-                    End="-144.666666666667,49.6701337295691" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-144.666666666667,49.6701337295691"
-                    Point2="-148.666666666667,49.6701337295691"
-                    Point3="-148.666666666667,53.6701337295691" />
-                  <mssgle:LineSegment
-                    End="-148.666666666667,114.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-145.042239583333,54.6701337295691,141.4178125,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -18102,7 +18091,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -18148,7 +18139,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -18182,7 +18175,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -18204,7 +18199,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -18226,7 +18223,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -18516,6 +18515,42 @@ AND
         </EdgeLayout>
         <EdgeLayout
           Id="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
+          TopLeft="931.333333333333,338">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="97.6666666666666,50"
+              Start="0,0"
+              End="97.6666666666666,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.3488372093023" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.3488372093023"
+                    Point2="0,20.3488372093023"
+                    Point3="4,20.3488372093023" />
+                  <mssgle:LineSegment
+                    End="93.6666666666666,20.3488372093023" />
+                  <mssgle:CubicBezierSegment
+                    Point1="93.6666666666666,20.3488372093023"
+                    Point2="97.6666666666666,20.3488372093023"
+                    Point3="97.6666666666666,24.3488372093023" />
+                  <mssgle:LineSegment
+                    End="97.6666666666666,42.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-21.8755729166667,25.3488372093023,141.4178125,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC.Paths[OLE DB Command Error Output1]"
           TopLeft="210.666666666667,328">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -18551,7 +18586,7 @@ AND
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC.Paths[OLE DB Command Error Output1]"
+          Id="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC.Paths[OLE DB Command Error Output]"
           TopLeft="566,338">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -18583,42 +18618,6 @@ AND
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="-18.20890625,22.9115044247788,141.4178125,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC.Paths[OLE DB Command Error Output]"
-          TopLeft="931.333333333333,338">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="97.6666666666666,50"
-              Start="0,0"
-              End="97.6666666666666,42.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,16.3488372093023" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16.3488372093023"
-                    Point2="0,20.3488372093023"
-                    Point3="4,20.3488372093023" />
-                  <mssgle:LineSegment
-                    End="93.6666666666666,20.3488372093023" />
-                  <mssgle:CubicBezierSegment
-                    Point1="93.6666666666666,20.3488372093023"
-                    Point2="97.6666666666666,20.3488372093023"
-                    Point3="97.6666666666666,24.3488372093023" />
-                  <mssgle:LineSegment
-                    End="97.6666666666666,42.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-21.8755729166667,25.3488372093023,141.4178125,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -19032,9 +19031,7 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -19056,9 +19053,7 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -19080,9 +19075,7 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -19116,9 +19109,7 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -19152,9 +19143,7 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -19188,9 +19177,7 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -19224,9 +19211,7 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -19248,13 +19233,47 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\TRANSFER OUTLET_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
+          TopLeft="577,326">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="72,52"
+              Start="0,0"
+              End="72,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.1681415929204" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.1681415929204"
+                    Point2="0,21.1681415929204"
+                    Point3="4,21.1681415929204" />
+                  <mssgle:LineSegment
+                    End="68,21.1681415929204" />
+                  <mssgle:CubicBezierSegment
+                    Point1="68,21.1681415929204"
+                    Point2="72,21.1681415929204"
+                    Point3="72,25.1681415929204" />
+                  <mssgle:LineSegment
+                    End="72,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-34.70890625,26.1681415929204,141.4178125,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\TRANSFER OUTLET_LOOKUP_INC.Paths[OLE DB Command Error Output1]"
           TopLeft="861.333333333333,330">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -19290,7 +19309,7 @@ AND
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TRANSFER OUTLET_LOOKUP_INC.Paths[OLE DB Command Error Output1]"
+          Id="Package\TRANSFER OUTLET_LOOKUP_INC.Paths[OLE DB Command Error Output]"
           TopLeft="192.666666666667,331">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -19322,42 +19341,6 @@ AND
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="-117.542239583333,35.5349182763744,141.4178125,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\TRANSFER OUTLET_LOOKUP_INC.Paths[OLE DB Command Error Output]"
-          TopLeft="577,326">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="72,52"
-              Start="0,0"
-              End="72,44.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,17.1681415929204" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,17.1681415929204"
-                    Point2="0,21.1681415929204"
-                    Point3="4,21.1681415929204" />
-                  <mssgle:LineSegment
-                    End="68,21.1681415929204" />
-                  <mssgle:CubicBezierSegment
-                    Point1="68,21.1681415929204"
-                    Point2="72,21.1681415929204"
-                    Point3="72,25.1681415929204" />
-                  <mssgle:LineSegment
-                    End="72,44.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-34.70890625,26.1681415929204,141.4178125,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -19416,9 +19399,7 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -19464,9 +19445,7 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -19488,9 +19467,7 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -19524,9 +19501,7 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -19548,9 +19523,7 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -19701,9 +19674,7 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -19725,9 +19696,7 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -19749,9 +19718,7 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -19785,9 +19752,7 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -19821,9 +19786,7 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -19857,9 +19820,7 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -19893,9 +19854,7 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -19917,13 +19876,47 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\TRANSFER SHOP_FACTS_INC.Paths[OLE DB Command Error Output2]"
+          TopLeft="608,347">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="78,50"
+              Start="0,0"
+              End="78,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.4081632653061" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.4081632653061"
+                    Point2="0,20.4081632653061"
+                    Point3="4,20.4081632653061" />
+                  <mssgle:LineSegment
+                    End="74,20.4081632653061" />
+                  <mssgle:CubicBezierSegment
+                    Point1="74,20.4081632653061"
+                    Point2="78,20.4081632653061"
+                    Point3="78,24.4081632653061" />
+                  <mssgle:LineSegment
+                    End="78,42.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-31.70890625,25.4081632653061,141.4178125,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\TRANSFER SHOP_FACTS_INC.Paths[OLE DB Command Error Output1]"
           TopLeft="896.333333333333,345">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -19959,7 +19952,7 @@ AND
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TRANSFER SHOP_FACTS_INC.Paths[OLE DB Command Error Output1]"
+          Id="Package\TRANSFER SHOP_FACTS_INC.Paths[OLE DB Command Error Output]"
           TopLeft="164.333333333333,350">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -19979,42 +19972,6 @@ AND
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="-70.70890625,23.4453125,141.4178125,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\TRANSFER SHOP_FACTS_INC.Paths[OLE DB Command Error Output]"
-          TopLeft="608,347">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="78,50"
-              Start="0,0"
-              End="78,42.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,16.4081632653061" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16.4081632653061"
-                    Point2="0,20.4081632653061"
-                    Point3="4,20.4081632653061" />
-                  <mssgle:LineSegment
-                    End="74,20.4081632653061" />
-                  <mssgle:CubicBezierSegment
-                    Point1="74,20.4081632653061"
-                    Point2="78,20.4081632653061"
-                    Point3="78,24.4081632653061" />
-                  <mssgle:LineSegment
-                    End="78,42.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-31.70890625,25.4081632653061,141.4178125,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -20073,9 +20030,7 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -20121,9 +20076,7 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -20145,9 +20098,7 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -20181,9 +20132,7 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -20205,9 +20154,7 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

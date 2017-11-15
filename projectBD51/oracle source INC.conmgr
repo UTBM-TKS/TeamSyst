@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="oracle source INC"
+  DTS:DTSID="{D422D29F-B4B0-4957-B807-137608E31F9A}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=prod;User ID=EMODE_INC;Provider=OraOLEDB.Oracle.1;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPfeB7ttWvUOzL0op0ZkWuQAAAAACAAAAAAAQZgAAAAEAACAAAADQORejXDqOcQ/KleActQ4R2TmjfDfODnrW6mrHyQU2EwAAAAAOgAAAAAIAACAAAAAbyk+Q+dycLVXkVCRucSh1QmSOavpsmoxc1e0QB/SfSoAAAAAkoWv6KB+MHafI9mVj0Y3NvRIJyp94xCvpPoiGXxEkvVKLNTVa1BGvnAecTXa2Fst7/2Vv/vd0XlyeEYlN0iaqxmp7t/d54/j7Z83n+qTV+8+4Or6JZg5aZvsBMQvLdWb+Ha6PK+kkCHe1aEvpkTtbAaP4fcpmw4f7u71ICRajlEAAAADHoYvwCd7TG3cmSnfozTXavoQvfQhDSyD4llLt1uzAgfcW06OEb7aACVte2VBhsE1SNIsFpo8kxTiXxAZN25ec</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
