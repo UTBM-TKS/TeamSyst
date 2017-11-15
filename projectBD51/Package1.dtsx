@@ -8,12 +8,12 @@
   DTS:Description="Transfert Emode 5 tables data from Oracle to SQL Server"
   DTS:DTSID="{2454CE06-23C8-41B4-8DFE-6A7921AF109C}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="14.0.0800.90"
+  DTS:LastModifiedProductVersion="13.0.2150.2"
   DTS:LocaleID="1036"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="Package1"
-  DTS:VersionBuild="15"
-  DTS:VersionGUID="{27B02563-B7BA-48FA-BB17-2E70ED5394DE}">
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{077CB48C-F4B5-42DB-807A-BB02C8B0B5D7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -38,7 +38,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPfeB7ttWvUOzL0op0ZkWuQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADLLsNuysc9PeJ+1f5wuwUT1dzbfPPM5cfR4D1WCg517gAAAAAOgAAAAAIAACAAAACyt6WrJr0tyEQTliVH2PNvfg6w1qkbLoz2p39DW/a4BRAAAACPrh58eSNOaeHSxQLbd40iQAAAANqhNSNVp8PXKyynXrvMGks1u21VtMSBLOHAPN+z4FlX2Ke762G+R5AzcV8+lcS9CePeVajMAARh8UsWFjBjwek</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPfeB7ttWvUOzL0op0ZkWuQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABjjEDpQYkqkmvlfCB0xxg7fmC0qOGcZmbSmVRQTAAjuAAAAAAOgAAAAAIAACAAAABQgssvJ5JwniERXY/20jS8fJbpWVeenKl1TflLxjFWqRAAAADh/QzBaTTC4DMfW6tQLFeyQAAAAC8dtq3xwzLxD2msH6OU2+aQRiaN89+Jq0iozOpvB2tEUiLquoiYl/OISIZED+4JgQyKYxGPCBZit4hGimzk2Jo</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -117,7 +117,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -319,7 +319,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -497,7 +497,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -709,7 +709,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -943,7 +943,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2497,13 +2497,13 @@
           Id="Package\CREATE foreign keys"
           TopLeft="228.5,174.5" />
         <NodeLayout
-          Size="196,42"
-          Id="Package\TRANSFERT ALL TABLES"
-          TopLeft="217.5,251.5" />
-        <NodeLayout
           Size="176,42"
           Id="Package\DELETE foreign keys"
           TopLeft="232.5,20.5" />
+        <NodeLayout
+          Size="196,42"
+          Id="Package\TRANSFERT ALL TABLES"
+          TopLeft="217.5,251.5" />
         <NodeLayout
           Size="162,42"
           Id="Package\TRUNCATE tables"
@@ -2581,7 +2581,7 @@
     design-time-name="Package\TRANSFERT ALL TABLES">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="259,42"
           Id="Package\TRANSFERT ALL TABLES\Source 2 - CALENDAR_YEAR_LOOKUP"
@@ -2641,7 +2641,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2663,7 +2665,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2685,7 +2689,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2707,7 +2713,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2729,7 +2737,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

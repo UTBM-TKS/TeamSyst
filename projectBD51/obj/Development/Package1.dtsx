@@ -12,8 +12,8 @@
   DTS:LocaleID="1036"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="Package1"
-  DTS:VersionBuild="15"
-  DTS:VersionGUID="{27B02563-B7BA-48FA-BB17-2E70ED5394DE}">
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{077CB48C-F4B5-42DB-807A-BB02C8B0B5D7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -38,7 +38,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPfeB7ttWvUOzL0op0ZkWuQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAC9w9uLeqRB2qqgNl7NTl5G8aldu3N2Q7bWmPvSATUrPQAAAAAOgAAAAAIAACAAAACuWR57t1r/Mp/aJpWUF30s3rjj8BiS4QKhp8w/1d21nRAAAACyT7vR/WZe5Pk5PlR568UyQAAAAE7jNOeYf9j1B1HlhBdrsy1qsrD77eD4ln44yaXk5dh7YbhAGV4z/3RbTTyAM+e8qIyqvkR5nUHla9a06+XHdug</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPfeB7ttWvUOzL0op0ZkWuQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADwwlXLEecgvuekb25nZJ2CD+uZYDE++YBzCN270MroOQAAAAAOgAAAAAIAACAAAABhAbOCiAd53e5q7FDCbdTHwRrsa758rS4iexbN3ngMORAAAAAAq39Qus7vKJphZ1Km1TiFQAAAAEu/mc0AMo5xr/8sKgTXvseU++pEIvgOYHn1abRJtDY13OIUsjm2J+9KgHomSzVUNVGBxfogXuySJZAuKIDI6go</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -2497,13 +2497,13 @@
           Id="Package\CREATE foreign keys"
           TopLeft="228.5,174.5" />
         <NodeLayout
-          Size="196,42"
-          Id="Package\TRANSFERT ALL TABLES"
-          TopLeft="217.5,251.5" />
-        <NodeLayout
           Size="176,42"
           Id="Package\DELETE foreign keys"
           TopLeft="232.5,20.5" />
+        <NodeLayout
+          Size="196,42"
+          Id="Package\TRANSFERT ALL TABLES"
+          TopLeft="217.5,251.5" />
         <NodeLayout
           Size="162,42"
           Id="Package\TRUNCATE tables"
@@ -2581,7 +2581,7 @@
     design-time-name="Package\TRANSFERT ALL TABLES">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="259,42"
           Id="Package\TRANSFERT ALL TABLES\Source 2 - CALENDAR_YEAR_LOOKUP"
@@ -2641,7 +2641,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2663,7 +2665,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2685,7 +2689,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2707,7 +2713,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2729,7 +2737,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
