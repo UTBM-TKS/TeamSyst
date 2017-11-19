@@ -634,3 +634,48 @@ CREATE TABLE ERROR_AUDIT (
   ,CONSTRAINT FK_ERROR_AUDIT FOREIGN KEY (TRANSFERID)
     REFERENCES TRANSFER_AUDIT (TRANSFERID)
 );
+
+-------------------------------------------
+-- création des tables d'aggrégats (SQL server)
+-------------------------------------------
+
+SELECT
+   C.WEEK_KEY
+  ,MAX(C.YEAR)              AS YEAR
+  ,MAX(C.FISCAL_PERIOD)     AS FISC
+  ,MAX(C.YEAR_WEEK)         AS YEAR_WE
+  ,count(*)                 AS TICKETS
+  ,sum(S.AMOUNT_SOLD)       AS RV
+  ,sum(S.MARGIN)            AS MARGE
+  ,sum(S.QUANTITY_SOLD)     AS QTE
+INTO
+	AGG_YR_FP_YW_TI_RV_MA_QT
+FROM
+  SHOP_FACTS S inner join CALENDAR_YEAR_LOOKUP C
+  ON S.WEEK_KEY = C.WEEK_KEY
+GROUP BY
+  C.WEEK_KEY
+ORDER BY
+  1
+;
+
+SELECT
+   C.WEEK_KEY
+  ,MAX(C.YEAR)              AS YEAR
+  ,MAX(C.FISCAL_PERIOD)     AS FISC
+  ,MAX(C.YEAR_WEEK)         AS YEAR_WE
+  ,MAX(C.MONTH)             AS MONTH
+  ,MAX(C.MONTH_NAME)        AS MONTH_NAME
+  ,count(*)                 AS TICKETS
+  ,sum(S.AMOUNT_SOLD)       AS RV
+  ,sum(S.MARGIN)            AS MARGE
+  ,sum(S.QUANTITY_SOLD)     AS QTE
+INTO
+	AGG_YR_FP_YW_MO_TI_RV_MA_QT
+FROM
+  SHOP_FACTS S inner join CALENDAR_YEAR_LOOKUP C
+  ON S.WEEK_KEY = C.WEEK_KEY
+GROUP BY
+  C.WEEK_KEY
+ORDER BY
+  1;

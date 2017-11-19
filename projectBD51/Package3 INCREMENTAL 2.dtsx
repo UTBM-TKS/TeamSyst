@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="10/9/2017 4:55:47 PM"
@@ -6,14 +6,14 @@
   DTS:CreatorComputerName="PC-GI-2012-BDD"
   DTS:CreatorName="PC-GI-2012-BDD\Administrator"
   DTS:Description="Transfert Emode 5 tables data from Oracle to SQL Server"
-  DTS:DTSID="{AFE59FF7-0C2C-4AA1-A6A5-FB4D927B1711}"
+  DTS:DTSID="{F6084C78-ABB2-4EA6-B555-E326BDD1FA6E}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="14.0.0800.90"
   DTS:LocaleID="1036"
   DTS:MaxErrorCount="0"
-  DTS:ObjectName="Package3"
-  DTS:VersionBuild="103"
-  DTS:VersionGUID="{DDF111D1-1D6B-4EA0-B8D5-A904BB406EF2}">
+  DTS:ObjectName="Package3 INCREMENTAL 2"
+  DTS:VersionBuild="105"
+  DTS:VersionGUID="{7FE54253-99AF-4D26-9061-7A315CA371A4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -110,6 +110,23 @@
         <SQLTask:SqlTaskData
           SQLTask:Connection="{D422D29F-B4B0-4957-B807-137608E31F9A}"
           SQLTask:SqlStatementSource="delete from SHOP_FACTS_INC" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute Package 4"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{BC9BE4E6-17F7-43E3-8527-CF5285E6D21E}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute Package 4"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>Package4 AGGREGATE.dtsx</PackageName>
+        </ExecutePackageTask>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -3343,19 +3360,19 @@ AND
               startId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\SPLIT.Outputs[insert]" />
             <path
               refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Error Output1]"
-              endId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\INSERT ERROR.Inputs[OLE DB Command Input]"
-              name="OLE DB Command Error Output"
-              startId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Outputs[OLE DB Command Error Output]" />
-            <path
-              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
               endId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DELETE ERROR.Inputs[OLE DB Command Input]"
               name="OLE DB Command Error Output"
               startId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO DELETE.Outputs[OLE DB Command Error Output]" />
             <path
-              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Error Output]"
+              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
               endId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE ERROR.Inputs[OLE DB Command Input]"
               name="OLE DB Command Error Output"
               startId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Outputs[OLE DB Command Error Output]" />
+            <path
+              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Error Output]"
+              endId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\INSERT ERROR.Inputs[OLE DB Command Input]"
+              name="OLE DB Command Error Output"
+              startId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Outputs[OLE DB Command Error Output]" />
             <path
               refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Output]"
               endId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\COUNT INSERT.Inputs[Aggregate Input 1]"
@@ -6339,19 +6356,19 @@ AND
               startId="Package\TRANSFER ARTICLE_LOOKUP_INC\SPLIT.Outputs[insert]" />
             <path
               refId="Package\TRANSFER ARTICLE_LOOKUP_INC.Paths[OLE DB Command Error Output1]"
-              endId="Package\TRANSFER ARTICLE_LOOKUP_INC\INSERT ERROR.Inputs[OLE DB Command Input]"
-              name="OLE DB Command Error Output"
-              startId="Package\TRANSFER ARTICLE_LOOKUP_INC\DO INSERT.Outputs[OLE DB Command Error Output]" />
-            <path
-              refId="Package\TRANSFER ARTICLE_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
               endId="Package\TRANSFER ARTICLE_LOOKUP_INC\DELETE ERROR.Inputs[OLE DB Command Input]"
               name="OLE DB Command Error Output"
               startId="Package\TRANSFER ARTICLE_LOOKUP_INC\DO DELETE.Outputs[OLE DB Command Error Output]" />
             <path
-              refId="Package\TRANSFER ARTICLE_LOOKUP_INC.Paths[OLE DB Command Error Output]"
+              refId="Package\TRANSFER ARTICLE_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
               endId="Package\TRANSFER ARTICLE_LOOKUP_INC\UPDATE ERROR.Inputs[OLE DB Command Input]"
               name="OLE DB Command Error Output"
               startId="Package\TRANSFER ARTICLE_LOOKUP_INC\DO UPDATE.Outputs[OLE DB Command Error Output]" />
+            <path
+              refId="Package\TRANSFER ARTICLE_LOOKUP_INC.Paths[OLE DB Command Error Output]"
+              endId="Package\TRANSFER ARTICLE_LOOKUP_INC\INSERT ERROR.Inputs[OLE DB Command Input]"
+              name="OLE DB Command Error Output"
+              startId="Package\TRANSFER ARTICLE_LOOKUP_INC\DO INSERT.Outputs[OLE DB Command Error Output]" />
             <path
               refId="Package\TRANSFER ARTICLE_LOOKUP_INC.Paths[OLE DB Command Output]"
               endId="Package\TRANSFER ARTICLE_LOOKUP_INC\COUNT INSERT.Inputs[Aggregate Input 1]"
@@ -9647,19 +9664,19 @@ AND
               startId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\SPLIT.Outputs[insert]" />
             <path
               refId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC.Paths[OLE DB Command Error Output1]"
-              endId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\UPDATE ERROR.Inputs[OLE DB Command Input]"
-              name="OLE DB Command Error Output"
-              startId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\DO UPDATE.Outputs[OLE DB Command Error Output]" />
-            <path
-              refId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
               endId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\DELETE ERROR.Inputs[OLE DB Command Input]"
               name="OLE DB Command Error Output"
               startId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\DO DELETE.Outputs[OLE DB Command Error Output]" />
             <path
-              refId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC.Paths[OLE DB Command Error Output]"
+              refId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
               endId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\INSERT ERROR.Inputs[OLE DB Command Input]"
               name="OLE DB Command Error Output"
               startId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\DO INSERT.Outputs[OLE DB Command Error Output]" />
+            <path
+              refId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC.Paths[OLE DB Command Error Output]"
+              endId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\UPDATE ERROR.Inputs[OLE DB Command Input]"
+              name="OLE DB Command Error Output"
+              startId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\DO UPDATE.Outputs[OLE DB Command Error Output]" />
             <path
               refId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC.Paths[OLE DB Command Output]"
               endId="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC\UNION ERRORS.Inputs[Union All Input 2]"
@@ -13203,19 +13220,19 @@ AND
               startId="Package\TRANSFER OUTLET_LOOKUP_INC\SPLIT.Outputs[insert]" />
             <path
               refId="Package\TRANSFER OUTLET_LOOKUP_INC.Paths[OLE DB Command Error Output1]"
-              endId="Package\TRANSFER OUTLET_LOOKUP_INC\DELETE ERROR.Inputs[OLE DB Command Input]"
-              name="OLE DB Command Error Output"
-              startId="Package\TRANSFER OUTLET_LOOKUP_INC\DO DELETE.Outputs[OLE DB Command Error Output]" />
-            <path
-              refId="Package\TRANSFER OUTLET_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
               endId="Package\TRANSFER OUTLET_LOOKUP_INC\INSERT ERROR.Inputs[OLE DB Command Input]"
               name="OLE DB Command Error Output"
               startId="Package\TRANSFER OUTLET_LOOKUP_INC\DO INSERT.Outputs[OLE DB Command Error Output]" />
             <path
-              refId="Package\TRANSFER OUTLET_LOOKUP_INC.Paths[OLE DB Command Error Output]"
+              refId="Package\TRANSFER OUTLET_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
               endId="Package\TRANSFER OUTLET_LOOKUP_INC\UPDATE ERROR.Inputs[OLE DB Command Input]"
               name="OLE DB Command Error Output"
               startId="Package\TRANSFER OUTLET_LOOKUP_INC\DO UPDATE.Outputs[OLE DB Command Error Output]" />
+            <path
+              refId="Package\TRANSFER OUTLET_LOOKUP_INC.Paths[OLE DB Command Error Output]"
+              endId="Package\TRANSFER OUTLET_LOOKUP_INC\DELETE ERROR.Inputs[OLE DB Command Input]"
+              name="OLE DB Command Error Output"
+              startId="Package\TRANSFER OUTLET_LOOKUP_INC\DO DELETE.Outputs[OLE DB Command Error Output]" />
             <path
               refId="Package\TRANSFER OUTLET_LOOKUP_INC.Paths[OLE DB Command Output]"
               endId="Package\TRANSFER OUTLET_LOOKUP_INC\UNION ERRORS.Inputs[Union All Input 2]"
@@ -16390,19 +16407,19 @@ AND
               startId="Package\TRANSFER SHOP_FACTS_INC\SPLIT.Outputs[insert]" />
             <path
               refId="Package\TRANSFER SHOP_FACTS_INC.Paths[OLE DB Command Error Output1]"
-              endId="Package\TRANSFER SHOP_FACTS_INC\DELETE ERROR.Inputs[OLE DB Command Input]"
-              name="OLE DB Command Error Output"
-              startId="Package\TRANSFER SHOP_FACTS_INC\DELETE.Outputs[OLE DB Command Error Output]" />
-            <path
-              refId="Package\TRANSFER SHOP_FACTS_INC.Paths[OLE DB Command Error Output2]"
               endId="Package\TRANSFER SHOP_FACTS_INC\INSERT ERROR.Inputs[OLE DB Command Input]"
               name="OLE DB Command Error Output"
               startId="Package\TRANSFER SHOP_FACTS_INC\DO INSERT.Outputs[OLE DB Command Error Output]" />
             <path
-              refId="Package\TRANSFER SHOP_FACTS_INC.Paths[OLE DB Command Error Output]"
+              refId="Package\TRANSFER SHOP_FACTS_INC.Paths[OLE DB Command Error Output2]"
               endId="Package\TRANSFER SHOP_FACTS_INC\UPDATE ERROR.Inputs[OLE DB Command Input]"
               name="OLE DB Command Error Output"
               startId="Package\TRANSFER SHOP_FACTS_INC\DO UPDATE.Outputs[OLE DB Command Error Output]" />
+            <path
+              refId="Package\TRANSFER SHOP_FACTS_INC.Paths[OLE DB Command Error Output]"
+              endId="Package\TRANSFER SHOP_FACTS_INC\DELETE ERROR.Inputs[OLE DB Command Input]"
+              name="OLE DB Command Error Output"
+              startId="Package\TRANSFER SHOP_FACTS_INC\DELETE.Outputs[OLE DB Command Error Output]" />
             <path
               refId="Package\TRANSFER SHOP_FACTS_INC.Paths[OLE DB Command Output]"
               endId="Package\TRANSFER SHOP_FACTS_INC\UNION ERRORS.Inputs[Union All Input 2]"
@@ -16502,6 +16519,14 @@ AND
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 10"
       DTS:To="Package\DELETE ARTICLE_COLOR_LOOKUP_INC" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 11]"
+      DTS:CreationName=""
+      DTS:DTSID="{713D3FE1-EBB9-4025-8EE2-F5DAF771DCAE}"
+      DTS:From="Package\DELETE ARTICLE_COLOR_LOOKUP_INC"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 11"
+      DTS:To="Package\Execute Package 4" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
@@ -16869,6 +16894,32 @@ AND
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="167,42"
+          Id="Package\Execute Package 4"
+          TopLeft="992,79" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 11]"
+          TopLeft="917,99.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="75,0"
+              Start="0,0"
+              End="67.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="67.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -17004,7 +17055,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -17026,7 +17079,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -17060,7 +17115,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -17094,7 +17151,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -17128,7 +17187,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -17162,7 +17223,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -17184,7 +17247,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -17218,11 +17283,49 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Error Output1]"
+          TopLeft="554,289">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="114,31"
+              Start="0,0"
+              End="114,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8.61946902654867" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8.61946902654867"
+                    Point2="0,12.6194690265487"
+                    Point3="4,12.6194690265487" />
+                  <mssgle:LineSegment
+                    End="110,12.6194690265487" />
+                  <mssgle:CubicBezierSegment
+                    Point1="110,12.6194690265487"
+                    Point2="114,12.6194690265487"
+                    Point3="114,16.6194690265487" />
+                  <mssgle:LineSegment
+                    End="114,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-13.70890625,17.6194690265487,141.4178125,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Error Output]"
           TopLeft="228.666666666667,287">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -17258,7 +17361,7 @@ AND
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Error Output]"
+          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
           TopLeft="903.333333333333,283">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -17290,42 +17393,6 @@ AND
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="-21.8755729166667,18.425320056899,141.4178125,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
-          TopLeft="554,289">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="114,31"
-              Start="0,0"
-              End="114,23.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,8.61946902654867" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,8.61946902654867"
-                    Point2="0,12.6194690265487"
-                    Point3="4,12.6194690265487" />
-                  <mssgle:LineSegment
-                    End="110,12.6194690265487" />
-                  <mssgle:CubicBezierSegment
-                    Point1="110,12.6194690265487"
-                    Point2="114,12.6194690265487"
-                    Point3="114,16.6194690265487" />
-                  <mssgle:LineSegment
-                    End="114,23.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-13.70890625,17.6194690265487,141.4178125,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -17384,7 +17451,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -17430,7 +17499,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -17464,7 +17535,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -17498,7 +17571,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -17520,7 +17595,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -17918,6 +17995,42 @@ AND
         </EdgeLayout>
         <EdgeLayout
           Id="Package\TRANSFER ARTICLE_LOOKUP_INC.Paths[OLE DB Command Error Output1]"
+          TopLeft="542,320">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="109.5,44.7497024741622"
+              Start="0,0"
+              End="109.5,37.2497024741622">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.2166930425793" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.2166930425793"
+                    Point2="0,18.2166930425793"
+                    Point3="4,18.2166930425793" />
+                  <mssgle:LineSegment
+                    End="105.5,18.2166930425793" />
+                  <mssgle:CubicBezierSegment
+                    Point1="105.5,18.2166930425793"
+                    Point2="109.5,18.2166930425793"
+                    Point3="109.5,22.2166930425793" />
+                  <mssgle:LineSegment
+                    End="109.5,37.2497024741622" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-15.95890625,23.2166930425793,141.4178125,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\TRANSFER ARTICLE_LOOKUP_INC.Paths[OLE DB Command Error Output]"
           TopLeft="273.666666666667,310">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -17953,7 +18066,7 @@ AND
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TRANSFER ARTICLE_LOOKUP_INC.Paths[OLE DB Command Error Output]"
+          Id="Package\TRANSFER ARTICLE_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
           TopLeft="798.333333333333,309">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -17985,42 +18098,6 @@ AND
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="26.8744270833335,26.4679021697172,141.4178125,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\TRANSFER ARTICLE_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
-          TopLeft="542,320">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="109.5,44.7497024741622"
-              Start="0,0"
-              End="109.5,37.2497024741622">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,14.2166930425793" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,14.2166930425793"
-                    Point2="0,18.2166930425793"
-                    Point3="4,18.2166930425793" />
-                  <mssgle:LineSegment
-                    End="105.5,18.2166930425793" />
-                  <mssgle:CubicBezierSegment
-                    Point1="105.5,18.2166930425793"
-                    Point2="109.5,18.2166930425793"
-                    Point3="109.5,22.2166930425793" />
-                  <mssgle:LineSegment
-                    End="109.5,37.2497024741622" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-15.95890625,23.2166930425793,141.4178125,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -18352,7 +18429,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -18386,7 +18465,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -18420,7 +18501,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -18454,7 +18537,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -18488,7 +18573,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -18510,11 +18597,49 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC.Paths[OLE DB Command Error Output1]"
+          TopLeft="566,338">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="105,44"
+              Start="0,0"
+              End="105,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.9115044247788" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.9115044247788"
+                    Point2="0,17.9115044247788"
+                    Point3="4,17.9115044247788" />
+                  <mssgle:LineSegment
+                    End="101,17.9115044247788" />
+                  <mssgle:CubicBezierSegment
+                    Point1="101,17.9115044247788"
+                    Point2="105,17.9115044247788"
+                    Point3="105,21.9115044247788" />
+                  <mssgle:LineSegment
+                    End="105,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-18.20890625,22.9115044247788,141.4178125,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC.Paths[OLE DB Command Error Output]"
           TopLeft="931.333333333333,338">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -18550,7 +18675,7 @@ AND
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC.Paths[OLE DB Command Error Output]"
+          Id="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
           TopLeft="210.666666666667,328">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -18582,42 +18707,6 @@ AND
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="-105.042239583333,31.8707280832095,141.4178125,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\TRANSFER CALENDAR_YEAR_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
-          TopLeft="566,338">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="105,44"
-              Start="0,0"
-              End="105,36.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,13.9115044247788" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,13.9115044247788"
-                    Point2="0,17.9115044247788"
-                    Point3="4,17.9115044247788" />
-                  <mssgle:LineSegment
-                    End="101,17.9115044247788" />
-                  <mssgle:CubicBezierSegment
-                    Point1="101,17.9115044247788"
-                    Point2="105,17.9115044247788"
-                    Point3="105,21.9115044247788" />
-                  <mssgle:LineSegment
-                    End="105,36.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-18.20890625,22.9115044247788,141.4178125,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -18676,7 +18765,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -18722,7 +18813,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -18756,7 +18849,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -18778,7 +18873,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -18800,7 +18897,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -18858,7 +18957,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -18880,7 +18981,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -19031,7 +19134,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -19053,7 +19158,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -19075,7 +19182,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -19109,7 +19218,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -19143,7 +19254,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -19177,7 +19290,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -19211,7 +19326,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -19233,11 +19350,49 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\TRANSFER OUTLET_LOOKUP_INC.Paths[OLE DB Command Error Output1]"
+          TopLeft="192.666666666667,331">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-93.6666666666667,75"
+              Start="0,0"
+              End="-93.6666666666667,67.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5349182763744" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.5349182763744"
+                    Point2="0,30.5349182763744"
+                    Point3="-4,30.5349182763744" />
+                  <mssgle:LineSegment
+                    End="-89.6666666666667,30.5349182763744" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-89.6666666666667,30.5349182763744"
+                    Point2="-93.6666666666667,30.5349182763744"
+                    Point3="-93.6666666666667,34.5349182763744" />
+                  <mssgle:LineSegment
+                    End="-93.6666666666667,67.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-117.542239583333,35.5349182763744,141.4178125,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\TRANSFER OUTLET_LOOKUP_INC.Paths[OLE DB Command Error Output]"
           TopLeft="577,326">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -19273,7 +19428,7 @@ AND
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TRANSFER OUTLET_LOOKUP_INC.Paths[OLE DB Command Error Output]"
+          Id="Package\TRANSFER OUTLET_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
           TopLeft="861.333333333333,330">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -19305,42 +19460,6 @@ AND
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="-0.875572916666499,31.8604651162791,141.4178125,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\TRANSFER OUTLET_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
-          TopLeft="192.666666666667,331">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-93.6666666666667,75"
-              Start="0,0"
-              End="-93.6666666666667,67.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.5349182763744" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26.5349182763744"
-                    Point2="0,30.5349182763744"
-                    Point3="-4,30.5349182763744" />
-                  <mssgle:LineSegment
-                    End="-89.6666666666667,30.5349182763744" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-89.6666666666667,30.5349182763744"
-                    Point2="-93.6666666666667,30.5349182763744"
-                    Point3="-93.6666666666667,34.5349182763744" />
-                  <mssgle:LineSegment
-                    End="-93.6666666666667,67.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-117.542239583333,35.5349182763744,141.4178125,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -19399,7 +19518,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -19445,7 +19566,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -19467,7 +19590,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -19501,7 +19626,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -19523,7 +19650,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -19674,7 +19803,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -19696,7 +19827,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -19718,7 +19851,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -19752,7 +19887,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -19786,7 +19923,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -19820,7 +19959,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -19854,7 +19995,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -19876,11 +20019,37 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\TRANSFER SHOP_FACTS_INC.Paths[OLE DB Command Error Output1]"
+          TopLeft="164.333333333333,350">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,66"
+              Start="0,0"
+              End="0,58.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,58.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-70.70890625,23.4453125,141.4178125,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\TRANSFER SHOP_FACTS_INC.Paths[OLE DB Command Error Output]"
           TopLeft="608,347">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -19916,7 +20085,7 @@ AND
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TRANSFER SHOP_FACTS_INC.Paths[OLE DB Command Error Output]"
+          Id="Package\TRANSFER SHOP_FACTS_INC.Paths[OLE DB Command Error Output2]"
           TopLeft="896.333333333333,345">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -19948,30 +20117,6 @@ AND
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="0.124427083333316,31.046511627907,141.4178125,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\TRANSFER SHOP_FACTS_INC.Paths[OLE DB Command Error Output2]"
-          TopLeft="164.333333333333,350">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,66"
-              Start="0,0"
-              End="0,58.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,58.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-70.70890625,23.4453125,141.4178125,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -20030,7 +20175,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -20076,7 +20223,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -20098,7 +20247,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -20132,7 +20283,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -20154,7 +20307,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
