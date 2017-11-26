@@ -10,12 +10,12 @@
   <DataSets />
   <Reports>
     <ProjectItem>
-      <Name>Ventes_magasin_années.rdl</Name>
-      <FullPath>Ventes_magasin_années.rdl</FullPath>
+      <Name>Ventes_states.rdl</Name>
+      <FullPath>Ventes_states.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>Report1.rdl</Name>
-      <FullPath>Report1.rdl</FullPath>
+      <Name>Ventes_magasin_années.rdl</Name>
+      <FullPath>Ventes_magasin_années.rdl</FullPath>
     </ProjectItem>
   </Reports>
   <Configurations>
