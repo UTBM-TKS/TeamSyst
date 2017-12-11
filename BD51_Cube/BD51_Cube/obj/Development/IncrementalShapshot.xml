@@ -8,7 +8,7 @@
     <TransactionalDeployment>false</TransactionalDeployment>
     <PartitionDeployment>DeployPartitions</PartitionDeployment>
     <RoleDeployment>DeployRolesRetainMembers</RoleDeployment>
-    <ProcessingOption>DoNotProcess</ProcessingOption>
+    <ProcessingOption>Default</ProcessingOption>
     <OutputScript></OutputScript>
     <ImpactAnalysisFile></ImpactAnalysisFile>
     <ConfigurationSettingsDeployment>Deploy</ConfigurationSettingsDeployment>
@@ -19,14 +19,14 @@
     <ObjectSnapshots>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.RelationalDataSource</Type>
-        <TimeStamp>ZbAdugw4pvAwt4WP6+bVXU4WMzs=07/12/2017 13:22:5007/12/2017 13:22:48</TimeStamp>
+        <TimeStamp>ZbAdugw4pvAwt4WP6+bVXU4WMzs=11/12/2017 08:55:0707/12/2017 13:22:48</TimeStamp>
         <ID>
           <String>EMODE_SOURCE</String>
         </ID>
       </ObjectSnapshot>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.DataSourceView</Type>
-        <TimeStamp>2z4EZsqIC0OKeVJgM/rwS8pyKGk=07/12/2017 14:22:2607/12/2017 13:23:36</TimeStamp>
+        <TimeStamp>bQYPowZ68LdtfBXjnGO7GcxwU1A=11/12/2017 08:57:2207/12/2017 13:23:36</TimeStamp>
         <ID>
           <String>EMODE_View</String>
         </ID>
@@ -53,8 +53,15 @@
         </ID>
       </ObjectSnapshot>
       <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>eeyLoUCt8vRWOx3kMK88FYXKsrk=11/12/2017 09:26:4211/12/2017 08:26:31</TimeStamp>
+        <ID>
+          <String>ARTICLE COLOR LOOKUP</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.Cube</Type>
-        <TimeStamp>KmqVLJ9I3ZealZJxVvMgb/L18cQ=07/12/2017 14:32:5007/12/2017 14:20:09xXVCfPbJ0hK8wv03sxsoBvInjh8=07/12/2017 14:20:0907/12/2017 14:20:09</TimeStamp>
+        <TimeStamp>KToix6Y+sqPZ5HLMfQZG9MF6RXQ=11/12/2017 09:26:2007/12/2017 14:20:09xXVCfPbJ0hK8wv03sxsoBvInjh8=07/12/2017 14:20:0907/12/2017 14:20:09</TimeStamp>
         <ID>
           <String>EMODE_View</String>
         </ID>
@@ -71,5 +78,5 @@
   </Snapshot>
   <AssemblyLocations />
   <ProcessingComplete>true</ProcessingComplete>
-  <LastDeployed>2017-12-07T13:41:15.45Z</LastDeployed>
+  <LastDeployed>2017-12-11T08:28:37.606667Z</LastDeployed>
 </DeploymentSnapshot>

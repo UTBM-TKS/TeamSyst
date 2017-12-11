@@ -31,6 +31,10 @@
       <Name>ARTICLE.dim</Name>
       <FullPath>ARTICLE.dim</FullPath>
     </ProjectItem>
+    <ProjectItem>
+      <Name>ARTICLE_COLOR.dim</Name>
+      <FullPath>ARTICLE_COLOR.dim</FullPath>
+    </ProjectItem>
   </Dimensions>
   <DataSources>
     <ProjectItem>

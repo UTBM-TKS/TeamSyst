@@ -21,6 +21,9 @@
       <Dimension>
         <ID>ARTICLE LOOKUP</ID>
       </Dimension>
+      <Dimension>
+        <ID>ARTICLE COLOR LOOKUP</ID>
+      </Dimension>
     </Dimensions>
     <Cubes>
       <Cube>
