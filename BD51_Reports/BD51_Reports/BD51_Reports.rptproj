@@ -7,15 +7,24 @@
       <FullPath>EMODE_BD51.rds</FullPath>
     </ProjectItem>
   </DataSources>
-  <DataSets />
+  <DataSets>
+    <ProjectItem>
+      <Name>Années_ventes.rsd</Name>
+      <FullPath>Années_ventes.rsd</FullPath>
+    </ProjectItem>
+  </DataSets>
   <Reports>
+    <ProjectItem>
+      <Name>Ventes_magasin_années.rdl</Name>
+      <FullPath>Ventes_magasin_années.rdl</FullPath>
+    </ProjectItem>
     <ProjectItem>
       <Name>Ventes_states.rdl</Name>
       <FullPath>Ventes_states.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>Ventes_magasin_années.rdl</Name>
-      <FullPath>Ventes_magasin_années.rdl</FullPath>
+      <Name>Ventes par géographie et type de produit.rdl</Name>
+      <FullPath>Ventes par géographie et type de produit.rdl</FullPath>
     </ProjectItem>
   </Reports>
   <Configurations>
