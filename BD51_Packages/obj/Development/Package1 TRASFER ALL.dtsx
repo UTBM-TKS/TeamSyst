@@ -12,8 +12,8 @@
   DTS:LocaleID="1036"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="Package1 TRASFER ALL"
-  DTS:VersionBuild="23"
-  DTS:VersionGUID="{A7DE05A1-7FFA-4839-868F-F2A38F0A2841}">
+  DTS:VersionBuild="25"
+  DTS:VersionGUID="{31739F8D-4AA0-4207-9504-A4CF4C29CC32}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -38,7 +38,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAfng7p4kpokOu3WwxZy0I5QAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACKYEiVObWhkBLx1+bKzcMYyoDo3u6dLQWUq8jSidB4YQAAAAAOgAAAAAIAACAAAADDYbDfQpv/bALKDpbulaz8hE6BvB2b2wAmOs0R85A6iBAAAABJx/uZFcQJKedzYaV6PrwOQAAAAHV1WCbsP3wOagHHzfa9D9DaoGt3HxJGc0PW7EPJgeMLKP8u5lagjmIMfcbXxO3PgwNJav825YfgJ3qsmssddVo</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAfng7p4kpokOu3WwxZy0I5QAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAy3zmyAM48b/pqGfCp1r6PkqRtEDjPUb02EgsaRxgo4gAAAAAOgAAAAAIAACAAAAAENzSpkoAGirRxBAdggJfsEDkwJQeVE4/X4onAZncbxRAAAABXCsnuJZDBSK3tOsMGJcO2QAAAAMksNketZeArD/0BVFOPBIZMsGcwCiRynw1FEtvoRXperl78JWPOj5xG3u54s6ZJx4lHHF0snKWeWg/dJvddUG0</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -58,6 +58,491 @@
         <SQLTask:SqlTaskData
           SQLTask:Connection="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}"
           SQLTask:SqlStatementSource="ALTER TABLE SHOP_FACTS WITH CHECK ADD CONSTRAINT&#xA;SHOP_FACTS_ARTICLE_LOOKUP_FK&#xA;FOREIGN KEY (ARTICLE_CODE)&#xA;REFERENCES ARTICLE_LOOKUP(ARTICLE_CODE)&#xA;GO&#xA;&#xA;ALTER TABLE SHOP_FACTS WITH CHECK ADD CONSTRAINT&#xA;SHOP_FACTS_OUTLET_LOOKUP_FK&#xA;FOREIGN KEY (SHOP_CODE)&#xA;REFERENCES OUTLET_LOOKUP(SHOP_CODE)&#xA;GO&#xA;&#xA;ALTER TABLE SHOP_FACTS WITH CHECK ADD CONSTRAINT&#xA;SHOP_FACTS_CALENDAR_YEAR_LOOKUP_FK FOREIGN KEY (WEEK_KEY)&#xA;REFERENCES CALENDAR_YEAR_LOOKUP(WEEK_KEY)&#xA;GO&#xA;&#xA;ALTER TABLE SHOP_FACTS WITH CHECK ADD CONSTRAINT&#xA;SHOP_FACTS_ARTICLE_COLOR_LOOKUP_FK&#xA;FOREIGN KEY (ARTICLE_CODE, COLOR_CODE)&#xA;REFERENCES ARTICLE_COLOR_LOOKUP(ARTICLE_CODE, COLOR_CODE)&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{9C28057B-8FF2-45E0-BFA7-457CD5680EA9}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\Destination 4 - SHOP_FACTS"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination 4 - SHOP_FACTS"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[SHOP_FACTS]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Destination 4 - SHOP_FACTS.Connections[OleDbConnection]"
+                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Destination 4 - SHOP_FACTS.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Destination 4 - SHOP_FACTS.Inputs[Destination Input].Columns[ID]"
+                      cachedDataType="numeric"
+                      cachedName="ID"
+                      cachedPrecision="5"
+                      externalMetadataColumnId="Package\Data Flow Task\Destination 4 - SHOP_FACTS.Inputs[Destination Input].ExternalColumns[ID]"
+                      lineageId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[ID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Destination 4 - SHOP_FACTS.Inputs[Destination Input].Columns[ARTICLE_CODE]"
+                      cachedDataType="numeric"
+                      cachedName="ARTICLE_CODE"
+                      cachedPrecision="6"
+                      externalMetadataColumnId="Package\Data Flow Task\Destination 4 - SHOP_FACTS.Inputs[Destination Input].ExternalColumns[ARTICLE_CODE]"
+                      lineageId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[ARTICLE_CODE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Destination 4 - SHOP_FACTS.Inputs[Destination Input].Columns[COLOR_CODE]"
+                      cachedDataType="numeric"
+                      cachedName="COLOR_CODE"
+                      cachedPrecision="4"
+                      externalMetadataColumnId="Package\Data Flow Task\Destination 4 - SHOP_FACTS.Inputs[Destination Input].ExternalColumns[COLOR_CODE]"
+                      lineageId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[COLOR_CODE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Destination 4 - SHOP_FACTS.Inputs[Destination Input].Columns[WEEK_KEY]"
+                      cachedDataType="numeric"
+                      cachedName="WEEK_KEY"
+                      cachedPrecision="3"
+                      externalMetadataColumnId="Package\Data Flow Task\Destination 4 - SHOP_FACTS.Inputs[Destination Input].ExternalColumns[WEEK_KEY]"
+                      lineageId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[WEEK_KEY]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Destination 4 - SHOP_FACTS.Inputs[Destination Input].Columns[SHOP_CODE]"
+                      cachedDataType="numeric"
+                      cachedName="SHOP_CODE"
+                      cachedPrecision="4"
+                      externalMetadataColumnId="Package\Data Flow Task\Destination 4 - SHOP_FACTS.Inputs[Destination Input].ExternalColumns[SHOP_CODE]"
+                      lineageId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[SHOP_CODE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Destination 4 - SHOP_FACTS.Inputs[Destination Input].Columns[MARGIN]"
+                      cachedDataType="numeric"
+                      cachedName="MARGIN"
+                      cachedPrecision="13"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Data Flow Task\Destination 4 - SHOP_FACTS.Inputs[Destination Input].ExternalColumns[MARGIN]"
+                      lineageId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[MARGIN]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Destination 4 - SHOP_FACTS.Inputs[Destination Input].Columns[AMOUNT_SOLD]"
+                      cachedDataType="numeric"
+                      cachedName="AMOUNT_SOLD"
+                      cachedPrecision="13"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Data Flow Task\Destination 4 - SHOP_FACTS.Inputs[Destination Input].ExternalColumns[AMOUNT_SOLD]"
+                      lineageId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[AMOUNT_SOLD]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Destination 4 - SHOP_FACTS.Inputs[Destination Input].Columns[QUANTITY_SOLD]"
+                      cachedDataType="numeric"
+                      cachedName="QUANTITY_SOLD"
+                      cachedPrecision="13"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Data Flow Task\Destination 4 - SHOP_FACTS.Inputs[Destination Input].ExternalColumns[QUANTITY_SOLD]"
+                      lineageId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[QUANTITY_SOLD]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Destination 4 - SHOP_FACTS.Inputs[Destination Input].ExternalColumns[ID]"
+                      dataType="numeric"
+                      name="ID"
+                      precision="5" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Destination 4 - SHOP_FACTS.Inputs[Destination Input].ExternalColumns[ARTICLE_CODE]"
+                      dataType="numeric"
+                      name="ARTICLE_CODE"
+                      precision="6" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Destination 4 - SHOP_FACTS.Inputs[Destination Input].ExternalColumns[COLOR_CODE]"
+                      dataType="numeric"
+                      name="COLOR_CODE"
+                      precision="4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Destination 4 - SHOP_FACTS.Inputs[Destination Input].ExternalColumns[WEEK_KEY]"
+                      dataType="numeric"
+                      name="WEEK_KEY"
+                      precision="3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Destination 4 - SHOP_FACTS.Inputs[Destination Input].ExternalColumns[SHOP_CODE]"
+                      dataType="numeric"
+                      name="SHOP_CODE"
+                      precision="3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Destination 4 - SHOP_FACTS.Inputs[Destination Input].ExternalColumns[MARGIN]"
+                      dataType="numeric"
+                      name="MARGIN"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Destination 4 - SHOP_FACTS.Inputs[Destination Input].ExternalColumns[AMOUNT_SOLD]"
+                      dataType="numeric"
+                      name="AMOUNT_SOLD"
+                      precision="13"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Destination 4 - SHOP_FACTS.Inputs[Destination Input].ExternalColumns[QUANTITY_SOLD]"
+                      dataType="numeric"
+                      name="QUANTITY_SOLD"
+                      precision="13"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Destination 4 - SHOP_FACTS.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\Destination 4 - SHOP_FACTS.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Destination 4 - SHOP_FACTS.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Destination 4 - SHOP_FACTS.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Destination 4 - SHOP_FACTS.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Destination 4 - SHOP_FACTS.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Source 4 - SHOP_FACTS"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="Source 4 - SHOP_FACTS"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"EMODE"."SHOP_FACTS"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionAdoNET]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionAdoNET]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[ID]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].ExternalColumns[ID]"
+                      lineageId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[ID]"
+                      name="ID"
+                      precision="5"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[ARTICLE_CODE]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].ExternalColumns[ARTICLE_CODE]"
+                      lineageId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[ARTICLE_CODE]"
+                      name="ARTICLE_CODE"
+                      precision="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[COLOR_CODE]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].ExternalColumns[COLOR_CODE]"
+                      lineageId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[COLOR_CODE]"
+                      name="COLOR_CODE"
+                      precision="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[WEEK_KEY]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].ExternalColumns[WEEK_KEY]"
+                      lineageId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[WEEK_KEY]"
+                      name="WEEK_KEY"
+                      precision="3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[SHOP_CODE]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].ExternalColumns[SHOP_CODE]"
+                      lineageId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[SHOP_CODE]"
+                      name="SHOP_CODE"
+                      precision="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[MARGIN]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].ExternalColumns[MARGIN]"
+                      lineageId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[MARGIN]"
+                      name="MARGIN"
+                      precision="13"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[AMOUNT_SOLD]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].ExternalColumns[AMOUNT_SOLD]"
+                      lineageId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[AMOUNT_SOLD]"
+                      name="AMOUNT_SOLD"
+                      precision="13"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[QUANTITY_SOLD]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].ExternalColumns[QUANTITY_SOLD]"
+                      lineageId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[QUANTITY_SOLD]"
+                      name="QUANTITY_SOLD"
+                      precision="13"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].ExternalColumns[ID]"
+                      dataType="numeric"
+                      name="ID"
+                      precision="5" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].ExternalColumns[ARTICLE_CODE]"
+                      dataType="numeric"
+                      name="ARTICLE_CODE"
+                      precision="6" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].ExternalColumns[COLOR_CODE]"
+                      dataType="numeric"
+                      name="COLOR_CODE"
+                      precision="4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].ExternalColumns[WEEK_KEY]"
+                      dataType="numeric"
+                      name="WEEK_KEY"
+                      precision="3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].ExternalColumns[SHOP_CODE]"
+                      dataType="numeric"
+                      name="SHOP_CODE"
+                      precision="4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].ExternalColumns[MARGIN]"
+                      dataType="numeric"
+                      name="MARGIN"
+                      precision="13"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].ExternalColumns[AMOUNT_SOLD]"
+                      dataType="numeric"
+                      name="AMOUNT_SOLD"
+                      precision="13"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].ExternalColumns[QUANTITY_SOLD]"
+                      dataType="numeric"
+                      name="QUANTITY_SOLD"
+                      precision="13"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[ID]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[ID]"
+                      name="ID"
+                      precision="5" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[ARTICLE_CODE]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[ARTICLE_CODE]"
+                      name="ARTICLE_CODE"
+                      precision="6" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[COLOR_CODE]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[COLOR_CODE]"
+                      name="COLOR_CODE"
+                      precision="4" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[WEEK_KEY]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[WEEK_KEY]"
+                      name="WEEK_KEY"
+                      precision="3" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[SHOP_CODE]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[SHOP_CODE]"
+                      name="SHOP_CODE"
+                      precision="4" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[MARGIN]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[MARGIN]"
+                      name="MARGIN"
+                      precision="13"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[AMOUNT_SOLD]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[AMOUNT_SOLD]"
+                      name="AMOUNT_SOLD"
+                      precision="13"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[QUANTITY_SOLD]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[QUANTITY_SOLD]"
+                      name="QUANTITY_SOLD"
+                      precision="13"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[ADO NET Source Output]"
+              endId="Package\Data Flow Task\Destination 4 - SHOP_FACTS.Inputs[Destination Input]"
+              name="ADO NET Source Output"
+              startId="Package\Data Flow Task\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output]" />
+          </paths>
+        </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -927,211 +1412,6 @@
                       refId="Package\TRANSFERT ALL TABLES\Destination 3 - OUTLET_LOOKUP.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\TRANSFERT ALL TABLES\Destination 3 - OUTLET_LOOKUP.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\TRANSFERT ALL TABLES\Destination 4 - SHOP_FACTS"
-              componentClassID="Microsoft.OLEDBDestination"
-              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-              description="OLE DB Destination"
-              name="Destination 4 - SHOP_FACTS"
-              usesDispositions="true"
-              validateExternalMetadata="False"
-              version="4">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[SHOP_FACTS]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">3</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepIdentity">false</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepNulls">false</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
-                  name="FastLoadMaxInsertCommitSize">2147483647</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\TRANSFERT ALL TABLES\Destination 4 - SHOP_FACTS.Connections[OleDbConnection]"
-                  connectionManagerID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[sqlServer destination]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\TRANSFERT ALL TABLES\Destination 4 - SHOP_FACTS.Inputs[Destination Input]"
-                  errorOrTruncationOperation="Insert"
-                  errorRowDisposition="FailComponent"
-                  hasSideEffects="true"
-                  name="Destination Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\TRANSFERT ALL TABLES\Destination 4 - SHOP_FACTS.Inputs[Destination Input].Columns[ID]"
-                      cachedDataType="numeric"
-                      cachedName="ID"
-                      cachedPrecision="5"
-                      externalMetadataColumnId="Package\TRANSFERT ALL TABLES\Destination 4 - SHOP_FACTS.Inputs[Destination Input].ExternalColumns[ID]"
-                      lineageId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[ID]" />
-                    <inputColumn
-                      refId="Package\TRANSFERT ALL TABLES\Destination 4 - SHOP_FACTS.Inputs[Destination Input].Columns[ARTICLE_CODE]"
-                      cachedDataType="numeric"
-                      cachedName="ARTICLE_CODE"
-                      cachedPrecision="6"
-                      externalMetadataColumnId="Package\TRANSFERT ALL TABLES\Destination 4 - SHOP_FACTS.Inputs[Destination Input].ExternalColumns[ARTICLE_CODE]"
-                      lineageId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[ARTICLE_CODE]" />
-                    <inputColumn
-                      refId="Package\TRANSFERT ALL TABLES\Destination 4 - SHOP_FACTS.Inputs[Destination Input].Columns[COLOR_CODE]"
-                      cachedDataType="numeric"
-                      cachedName="COLOR_CODE"
-                      cachedPrecision="4"
-                      externalMetadataColumnId="Package\TRANSFERT ALL TABLES\Destination 4 - SHOP_FACTS.Inputs[Destination Input].ExternalColumns[COLOR_CODE]"
-                      lineageId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[COLOR_CODE]" />
-                    <inputColumn
-                      refId="Package\TRANSFERT ALL TABLES\Destination 4 - SHOP_FACTS.Inputs[Destination Input].Columns[WEEK_KEY]"
-                      cachedDataType="numeric"
-                      cachedName="WEEK_KEY"
-                      cachedPrecision="3"
-                      externalMetadataColumnId="Package\TRANSFERT ALL TABLES\Destination 4 - SHOP_FACTS.Inputs[Destination Input].ExternalColumns[WEEK_KEY]"
-                      lineageId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[WEEK_KEY]" />
-                    <inputColumn
-                      refId="Package\TRANSFERT ALL TABLES\Destination 4 - SHOP_FACTS.Inputs[Destination Input].Columns[SHOP_CODE]"
-                      cachedDataType="numeric"
-                      cachedName="SHOP_CODE"
-                      cachedPrecision="4"
-                      externalMetadataColumnId="Package\TRANSFERT ALL TABLES\Destination 4 - SHOP_FACTS.Inputs[Destination Input].ExternalColumns[SHOP_CODE]"
-                      lineageId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[SHOP_CODE]" />
-                    <inputColumn
-                      refId="Package\TRANSFERT ALL TABLES\Destination 4 - SHOP_FACTS.Inputs[Destination Input].Columns[MARGIN]"
-                      cachedDataType="numeric"
-                      cachedName="MARGIN"
-                      cachedPrecision="13"
-                      cachedScale="2"
-                      externalMetadataColumnId="Package\TRANSFERT ALL TABLES\Destination 4 - SHOP_FACTS.Inputs[Destination Input].ExternalColumns[MARGIN]"
-                      lineageId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[MARGIN]" />
-                    <inputColumn
-                      refId="Package\TRANSFERT ALL TABLES\Destination 4 - SHOP_FACTS.Inputs[Destination Input].Columns[AMOUNT_SOLD]"
-                      cachedDataType="numeric"
-                      cachedName="AMOUNT_SOLD"
-                      cachedPrecision="13"
-                      cachedScale="2"
-                      externalMetadataColumnId="Package\TRANSFERT ALL TABLES\Destination 4 - SHOP_FACTS.Inputs[Destination Input].ExternalColumns[AMOUNT_SOLD]"
-                      lineageId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[AMOUNT_SOLD]" />
-                    <inputColumn
-                      refId="Package\TRANSFERT ALL TABLES\Destination 4 - SHOP_FACTS.Inputs[Destination Input].Columns[QUANTITY_SOLD]"
-                      cachedDataType="numeric"
-                      cachedName="QUANTITY_SOLD"
-                      cachedPrecision="13"
-                      cachedScale="2"
-                      externalMetadataColumnId="Package\TRANSFERT ALL TABLES\Destination 4 - SHOP_FACTS.Inputs[Destination Input].ExternalColumns[QUANTITY_SOLD]"
-                      lineageId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[QUANTITY_SOLD]" />
-                  </inputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\TRANSFERT ALL TABLES\Destination 4 - SHOP_FACTS.Inputs[Destination Input].ExternalColumns[ID]"
-                      dataType="numeric"
-                      name="ID"
-                      precision="5" />
-                    <externalMetadataColumn
-                      refId="Package\TRANSFERT ALL TABLES\Destination 4 - SHOP_FACTS.Inputs[Destination Input].ExternalColumns[ARTICLE_CODE]"
-                      dataType="numeric"
-                      name="ARTICLE_CODE"
-                      precision="6" />
-                    <externalMetadataColumn
-                      refId="Package\TRANSFERT ALL TABLES\Destination 4 - SHOP_FACTS.Inputs[Destination Input].ExternalColumns[COLOR_CODE]"
-                      dataType="numeric"
-                      name="COLOR_CODE"
-                      precision="4" />
-                    <externalMetadataColumn
-                      refId="Package\TRANSFERT ALL TABLES\Destination 4 - SHOP_FACTS.Inputs[Destination Input].ExternalColumns[WEEK_KEY]"
-                      dataType="numeric"
-                      name="WEEK_KEY"
-                      precision="3" />
-                    <externalMetadataColumn
-                      refId="Package\TRANSFERT ALL TABLES\Destination 4 - SHOP_FACTS.Inputs[Destination Input].ExternalColumns[SHOP_CODE]"
-                      dataType="numeric"
-                      name="SHOP_CODE"
-                      precision="3" />
-                    <externalMetadataColumn
-                      refId="Package\TRANSFERT ALL TABLES\Destination 4 - SHOP_FACTS.Inputs[Destination Input].ExternalColumns[MARGIN]"
-                      dataType="numeric"
-                      name="MARGIN"
-                      precision="18" />
-                    <externalMetadataColumn
-                      refId="Package\TRANSFERT ALL TABLES\Destination 4 - SHOP_FACTS.Inputs[Destination Input].ExternalColumns[AMOUNT_SOLD]"
-                      dataType="numeric"
-                      name="AMOUNT_SOLD"
-                      precision="13"
-                      scale="2" />
-                    <externalMetadataColumn
-                      refId="Package\TRANSFERT ALL TABLES\Destination 4 - SHOP_FACTS.Inputs[Destination Input].ExternalColumns[QUANTITY_SOLD]"
-                      dataType="numeric"
-                      name="QUANTITY_SOLD"
-                      precision="13"
-                      scale="2" />
-                  </externalMetadataColumns>
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\TRANSFERT ALL TABLES\Destination 4 - SHOP_FACTS.Outputs[OLE DB Destination Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\TRANSFERT ALL TABLES\Destination 4 - SHOP_FACTS.Inputs[Destination Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\TRANSFERT ALL TABLES\Destination 4 - SHOP_FACTS.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\TRANSFERT ALL TABLES\Destination 4 - SHOP_FACTS.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\TRANSFERT ALL TABLES\Destination 4 - SHOP_FACTS.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\TRANSFERT ALL TABLES\Destination 4 - SHOP_FACTS.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -2168,261 +2448,6 @@
                 </output>
               </outputs>
             </component>
-            <component
-              refId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS"
-              componentClassID="Microsoft.ManagedComponentHost"
-              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
-              name="Source 4 - SHOP_FACTS"
-              usesDispositions="true"
-              version="4">
-              <properties>
-                <property
-                  dataType="System.String"
-                  description="Specifies the SQL statement used by the component to extract data."
-                  expressionType="Notify"
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">30</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
-                  name="AllowImplicitStringConversion">true</property>
-                <property
-                  dataType="System.String"
-                  description="The Source database table name."
-                  expressionType="Notify"
-                  name="TableOrViewName"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"EMODE"."SHOP_FACTS"</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specify the mode to retrieve external column information"
-                  name="AccessMode"
-                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">0</property>
-                <property
-                  dataType="System.String"
-                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Connections[IDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[SourceConnectionAdoNET]"
-                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionAdoNET]"
-                  description="Managed connection manager"
-                  name="IDbConnection" />
-              </connections>
-              <outputs>
-                <output
-                  refId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output]"
-                  name="ADO NET Source Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[ID]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].ExternalColumns[ID]"
-                      lineageId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[ID]"
-                      name="ID"
-                      precision="5"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[ARTICLE_CODE]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].ExternalColumns[ARTICLE_CODE]"
-                      lineageId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[ARTICLE_CODE]"
-                      name="ARTICLE_CODE"
-                      precision="6"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[COLOR_CODE]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].ExternalColumns[COLOR_CODE]"
-                      lineageId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[COLOR_CODE]"
-                      name="COLOR_CODE"
-                      precision="4"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[WEEK_KEY]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].ExternalColumns[WEEK_KEY]"
-                      lineageId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[WEEK_KEY]"
-                      name="WEEK_KEY"
-                      precision="3"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[SHOP_CODE]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].ExternalColumns[SHOP_CODE]"
-                      lineageId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[SHOP_CODE]"
-                      name="SHOP_CODE"
-                      precision="4"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[MARGIN]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].ExternalColumns[MARGIN]"
-                      lineageId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[MARGIN]"
-                      name="MARGIN"
-                      precision="13"
-                      scale="2"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[AMOUNT_SOLD]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].ExternalColumns[AMOUNT_SOLD]"
-                      lineageId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[AMOUNT_SOLD]"
-                      name="AMOUNT_SOLD"
-                      precision="13"
-                      scale="2"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[QUANTITY_SOLD]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].ExternalColumns[QUANTITY_SOLD]"
-                      lineageId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].Columns[QUANTITY_SOLD]"
-                      name="QUANTITY_SOLD"
-                      precision="13"
-                      scale="2"
-                      truncationRowDisposition="FailComponent" />
-                  </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].ExternalColumns[ID]"
-                      dataType="numeric"
-                      name="ID"
-                      precision="5" />
-                    <externalMetadataColumn
-                      refId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].ExternalColumns[ARTICLE_CODE]"
-                      dataType="numeric"
-                      name="ARTICLE_CODE"
-                      precision="6" />
-                    <externalMetadataColumn
-                      refId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].ExternalColumns[COLOR_CODE]"
-                      dataType="numeric"
-                      name="COLOR_CODE"
-                      precision="4" />
-                    <externalMetadataColumn
-                      refId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].ExternalColumns[WEEK_KEY]"
-                      dataType="numeric"
-                      name="WEEK_KEY"
-                      precision="3" />
-                    <externalMetadataColumn
-                      refId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].ExternalColumns[SHOP_CODE]"
-                      dataType="numeric"
-                      name="SHOP_CODE"
-                      precision="4" />
-                    <externalMetadataColumn
-                      refId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].ExternalColumns[MARGIN]"
-                      dataType="numeric"
-                      name="MARGIN"
-                      precision="13"
-                      scale="2" />
-                    <externalMetadataColumn
-                      refId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].ExternalColumns[AMOUNT_SOLD]"
-                      dataType="numeric"
-                      name="AMOUNT_SOLD"
-                      precision="13"
-                      scale="2" />
-                    <externalMetadataColumn
-                      refId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output].ExternalColumns[QUANTITY_SOLD]"
-                      dataType="numeric"
-                      name="QUANTITY_SOLD"
-                      precision="13"
-                      scale="2" />
-                  </externalMetadataColumns>
-                </output>
-                <output
-                  refId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output]"
-                  isErrorOut="true"
-                  name="ADO NET Source Error Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[ID]"
-                      dataType="numeric"
-                      lineageId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[ID]"
-                      name="ID"
-                      precision="5" />
-                    <outputColumn
-                      refId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[ARTICLE_CODE]"
-                      dataType="numeric"
-                      lineageId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[ARTICLE_CODE]"
-                      name="ARTICLE_CODE"
-                      precision="6" />
-                    <outputColumn
-                      refId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[COLOR_CODE]"
-                      dataType="numeric"
-                      lineageId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[COLOR_CODE]"
-                      name="COLOR_CODE"
-                      precision="4" />
-                    <outputColumn
-                      refId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[WEEK_KEY]"
-                      dataType="numeric"
-                      lineageId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[WEEK_KEY]"
-                      name="WEEK_KEY"
-                      precision="3" />
-                    <outputColumn
-                      refId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[SHOP_CODE]"
-                      dataType="numeric"
-                      lineageId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[SHOP_CODE]"
-                      name="SHOP_CODE"
-                      precision="4" />
-                    <outputColumn
-                      refId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[MARGIN]"
-                      dataType="numeric"
-                      lineageId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[MARGIN]"
-                      name="MARGIN"
-                      precision="13"
-                      scale="2" />
-                    <outputColumn
-                      refId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[AMOUNT_SOLD]"
-                      dataType="numeric"
-                      lineageId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[AMOUNT_SOLD]"
-                      name="AMOUNT_SOLD"
-                      precision="13"
-                      scale="2" />
-                    <outputColumn
-                      refId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[QUANTITY_SOLD]"
-                      dataType="numeric"
-                      lineageId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[QUANTITY_SOLD]"
-                      name="QUANTITY_SOLD"
-                      precision="13"
-                      scale="2" />
-                    <outputColumn
-                      refId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
           </components>
           <paths>
             <path
@@ -2432,21 +2457,16 @@
               startId="Package\TRANSFERT ALL TABLES\Source 3 - OUTLET_LOOKUP.Outputs[ADO NET Source Output]" />
             <path
               refId="Package\TRANSFERT ALL TABLES.Paths[ADO NET Source Output1]"
-              endId="Package\TRANSFERT ALL TABLES\Destination 4 - SHOP_FACTS.Inputs[Destination Input]"
-              name="ADO NET Source Output"
-              startId="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS.Outputs[ADO NET Source Output]" />
-            <path
-              refId="Package\TRANSFERT ALL TABLES.Paths[ADO NET Source Output2]"
               endId="Package\TRANSFERT ALL TABLES\Destination 2 - CALENDAR_YEAR_LOOKUP.Inputs[Destination Input]"
               name="ADO NET Source Output"
               startId="Package\TRANSFERT ALL TABLES\Source 2 - CALENDAR_YEAR_LOOKUP.Outputs[ADO NET Source Output]" />
             <path
-              refId="Package\TRANSFERT ALL TABLES.Paths[ADO NET Source Output3]"
+              refId="Package\TRANSFERT ALL TABLES.Paths[ADO NET Source Output2]"
               endId="Package\TRANSFERT ALL TABLES\Destination - ARTICLE_COLOR_LOOKUP.Inputs[Destination Input]"
               name="ADO NET Source Output"
               startId="Package\TRANSFERT ALL TABLES\Source - ARTICLE_COLOR_LOOKUP.Outputs[ADO NET Source Output]" />
             <path
-              refId="Package\TRANSFERT ALL TABLES.Paths[ADO NET Source Output4]"
+              refId="Package\TRANSFERT ALL TABLES.Paths[ADO NET Source Output3]"
               endId="Package\TRANSFERT ALL TABLES\Destination 1 - ARTICLE_LOOKUP.Inputs[Destination Input]"
               name="ADO NET Source Output"
               startId="Package\TRANSFERT ALL TABLES\Source 1 - ARTICLE_LOOKUP.Outputs[ADO NET Source Output]" />
@@ -2496,12 +2516,20 @@
       DTS:ObjectName="Constraint 2"
       DTS:To="Package\TRANSFERT ALL TABLES" />
     <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
       DTS:CreationName=""
-      DTS:DTSID="{1D36896E-80F3-4BB8-935C-734496A6DC87}"
+      DTS:DTSID="{A09F4FE5-60A9-4EBD-B8F4-066E8AA1D8B7}"
       DTS:From="Package\TRANSFERT ALL TABLES"
       DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 3"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Data Flow Task" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{4E4864AE-1687-4E92-9174-5B9A155B4B52}"
+      DTS:From="Package\Data Flow Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
       DTS:To="Package\Execute Package 4" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
@@ -2602,20 +2630,70 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Data Flow Task"
+          TopLeft="561,267" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="315.75,293.5">
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="413.5,272.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,47"
+              EndConnector="147.5,15.5"
               Start="0,0"
-              End="0,39.5">
+              End="140,15.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,39.5" />
+                    End="69.75,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="69.75,0"
+                    Point2="73.75,0"
+                    Point3="73.75,4" />
+                  <mssgle:LineSegment
+                    End="73.75,11.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="73.75,11.5"
+                    Point2="73.75,15.5"
+                    Point3="77.75,15.5" />
+                  <mssgle:LineSegment
+                    End="140,15.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="636.5,309">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-294,31.5"
+              Start="0,0"
+              End="-294,24">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.720640569395" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.720640569395"
+                    Point2="0,18.720640569395"
+                    Point3="-4,18.720640569395" />
+                  <mssgle:LineSegment
+                    End="-290,18.720640569395" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-290,18.720640569395"
+                    Point2="-294,18.720640569395"
+                    Point3="-294,22.720640569395" />
+                  <mssgle:LineSegment
+                    End="-294,24" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2637,10 +2715,6 @@
           Id="Package\TRANSFERT ALL TABLES\Source 2 - CALENDAR_YEAR_LOOKUP"
           TopLeft="15.5,5.5" />
         <NodeLayout
-          Size="194,42"
-          Id="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS"
-          TopLeft="356,5.5" />
-        <NodeLayout
           Size="235,42"
           Id="Package\TRANSFERT ALL TABLES\Destination 3 - OUTLET_LOOKUP"
           TopLeft="949.5,107.5" />
@@ -2652,10 +2726,6 @@
           Size="247,42"
           Id="Package\TRANSFERT ALL TABLES\Source - ARTICLE_COLOR_LOOKUP"
           TopLeft="631.5,5.5" />
-        <NodeLayout
-          Size="215,42"
-          Id="Package\TRANSFERT ALL TABLES\Destination 4 - SHOP_FACTS"
-          TopLeft="345.5,107.5" />
         <NodeLayout
           Size="214,42"
           Id="Package\TRANSFERT ALL TABLES\Source 3 - OUTLET_LOOKUP"
@@ -2673,7 +2743,7 @@
           Id="Package\TRANSFERT ALL TABLES\Destination 1 - ARTICLE_LOOKUP"
           TopLeft="1245,107.5" />
         <EdgeLayout
-          Id="Package\TRANSFERT ALL TABLES.Paths[ADO NET Source Output4]"
+          Id="Package\TRANSFERT ALL TABLES.Paths[ADO NET Source Output3]"
           TopLeft="1364,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -2695,7 +2765,7 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TRANSFERT ALL TABLES.Paths[ADO NET Source Output3]"
+          Id="Package\TRANSFERT ALL TABLES.Paths[ADO NET Source Output2]"
           TopLeft="755,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -2717,30 +2787,8 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TRANSFERT ALL TABLES.Paths[ADO NET Source Output2]"
-          TopLeft="145,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\TRANSFERT ALL TABLES.Paths[ADO NET Source Output1]"
-          TopLeft="453,47.5">
+          TopLeft="145,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2786,27 +2834,6 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\TRANSFERT ALL TABLES\Source 4 - SHOP_FACTS">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\TRANSFERT ALL TABLES\Destination 4 - SHOP_FACTS">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\TRANSFERT ALL TABLES\Destination - ARTICLE_COLOR_LOOKUP">
     <Properties>
       <Property>
@@ -2819,5 +2846,43 @@
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="194,42"
+          Id="Package\Data Flow Task\Source 4 - SHOP_FACTS"
+          TopLeft="69.5,60" />
+        <NodeLayout
+          Size="215,42"
+          Id="Package\Data Flow Task\Destination 4 - SHOP_FACTS"
+          TopLeft="59,162" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[ADO NET Source Output]"
+          TopLeft="166.5,102">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
