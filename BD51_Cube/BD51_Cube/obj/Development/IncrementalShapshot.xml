@@ -8,7 +8,7 @@
     <TransactionalDeployment>false</TransactionalDeployment>
     <PartitionDeployment>DeployPartitions</PartitionDeployment>
     <RoleDeployment>DeployRolesRetainMembers</RoleDeployment>
-    <ProcessingOption>Default</ProcessingOption>
+    <ProcessingOption>DoNotProcess</ProcessingOption>
     <OutputScript></OutputScript>
     <ImpactAnalysisFile></ImpactAnalysisFile>
     <ConfigurationSettingsDeployment>Deploy</ConfigurationSettingsDeployment>
@@ -26,7 +26,7 @@
       </ObjectSnapshot>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.DataSourceView</Type>
-        <TimeStamp>bQYPowZ68LdtfBXjnGO7GcxwU1A=11/12/2017 08:57:2207/12/2017 13:23:36</TimeStamp>
+        <TimeStamp>whKV+NEJhLzh36GpEDMAHskaRow=18/12/2017 10:08:4607/12/2017 13:23:36</TimeStamp>
         <ID>
           <String>EMODE_View</String>
         </ID>
@@ -40,7 +40,7 @@
       </ObjectSnapshot>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.Dimension</Type>
-        <TimeStamp>JV7TwNeKP0lqtBF/sKxhuSWaKX4=07/12/2017 14:26:3607/12/2017 14:20:09</TimeStamp>
+        <TimeStamp>+vIEscjIN5WwmOk61pFpqcx5T/Y=12/12/2017 12:54:1007/12/2017 14:20:09</TimeStamp>
         <ID>
           <String>OUTLET LOOKUP</String>
         </ID>
@@ -54,9 +54,16 @@
       </ObjectSnapshot>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.Dimension</Type>
-        <TimeStamp>eeyLoUCt8vRWOx3kMK88FYXKsrk=11/12/2017 09:26:4211/12/2017 08:26:31</TimeStamp>
+        <TimeStamp>YeEy6WGOV0EaBPka3X5wDELqFaU=12/12/2017 13:03:2212/12/2017 12:59:25</TimeStamp>
         <ID>
           <String>ARTICLE COLOR LOOKUP</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>QBj9M4Ps8Rml7BdRYixraTUfSEw=12/12/2017 13:05:1812/12/2017 13:04:10</TimeStamp>
+        <ID>
+          <String>ARTICLE COLOR LOOKUP 1</String>
         </ID>
       </ObjectSnapshot>
       <ObjectSnapshot>
@@ -78,5 +85,5 @@
   </Snapshot>
   <AssemblyLocations />
   <ProcessingComplete>true</ProcessingComplete>
-  <LastDeployed>2017-12-11T08:28:37.606667Z</LastDeployed>
+  <LastDeployed>2017-12-18T09:08:59.81Z</LastDeployed>
 </DeploymentSnapshot>

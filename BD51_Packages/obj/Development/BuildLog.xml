@@ -2,28 +2,28 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>projectBD51</Name>
-    <LastWriteTime>2017-12-05T10:11:40.2776036Z</LastWriteTime>
+    <LastWriteTime>2017-12-18T08:45:48.6680798Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>Package1 TRASFER ALL.dtsx</Name>
-      <LastWriteTime>2017-12-05T10:11:40.2619837Z</LastWriteTime>
+      <LastWriteTime>2017-12-18T08:29:42.9696567Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Package2 INCREMENTAL 1.dtsx</Name>
-      <LastWriteTime>2017-12-05T10:11:40.2619837Z</LastWriteTime>
+      <LastWriteTime>2017-12-18T08:05:57.1240945Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Package3 INCREMENTAL 2.dtsx</Name>
-      <LastWriteTime>2017-12-05T10:11:40.2619837Z</LastWriteTime>
+      <LastWriteTime>2017-12-18T08:05:57.1240945Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Package4 AGGREGATE.dtsx</Name>
-      <LastWriteTime>2017-12-05T10:11:40.2776036Z</LastWriteTime>
+      <LastWriteTime>2017-12-18T08:05:57.1240945Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

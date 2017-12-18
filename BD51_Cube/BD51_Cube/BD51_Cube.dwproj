@@ -24,16 +24,20 @@
       <FullPath>TIME.dim</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>GEOGRAPHY.dim</Name>
-      <FullPath>GEOGRAPHY.dim</FullPath>
+      <Name>OUTLET.dim</Name>
+      <FullPath>OUTLET.dim</FullPath>
     </ProjectItem>
     <ProjectItem>
       <Name>ARTICLE.dim</Name>
       <FullPath>ARTICLE.dim</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>ARTICLE_COLOR.dim</Name>
-      <FullPath>ARTICLE_COLOR.dim</FullPath>
+      <Name>ARTICLE COLOR LOOKUP.dim</Name>
+      <FullPath>ARTICLE COLOR LOOKUP.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>ARTICLE COLOR LOOKUP 1.dim</Name>
+      <FullPath>ARTICLE COLOR LOOKUP 1.dim</FullPath>
     </ProjectItem>
   </Dimensions>
   <DataSources>

@@ -12,8 +12,8 @@
   DTS:LocaleID="1036"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="Package1 TRASFER ALL"
-  DTS:VersionBuild="22"
-  DTS:VersionGUID="{9E38038E-9408-4BAA-933C-185724C64769}">
+  DTS:VersionBuild="23"
+  DTS:VersionGUID="{A7DE05A1-7FFA-4839-868F-F2A38F0A2841}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -38,7 +38,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPfeB7ttWvUOzL0op0ZkWuQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACYVS0P4tOBjnHVGe8rnbpJjqcwDZzv11NDopNiHWRLvAAAAAAOgAAAAAIAACAAAAA+qmV3SS/hV0eOVIxU9MDFfCYbmIiyQ1wNZjL+kRSo7hAAAAAUs/zp0GsbGVAQkXtb89dXQAAAAHfOIWFOELJndMFympsRRJ3DX8mTEm887NRsZoZIIx+ZoqELq67gK7bFtMYA0nCql0K2BXXyMSMNi4RvSwfiTOQ</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAfng7p4kpokOu3WwxZy0I5QAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAFkODR9qVSaeLUpEy6muygVjtr7fLFScXV9W5znEuu/wAAAAAOgAAAAAIAACAAAADgFr6SPP0wKA9gWSfDahMp56YiqNASnYXWsTeUy1PIIhAAAAC+iaLaSDUXD8KoALgBPP8yQAAAAIoI0MoV7BJ0TgJt53c3DF+3GRLVZbV8iaQn42JLpRcUGIBfY5fKShlNljlt7tnBWtH13J9cZjjE3+JYtXWQ3ic</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -2525,6 +2525,10 @@
           Id="Package\DELETE foreign keys"
           TopLeft="232.5,20.5" />
         <NodeLayout
+          Size="167,42"
+          Id="Package\Execute Package 4"
+          TopLeft="232.5,340.5" />
+        <NodeLayout
           Size="196,42"
           Id="Package\TRANSFERT ALL TABLES"
           TopLeft="217.5,251.5" />
@@ -2598,10 +2602,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="167,42"
-          Id="Package\Execute Package 4"
-          TopLeft="232.5,340.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
           TopLeft="315.75,293.5">

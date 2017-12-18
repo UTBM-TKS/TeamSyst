@@ -1,0 +1,1314 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/19/2017 9:55:48 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="PC-GI-2012-BDD"
+  DTS:CreatorName="PC-GI-2012-BDD\Administrator"
+  DTS:DTSID="{6F97F69A-CF47-4DB9-A501-88F11726C993}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.0800.90"
+  DTS:LocaleID="1036"
+  DTS:ObjectName="Package4 AGGREGATE"
+  DTS:PackageType="5"
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{4F773E2D-E9E8-40DD-A3DD-1B1F2EF76710}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[oracle source INC]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{D422D29F-B4B0-4957-B807-137608E31F9A}"
+      DTS:ObjectName="oracle source INC">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=prod;User ID=EMODE_INC;Provider=OraOLEDB.Oracle.1;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAfng7p4kpokOu3WwxZy0I5QAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAA46+2nycpG1+2CEMnVd24C1dbsPFCGpbEClwaY/Ny9PwAAAAAOgAAAAAIAACAAAAADMogr42dkyP/3qERwhR9CYom7LmQBBwsNQDF4X/pEiyAAAAD5gitr/Ild7p4i1YreniEeIBFwhZKR9ug9TabGE2rGyEAAAADN+Qg6/o3sNd+QNiVoQLsO17t8laNj20xX3UUUG5lwIFWo4AoEBdTIxgbgZjg+Zep8j5tXtjx4gQ66SIy/oScO</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[sqlServer destination]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}"
+      DTS:ObjectName="sqlServer destination">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=PC-GI-2012-BDD\SQL2016;Initial Catalog=EMODE;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\NEW VALUES"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{A2353516-8A1A-4FFE-B28D-1E08FC72A7B3}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="NEW VALUES"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="AGG_YR_FP_YW_MO_TI_RV_MA_QT"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[AGG_YR_FP_YW_MO_TI_RV_MA_QT]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT
+   C.WEEK_KEY
+  ,MAX(C.YEAR)              AS YEAR
+  ,MAX(C.FISCAL_PERIOD)     AS FISC
+  ,MAX(C.YEAR_WEEK)         AS YEAR_WE
+  ,MAX(C.MONTH)             AS MONTH
+  ,MAX(C.MONTH_NAME)        AS MONTH_NAME
+  ,count(*)                 AS TICKETS
+  ,sum(S.AMOUNT_SOLD)       AS RV
+  ,sum(S.MARGIN)            AS MARGE
+  ,sum(S.QUANTITY_SOLD)     AS QTE
+FROM
+  SHOP_FACTS S inner join CALENDAR_YEAR_LOOKUP C
+  ON S.WEEK_KEY = C.WEEK_KEY
+GROUP BY
+  C.WEEK_KEY
+ORDER BY
+  1;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[WEEK_KEY]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].ExternalColumns[WEEK_KEY]"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[WEEK_KEY]"
+                      name="WEEK_KEY"
+                      precision="3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[YEAR]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].ExternalColumns[YEAR]"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[YEAR]"
+                      name="YEAR"
+                      precision="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[FISC]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].ExternalColumns[FISC]"
+                      length="4"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[FISC]"
+                      name="FISC"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[YEAR_WE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].ExternalColumns[YEAR_WE]"
+                      length="7"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[YEAR_WE]"
+                      name="YEAR_WE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[TICKETS]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].ExternalColumns[TICKETS]"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[TICKETS]"
+                      name="TICKETS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[RV]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].ExternalColumns[RV]"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[RV]"
+                      name="RV"
+                      precision="38"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[MARGE]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].ExternalColumns[MARGE]"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[MARGE]"
+                      name="MARGE"
+                      precision="38"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[QTE]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].ExternalColumns[QTE]"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[QTE]"
+                      name="QTE"
+                      precision="38"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[MONTH]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].ExternalColumns[MONTH]"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[MONTH]"
+                      name="MONTH"
+                      precision="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[MONTH_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].ExternalColumns[MONTH_NAME]"
+                      length="10"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[MONTH_NAME]"
+                      name="MONTH_NAME"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].ExternalColumns[WEEK_KEY]"
+                      dataType="numeric"
+                      name="WEEK_KEY"
+                      precision="3" />
+                    <externalMetadataColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].ExternalColumns[YEAR]"
+                      dataType="numeric"
+                      name="YEAR"
+                      precision="4" />
+                    <externalMetadataColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].ExternalColumns[FISC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      name="FISC" />
+                    <externalMetadataColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].ExternalColumns[YEAR_WE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="YEAR_WE" />
+                    <externalMetadataColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].ExternalColumns[TICKETS]"
+                      dataType="i4"
+                      name="TICKETS" />
+                    <externalMetadataColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].ExternalColumns[RV]"
+                      dataType="numeric"
+                      name="RV"
+                      precision="38"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].ExternalColumns[MARGE]"
+                      dataType="numeric"
+                      name="MARGE"
+                      precision="38" />
+                    <externalMetadataColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].ExternalColumns[QTE]"
+                      dataType="numeric"
+                      name="QTE"
+                      precision="38"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].ExternalColumns[MONTH]"
+                      dataType="numeric"
+                      name="MONTH"
+                      precision="2" />
+                    <externalMetadataColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].ExternalColumns[MONTH_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="MONTH_NAME" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[WEEK_KEY]"
+                      dataType="numeric"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[WEEK_KEY]"
+                      name="WEEK_KEY"
+                      precision="3" />
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[YEAR]"
+                      dataType="numeric"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[YEAR]"
+                      name="YEAR"
+                      precision="4" />
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[FISC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[FISC]"
+                      name="FISC" />
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[YEAR_WE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[YEAR_WE]"
+                      name="YEAR_WE" />
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[MONTH]"
+                      dataType="numeric"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[MONTH]"
+                      name="MONTH"
+                      precision="2" />
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[MONTH_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[MONTH_NAME]"
+                      name="MONTH_NAME" />
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[TICKETS]"
+                      dataType="i4"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[TICKETS]"
+                      name="TICKETS" />
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[RV]"
+                      dataType="numeric"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[RV]"
+                      name="RV"
+                      precision="38"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[MARGE]"
+                      dataType="numeric"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[MARGE]"
+                      name="MARGE"
+                      precision="38" />
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[QTE]"
+                      dataType="numeric"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[QTE]"
+                      name="QTE"
+                      precision="38"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="AGG_YR_FP_YW_TI_RV_MA_QT"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[AGG_YR_FP_YW_TI_RV_MA_QT]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT
+   C.WEEK_KEY
+  ,MAX(C.YEAR)              AS YEAR
+  ,MAX(C.FISCAL_PERIOD)     AS FISC
+  ,MAX(C.YEAR_WEEK)         AS YEAR_WE
+  ,count(*)                 AS TICKETS
+  ,sum(S.AMOUNT_SOLD)       AS RV
+  ,sum(S.MARGIN)            AS MARGE
+  ,sum(S.QUANTITY_SOLD)     AS QTE
+FROM
+  SHOP_FACTS S inner join CALENDAR_YEAR_LOOKUP C
+  ON S.WEEK_KEY = C.WEEK_KEY
+GROUP BY
+  C.WEEK_KEY
+ORDER BY
+  1
+;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[WEEK_KEY]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].ExternalColumns[WEEK_KEY]"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[WEEK_KEY]"
+                      name="WEEK_KEY"
+                      precision="3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[YEAR]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].ExternalColumns[YEAR]"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[YEAR]"
+                      name="YEAR"
+                      precision="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[FISC]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].ExternalColumns[FISC]"
+                      length="4"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[FISC]"
+                      name="FISC"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[YEAR_WE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].ExternalColumns[YEAR_WE]"
+                      length="7"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[YEAR_WE]"
+                      name="YEAR_WE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[TICKETS]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].ExternalColumns[TICKETS]"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[TICKETS]"
+                      name="TICKETS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[RV]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].ExternalColumns[RV]"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[RV]"
+                      name="RV"
+                      precision="38"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[MARGE]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].ExternalColumns[MARGE]"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[MARGE]"
+                      name="MARGE"
+                      precision="38"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[QTE]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].ExternalColumns[QTE]"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[QTE]"
+                      name="QTE"
+                      precision="38"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].ExternalColumns[WEEK_KEY]"
+                      dataType="numeric"
+                      name="WEEK_KEY"
+                      precision="3" />
+                    <externalMetadataColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].ExternalColumns[YEAR]"
+                      dataType="numeric"
+                      name="YEAR"
+                      precision="4" />
+                    <externalMetadataColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].ExternalColumns[FISC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      name="FISC" />
+                    <externalMetadataColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].ExternalColumns[YEAR_WE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="YEAR_WE" />
+                    <externalMetadataColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].ExternalColumns[TICKETS]"
+                      dataType="i4"
+                      name="TICKETS" />
+                    <externalMetadataColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].ExternalColumns[RV]"
+                      dataType="numeric"
+                      name="RV"
+                      precision="38"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].ExternalColumns[MARGE]"
+                      dataType="numeric"
+                      name="MARGE"
+                      precision="38" />
+                    <externalMetadataColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].ExternalColumns[QTE]"
+                      dataType="numeric"
+                      name="QTE"
+                      precision="38"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[WEEK_KEY]"
+                      dataType="numeric"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[WEEK_KEY]"
+                      name="WEEK_KEY"
+                      precision="3" />
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[YEAR]"
+                      dataType="numeric"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[YEAR]"
+                      name="YEAR"
+                      precision="4" />
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[FISC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[FISC]"
+                      name="FISC" />
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[YEAR_WE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[YEAR_WE]"
+                      name="YEAR_WE" />
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[TICKETS]"
+                      dataType="i4"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[TICKETS]"
+                      name="TICKETS" />
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[RV]"
+                      dataType="numeric"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[RV]"
+                      name="RV"
+                      precision="38"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[MARGE]"
+                      dataType="numeric"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[MARGE]"
+                      name="MARGE"
+                      precision="38" />
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[QTE]"
+                      dataType="numeric"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[QTE]"
+                      name="QTE"
+                      precision="38"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\NEW VALUES\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[AGG_YR_FP_YW_TI_RV_MA_QT]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\NEW VALUES\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\NEW VALUES\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\NEW VALUES\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[WEEK_KEY]"
+                      cachedDataType="numeric"
+                      cachedName="WEEK_KEY"
+                      cachedPrecision="3"
+                      externalMetadataColumnId="Package\NEW VALUES\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WEEK_KEY]"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[WEEK_KEY]" />
+                    <inputColumn
+                      refId="Package\NEW VALUES\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[YEAR]"
+                      cachedDataType="numeric"
+                      cachedName="YEAR"
+                      cachedPrecision="4"
+                      externalMetadataColumnId="Package\NEW VALUES\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[YEAR]"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[YEAR]" />
+                    <inputColumn
+                      refId="Package\NEW VALUES\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FISC]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4"
+                      cachedName="FISC"
+                      externalMetadataColumnId="Package\NEW VALUES\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FISC]"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[FISC]" />
+                    <inputColumn
+                      refId="Package\NEW VALUES\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[YEAR_WE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="7"
+                      cachedName="YEAR_WE"
+                      externalMetadataColumnId="Package\NEW VALUES\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[YEAR_WE]"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[YEAR_WE]" />
+                    <inputColumn
+                      refId="Package\NEW VALUES\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TICKETS]"
+                      cachedDataType="i4"
+                      cachedName="TICKETS"
+                      externalMetadataColumnId="Package\NEW VALUES\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TICKETS]"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[TICKETS]" />
+                    <inputColumn
+                      refId="Package\NEW VALUES\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[RV]"
+                      cachedDataType="numeric"
+                      cachedName="RV"
+                      cachedPrecision="38"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\NEW VALUES\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RV]"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[RV]" />
+                    <inputColumn
+                      refId="Package\NEW VALUES\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MARGE]"
+                      cachedDataType="numeric"
+                      cachedName="MARGE"
+                      cachedPrecision="38"
+                      externalMetadataColumnId="Package\NEW VALUES\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MARGE]"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[MARGE]" />
+                    <inputColumn
+                      refId="Package\NEW VALUES\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[QTE]"
+                      cachedDataType="numeric"
+                      cachedName="QTE"
+                      cachedPrecision="38"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\NEW VALUES\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[QTE]"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[QTE]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\NEW VALUES\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WEEK_KEY]"
+                      dataType="numeric"
+                      name="WEEK_KEY"
+                      precision="3" />
+                    <externalMetadataColumn
+                      refId="Package\NEW VALUES\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[YEAR]"
+                      dataType="numeric"
+                      name="YEAR"
+                      precision="4" />
+                    <externalMetadataColumn
+                      refId="Package\NEW VALUES\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FISC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      name="FISC" />
+                    <externalMetadataColumn
+                      refId="Package\NEW VALUES\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[YEAR_WE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="YEAR_WE" />
+                    <externalMetadataColumn
+                      refId="Package\NEW VALUES\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TICKETS]"
+                      dataType="i4"
+                      name="TICKETS" />
+                    <externalMetadataColumn
+                      refId="Package\NEW VALUES\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RV]"
+                      dataType="numeric"
+                      name="RV"
+                      precision="38"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\NEW VALUES\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MARGE]"
+                      dataType="numeric"
+                      name="MARGE"
+                      precision="38" />
+                    <externalMetadataColumn
+                      refId="Package\NEW VALUES\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[QTE]"
+                      dataType="numeric"
+                      name="QTE"
+                      precision="38"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\NEW VALUES\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\NEW VALUES\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\NEW VALUES\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\NEW VALUES\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\NEW VALUES\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\NEW VALUES\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\NEW VALUES\OLE DB Destination 1"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination 1"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[AGG_YR_FP_YW_MO_TI_RV_MA_QT]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\NEW VALUES\OLE DB Destination 1.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\NEW VALUES\OLE DB Destination 1.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\NEW VALUES\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[WEEK_KEY]"
+                      cachedDataType="numeric"
+                      cachedName="WEEK_KEY"
+                      cachedPrecision="3"
+                      externalMetadataColumnId="Package\NEW VALUES\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[WEEK_KEY]"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[WEEK_KEY]" />
+                    <inputColumn
+                      refId="Package\NEW VALUES\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[YEAR]"
+                      cachedDataType="numeric"
+                      cachedName="YEAR"
+                      cachedPrecision="4"
+                      externalMetadataColumnId="Package\NEW VALUES\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[YEAR]"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[YEAR]" />
+                    <inputColumn
+                      refId="Package\NEW VALUES\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[FISC]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4"
+                      cachedName="FISC"
+                      externalMetadataColumnId="Package\NEW VALUES\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[FISC]"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[FISC]" />
+                    <inputColumn
+                      refId="Package\NEW VALUES\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[YEAR_WE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="7"
+                      cachedName="YEAR_WE"
+                      externalMetadataColumnId="Package\NEW VALUES\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[YEAR_WE]"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[YEAR_WE]" />
+                    <inputColumn
+                      refId="Package\NEW VALUES\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[TICKETS]"
+                      cachedDataType="i4"
+                      cachedName="TICKETS"
+                      externalMetadataColumnId="Package\NEW VALUES\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[TICKETS]"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[TICKETS]" />
+                    <inputColumn
+                      refId="Package\NEW VALUES\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[RV]"
+                      cachedDataType="numeric"
+                      cachedName="RV"
+                      cachedPrecision="38"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\NEW VALUES\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[RV]"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[RV]" />
+                    <inputColumn
+                      refId="Package\NEW VALUES\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[MARGE]"
+                      cachedDataType="numeric"
+                      cachedName="MARGE"
+                      cachedPrecision="38"
+                      externalMetadataColumnId="Package\NEW VALUES\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[MARGE]"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[MARGE]" />
+                    <inputColumn
+                      refId="Package\NEW VALUES\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[QTE]"
+                      cachedDataType="numeric"
+                      cachedName="QTE"
+                      cachedPrecision="38"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\NEW VALUES\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[QTE]"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[QTE]" />
+                    <inputColumn
+                      refId="Package\NEW VALUES\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[MONTH]"
+                      cachedDataType="numeric"
+                      cachedName="MONTH"
+                      cachedPrecision="2"
+                      externalMetadataColumnId="Package\NEW VALUES\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[MONTH]"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[MONTH]" />
+                    <inputColumn
+                      refId="Package\NEW VALUES\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[MONTH_NAME]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="MONTH_NAME"
+                      externalMetadataColumnId="Package\NEW VALUES\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[MONTH_NAME]"
+                      lineageId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output].Columns[MONTH_NAME]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\NEW VALUES\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[WEEK_KEY]"
+                      dataType="numeric"
+                      name="WEEK_KEY"
+                      precision="3" />
+                    <externalMetadataColumn
+                      refId="Package\NEW VALUES\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[YEAR]"
+                      dataType="numeric"
+                      name="YEAR"
+                      precision="4" />
+                    <externalMetadataColumn
+                      refId="Package\NEW VALUES\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[FISC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      name="FISC" />
+                    <externalMetadataColumn
+                      refId="Package\NEW VALUES\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[YEAR_WE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="YEAR_WE" />
+                    <externalMetadataColumn
+                      refId="Package\NEW VALUES\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[MONTH]"
+                      dataType="numeric"
+                      name="MONTH"
+                      precision="2" />
+                    <externalMetadataColumn
+                      refId="Package\NEW VALUES\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[MONTH_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="MONTH_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\NEW VALUES\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[TICKETS]"
+                      dataType="i4"
+                      name="TICKETS" />
+                    <externalMetadataColumn
+                      refId="Package\NEW VALUES\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[RV]"
+                      dataType="numeric"
+                      name="RV"
+                      precision="38"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\NEW VALUES\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[MARGE]"
+                      dataType="numeric"
+                      name="MARGE"
+                      precision="38" />
+                    <externalMetadataColumn
+                      refId="Package\NEW VALUES\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[QTE]"
+                      dataType="numeric"
+                      name="QTE"
+                      precision="38"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\NEW VALUES\OLE DB Destination 1.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\NEW VALUES\OLE DB Destination 1.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\NEW VALUES\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\NEW VALUES\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\NEW VALUES\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\NEW VALUES\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\NEW VALUES.Paths[OLE DB Source Output]"
+              endId="Package\NEW VALUES\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\NEW VALUES.Paths[OLE DB Source Output1]"
+              endId="Package\NEW VALUES\OLE DB Destination 1.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\TRUNCATE AGG TABLES"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{63CEF5EF-F3CA-41C4-8742-4A28E074A327}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TRUNCATE AGG TABLES"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE AGG_YR_FP_YW_TI_RV_MA_QT ;&#xA;TRUNCATE TABLE AGG_YR_FP_YW_MO_TI_RV_MA_QT ;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{F1B1CC80-F92F-4656-A4CD-A32B7471A6BE}"
+      DTS:From="Package\TRUNCATE AGG TABLES"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\NEW VALUES" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="142,42"
+          Id="Package\NEW VALUES"
+          TopLeft="265,136" />
+        <NodeLayout
+          Size="194,42"
+          Id="Package\TRUNCATE AGG TABLES"
+          TopLeft="245,50" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="339,92">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44"
+              Start="0,0"
+              End="0,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\NEW VALUES">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="232,42"
+          Id="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT"
+          TopLeft="159,52" />
+        <NodeLayout
+          Size="254,42"
+          Id="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT"
+          TopLeft="440,50" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\NEW VALUES\OLE DB Destination"
+          TopLeft="190,143" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\NEW VALUES\OLE DB Destination 1"
+          TopLeft="479,144" />
+        <EdgeLayout
+          Id="Package\NEW VALUES.Paths[OLE DB Source Output]"
+          TopLeft="275.25,94">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49"
+              Start="0,0"
+              End="0,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\NEW VALUES.Paths[OLE DB Source Output1]"
+          TopLeft="568,92">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52"
+              Start="0,0"
+              End="0,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\NEW VALUES\AGG_YR_FP_YW_TI_RV_MA_QT">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\NEW VALUES\OLE DB Destination 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\NEW VALUES\AGG_YR_FP_YW_MO_TI_RV_MA_QT">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\NEW VALUES\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

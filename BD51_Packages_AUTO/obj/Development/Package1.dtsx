@@ -6,14 +6,14 @@
   DTS:CreatorComputerName="PC-GI-2012-BDD"
   DTS:CreatorName="PC-GI-2012-BDD\Administrator"
   DTS:Description="Transfert Emode 5 tables data from Oracle to SQL Server"
-  DTS:DTSID="{BE067C04-7FAA-41BA-AEEE-94FE0D9D5756}"
+  DTS:DTSID="{2454CE06-23C8-41B4-8DFE-6A7921AF109C}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="14.0.0800.90"
   DTS:LocaleID="1036"
   DTS:MaxErrorCount="0"
-  DTS:ObjectName="Package1 TRASFER ALL"
-  DTS:VersionBuild="23"
-  DTS:VersionGUID="{A7DE05A1-7FFA-4839-868F-F2A38F0A2841}">
+  DTS:ObjectName="Package1"
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{1A6DF408-E5A0-49B1-9DAA-E9815E130CD3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -38,7 +38,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAfng7p4kpokOu3WwxZy0I5QAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACKYEiVObWhkBLx1+bKzcMYyoDo3u6dLQWUq8jSidB4YQAAAAAOgAAAAAIAACAAAADDYbDfQpv/bALKDpbulaz8hE6BvB2b2wAmOs0R85A6iBAAAABJx/uZFcQJKedzYaV6PrwOQAAAAHV1WCbsP3wOagHHzfa9D9DaoGt3HxJGc0PW7EPJgeMLKP8u5lagjmIMfcbXxO3PgwNJav825YfgJ3qsmssddVo</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPfeB7ttWvUOzL0op0ZkWuQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAL8bTDtgeDqAoSuEhYxu9wi5ojzzWMTbgr3MXonxnPLgAAAAAOgAAAAAIAACAAAACL9gRKN9/tbV+lYSTqsKalb5AuT+usdPUaFEBjnrYVsRAAAAD2fVO7WsKmLgBtgqTsP+/3QAAAANqvH9fuUEG6lvzWrDvB+ShKiYc5vDw0p2D8p601gIkskDiNl16rhL4ahwGLixAKtberDFDWpfsZhRVVyYgR6rA</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -73,23 +73,6 @@
         <SQLTask:SqlTaskData
           SQLTask:Connection="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}"
           SQLTask:SqlStatementSource="IF EXISTS (&#xA;&#x9;SELECT *&#xA;&#x9;FROM sys.foreign_keys&#xA;&#x9;WHERE object_id = OBJECT_ID('SHOP_FACTS_OUTLET_LOOKUP_FK')&#xA;&#x9;AND parent_object_id = OBJECT_ID('SHOP_FACTS'))&#xA;ALTER TABLE SHOP_FACTS&#xA;DROP CONSTRAINT SHOP_FACTS_OUTLET_LOOKUP_FK&#xA;GO&#xA;IF EXISTS (&#xA;&#x9;SELECT *&#xA;&#x9;FROM sys.foreign_keys&#xA;&#x9;WHERE object_id = OBJECT_ID('SHOP_FACTS_ARTICLE_COLOR_LOOKUP_FK')&#xA;&#x9;AND parent_object_id = OBJECT_ID('SHOP_FACTS'))&#xA;ALTER TABLE SHOP_FACTS&#xA;DROP CONSTRAINT SHOP_FACTS_ARTICLE_COLOR_LOOKUP_FK&#xA;GO&#xA;IF EXISTS (&#xA;&#x9;SELECT *&#xA;&#x9;FROM sys.foreign_keys&#xA;&#x9;WHERE object_id = OBJECT_ID('SHOP_FACTS_CALENDAR_YEAR_LOOKUP_FK')&#xA;&#x9;AND parent_object_id = OBJECT_ID('SHOP_FACTS'))&#xA;ALTER TABLE SHOP_FACTS&#xA;DROP CONSTRAINT SHOP_FACTS_CALENDAR_YEAR_LOOKUP_FK&#xA;GO&#xA;IF EXISTS (&#xA;&#x9;SELECT *&#xA;&#x9;FROM sys.foreign_keys&#xA;&#x9;WHERE object_id = OBJECT_ID('SHOP_FACTS_ARTICLE_LOOKUP_FK')&#xA;&#x9;AND parent_object_id = OBJECT_ID('SHOP_FACTS'))&#xA;ALTER TABLE SHOP_FACTS&#xA;DROP CONSTRAINT SHOP_FACTS_ARTICLE_LOOKUP_FK&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Execute Package 4"
-      DTS:CreationName="Microsoft.ExecutePackageTask"
-      DTS:Description="Execute Package Task"
-      DTS:DTSID="{4c48bd6a-f4cf-402a-b878-1268ba51bf87}"
-      DTS:ExecutableType="Microsoft.ExecutePackageTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Execute Package 4"
-      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <ExecutePackageTask>
-          <UseProjectReference>True</UseProjectReference>
-          <PackageName>Package4 AGGREGATE.dtsx</PackageName>
-        </ExecutePackageTask>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -2495,14 +2478,6 @@
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
       DTS:To="Package\TRANSFERT ALL TABLES" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
-      DTS:CreationName=""
-      DTS:DTSID="{1D36896E-80F3-4BB8-935C-734496A6DC87}"
-      DTS:From="Package\TRANSFERT ALL TABLES"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 3"
-      DTS:To="Package\Execute Package 4" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -2515,7 +2490,7 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="177,42"
           Id="Package\CREATE foreign keys"
@@ -2524,10 +2499,6 @@
           Size="176,42"
           Id="Package\DELETE foreign keys"
           TopLeft="232.5,20.5" />
-        <NodeLayout
-          Size="167,42"
-          Id="Package\Execute Package 4"
-          TopLeft="232.5,340.5" />
         <NodeLayout
           Size="196,42"
           Id="Package\TRANSFERT ALL TABLES"
@@ -2594,28 +2565,6 @@
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,27.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="315.75,293.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,47"
-              Start="0,0"
-              End="0,39.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,39.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

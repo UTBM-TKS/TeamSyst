@@ -1,0 +1,134 @@
+Microsoft (R) SQL Server Execute Package Utility
+Version 12.0.4100.1 for 64-bit
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Started:  09:49:14
+Progress: 2017-12-18 09:49:15.01
+   Source: NEW VALUES 
+   Validating: 0% complete
+End Progress
+Progress: 2017-12-18 09:49:15.09
+   Source: NEW VALUES 
+   Validating: 25% complete
+End Progress
+Progress: 2017-12-18 09:49:15.11
+   Source: NEW VALUES 
+   Validating: 50% complete
+End Progress
+Progress: 2017-12-18 09:49:15.12
+   Source: NEW VALUES 
+   Validating: 75% complete
+End Progress
+Progress: 2017-12-18 09:49:15.14
+   Source: NEW VALUES 
+   Validating: 100% complete
+End Progress
+Progress: 2017-12-18 09:49:15.49
+   Source: TRUNCATE AGG TABLES 
+   Executing query "TRUNCATE TABLE AGG_YR_FP_YW_TI_RV_MA_QT ;
+TRUNCATE...".: 100% complete
+End Progress
+Progress: 2017-12-18 09:49:15.49
+   Source: NEW VALUES 
+   Validating: 0% complete
+End Progress
+Progress: 2017-12-18 09:49:15.51
+   Source: NEW VALUES 
+   Validating: 25% complete
+End Progress
+Progress: 2017-12-18 09:49:15.51
+   Source: NEW VALUES 
+   Validating: 50% complete
+End Progress
+Progress: 2017-12-18 09:49:15.51
+   Source: NEW VALUES 
+   Validating: 75% complete
+End Progress
+Progress: 2017-12-18 09:49:15.51
+   Source: NEW VALUES 
+   Validating: 100% complete
+End Progress
+Progress: 2017-12-18 09:49:15.54
+   Source: NEW VALUES 
+   Prepare for Execute: 0% complete
+End Progress
+Progress: 2017-12-18 09:49:15.54
+   Source: NEW VALUES 
+   Prepare for Execute: 25% complete
+End Progress
+Progress: 2017-12-18 09:49:15.54
+   Source: NEW VALUES 
+   Prepare for Execute: 50% complete
+End Progress
+Progress: 2017-12-18 09:49:15.54
+   Source: NEW VALUES 
+   Prepare for Execute: 75% complete
+End Progress
+Progress: 2017-12-18 09:49:15.54
+   Source: NEW VALUES 
+   Prepare for Execute: 100% complete
+End Progress
+Progress: 2017-12-18 09:49:15.55
+   Source: NEW VALUES 
+   Pre-Execute: 0% complete
+End Progress
+Progress: 2017-12-18 09:49:15.75
+   Source: NEW VALUES 
+   Pre-Execute: 25% complete
+End Progress
+Progress: 2017-12-18 09:49:15.93
+   Source: NEW VALUES 
+   Pre-Execute: 50% complete
+End Progress
+Progress: 2017-12-18 09:49:15.94
+   Source: NEW VALUES 
+   Pre-Execute: 75% complete
+End Progress
+Progress: 2017-12-18 09:49:15.94
+   Source: NEW VALUES 
+   Pre-Execute: 100% complete
+End Progress
+Progress: 2017-12-18 09:49:16.05
+   Source: NEW VALUES 
+   Post Execute: 0% complete
+End Progress
+Progress: 2017-12-18 09:49:16.05
+   Source: NEW VALUES 
+   Post Execute: 25% complete
+End Progress
+Progress: 2017-12-18 09:49:16.05
+   Source: NEW VALUES 
+   Post Execute: 50% complete
+End Progress
+Progress: 2017-12-18 09:49:16.05
+   Source: NEW VALUES 
+   Post Execute: 75% complete
+End Progress
+Progress: 2017-12-18 09:49:16.05
+   Source: NEW VALUES 
+   Post Execute: 100% complete
+End Progress
+Progress: 2017-12-18 09:49:16.05
+   Source: NEW VALUES 
+   Cleanup: 0% complete
+End Progress
+Progress: 2017-12-18 09:49:16.05
+   Source: NEW VALUES 
+   Cleanup: 25% complete
+End Progress
+Progress: 2017-12-18 09:49:16.05
+   Source: NEW VALUES 
+   Cleanup: 50% complete
+End Progress
+Progress: 2017-12-18 09:49:16.05
+   Source: NEW VALUES 
+   Cleanup: 75% complete
+End Progress
+Progress: 2017-12-18 09:49:16.05
+   Source: NEW VALUES 
+   Cleanup: 100% complete
+End Progress
+DTExec: The package execution returned DTSER_SUCCESS (0).
+Started:  09:49:14
+Finished: 09:49:16
+Elapsed:  1.171 seconds

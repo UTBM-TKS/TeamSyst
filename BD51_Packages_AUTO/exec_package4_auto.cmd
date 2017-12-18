@@ -1,0 +1,1 @@
+dtexec /f "E:\scripts\BD51_Packages_AUTO\Package4 AGGREGATE.dtsx" /MAXCONCURRENT "-1" /CHECKPOINTING OFF > package4.log

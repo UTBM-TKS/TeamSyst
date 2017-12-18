@@ -1,0 +1,3188 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/9/2017 4:55:47 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="PC-GI-2012-BDD"
+  DTS:CreatorName="PC-GI-2012-BDD\Administrator"
+  DTS:Description="Transfert Emode 5 tables data from Oracle to SQL Server"
+  DTS:DTSID="{5D32ED01-8643-4A14-B85E-1C0DA9B658E3}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.0800.90"
+  DTS:LocaleID="1036"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="Package2_create"
+  DTS:VersionBuild="49"
+  DTS:VersionGUID="{8665A2E2-52F3-40C4-A6FA-1C1DB50D04D8}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[oracle source INC]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{D422D29F-B4B0-4957-B807-137608E31F9A}"
+      DTS:ObjectName="oracle source INC">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=prod;User ID=EMODE_INC;Provider=OraOLEDB.Oracle.1;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPfeB7ttWvUOzL0op0ZkWuQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADdv2tNNutHwuHbJQjBCjWjs5ITXsYGBtnBluEQqm1sHwAAAAAOgAAAAAIAACAAAAC1wRX023T+YNN34gaAFN8I0uIM32np6t553NhOo41DECAAAADBQMzneUzJJqtk2jYHWJW4Hv9Dl6YJ1IbyB5v/BVuSQUAAAAA8jft3+fG+eETLkr4pYBohHrsw++Qck+idFIKrRgAPHXgLITJ061JhWyhRtAHJSrzUFYHejkQrTROPPfHAKI2S</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[sqlServer destination]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}"
+      DTS:ObjectName="sqlServer destination">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=PC-GI-2012-BDD\SQL2016;Initial Catalog=EMODE;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{38BEF8BC-1513-4438-A5A5-A012CAA64779}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="IDTransfert">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\LINE_AUDIT"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{8084D70F-25AD-4060-B128-15745ED9F7BE}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="LINE_AUDIT"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}"
+          SQLTask:SqlStatementSource="INSERT INTO LINE_AUDIT&#xA;VALUES (?,'ARTICLE_COLOR_LOOKUP',0,0,0,0)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::IDTransfert"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{CD5AF6E4-5513-4D10-8F2C-432D3F724E94}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TRANSFER ARTICLE_COLOR_LOOKUP_INC"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ADD TRANSFERID"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="ADD TRANSFERID"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ADD TRANSFERID.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ADD TRANSFERID.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ADD TRANSFERID.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ADD TRANSFERID.Outputs[Derived Column Output].Columns[TRANSFERID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ADD TRANSFERID.Outputs[Derived Column Output].Columns[TRANSFERID]"
+                      name="TRANSFERID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[User::IDTransfert]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[User::IDTransfert]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ADD TRANSFERID.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ADD TRANSFERID.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ADD TRANSFERID.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ADD TRANSFERID.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ADD TRANSFERID.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ADD TRANSFERID.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="ARTICLE_COLOR_LOKKUP_INC"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">"EMODE_INC"."ARTICLE_COLOR_LOOKUP_INC"</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[oracle source INC]"
+                  connectionManagerRefId="Package.ConnectionManagers[oracle source INC]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[ARTICLE_CODE]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].ExternalColumns[ARTICLE_CODE]"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[ARTICLE_CODE]"
+                      name="ARTICLE_CODE"
+                      precision="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[COLOR_CODE]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].ExternalColumns[COLOR_CODE]"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[COLOR_CODE]"
+                      name="COLOR_CODE"
+                      precision="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[ARTICLE_LABEL]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].ExternalColumns[ARTICLE_LABEL]"
+                      length="45"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[ARTICLE_LABEL]"
+                      name="ARTICLE_LABEL"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[COLOR_LABEL]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].ExternalColumns[COLOR_LABEL]"
+                      length="30"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[COLOR_LABEL]"
+                      name="COLOR_LABEL"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[CATEGORY]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].ExternalColumns[CATEGORY]"
+                      length="25"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[CATEGORY]"
+                      name="CATEGORY"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[SALE_PRICE]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].ExternalColumns[SALE_PRICE]"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[SALE_PRICE]"
+                      name="SALE_PRICE"
+                      precision="8"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[FAMILY_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].ExternalColumns[FAMILY_NAME]"
+                      length="20"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[FAMILY_NAME]"
+                      name="FAMILY_NAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[FAMILY_CODE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].ExternalColumns[FAMILY_CODE]"
+                      length="3"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[FAMILY_CODE]"
+                      name="FAMILY_CODE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].ExternalColumns[OPERATION]"
+                      length="1"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[OPERATION]"
+                      name="OPERATION"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].ExternalColumns[ARTICLE_CODE]"
+                      dataType="numeric"
+                      name="ARTICLE_CODE"
+                      precision="6" />
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].ExternalColumns[COLOR_CODE]"
+                      dataType="numeric"
+                      name="COLOR_CODE"
+                      precision="4" />
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].ExternalColumns[ARTICLE_LABEL]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="ARTICLE_LABEL" />
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].ExternalColumns[COLOR_LABEL]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="COLOR_LABEL" />
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].ExternalColumns[CATEGORY]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="CATEGORY" />
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].ExternalColumns[SALE_PRICE]"
+                      dataType="numeric"
+                      name="SALE_PRICE"
+                      precision="8"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].ExternalColumns[FAMILY_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="FAMILY_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].ExternalColumns[FAMILY_CODE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="FAMILY_CODE" />
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].ExternalColumns[OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="OPERATION" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Error Output].Columns[ARTICLE_CODE]"
+                      dataType="numeric"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Error Output].Columns[ARTICLE_CODE]"
+                      name="ARTICLE_CODE"
+                      precision="6" />
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Error Output].Columns[COLOR_CODE]"
+                      dataType="numeric"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Error Output].Columns[COLOR_CODE]"
+                      name="COLOR_CODE"
+                      precision="4" />
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Error Output].Columns[ARTICLE_LABEL]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Error Output].Columns[ARTICLE_LABEL]"
+                      name="ARTICLE_LABEL" />
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Error Output].Columns[COLOR_LABEL]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Error Output].Columns[COLOR_LABEL]"
+                      name="COLOR_LABEL" />
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Error Output].Columns[CATEGORY]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Error Output].Columns[CATEGORY]"
+                      name="CATEGORY" />
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Error Output].Columns[SALE_PRICE]"
+                      dataType="numeric"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Error Output].Columns[SALE_PRICE]"
+                      name="SALE_PRICE"
+                      precision="8"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Error Output].Columns[FAMILY_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Error Output].Columns[FAMILY_NAME]"
+                      name="FAMILY_NAME" />
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Error Output].Columns[FAMILY_CODE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Error Output].Columns[FAMILY_CODE]"
+                      name="FAMILY_CODE" />
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Error Output].Columns[OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Error Output].Columns[OPERATION]"
+                      name="OPERATION" />
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\count delete"
+              componentClassID="Microsoft.Aggregate"
+              contactInfo="Aggregate;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Aggregates data with functions such as Average, Sum, Count, Max, and Min. For example, group data to compute the sum of sales per product or the average visits per day."
+              name="count delete"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                  name="KeyScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                  name="Keys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of distinct values in a column that the aggregation counts distinctly. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no CountDistinctScale value is used."
+                  name="CountDistinctScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of distinct values in a column that the aggregation counts distinctly. If a CountDistinctScale value is specified, the value in CountDistinctKeys takes precedence."
+                  name="CountDistinctKeys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage by which memory can be extended during the aggregation. Valid values are between 1 and 100."
+                  name="AutoExtendFactor">25</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\count delete.Inputs[Aggregate Input 1]"
+                  name="Aggregate Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\count delete.Inputs[Aggregate Input 1].Columns[TRANSFERID]"
+                      cachedDataType="i4"
+                      cachedName="TRANSFERID"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ADD TRANSFERID.Outputs[Derived Column Output].Columns[TRANSFERID]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\count delete.Outputs[Aggregate Output 1]"
+                  name="Aggregate Output 1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                      name="KeyScale"
+                      typeConverter="KeyScaleType">0</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                      name="Keys" />
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\count delete.Outputs[Aggregate Output 1].Columns[CountDelete]"
+                      dataType="ui8"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\count delete.Outputs[Aggregate Output 1].Columns[CountDelete]"
+                      name="CountDelete">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\0:invalid}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">2</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\count delete.Outputs[Aggregate Output 1].Columns[NUM_TRANSFERT]"
+                      dataType="i4"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\count delete.Outputs[Aggregate Output 1].Columns[NUM_TRANSFERT]"
+                      name="NUM_TRANSFERT">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ADD TRANSFERID.Outputs[Derived Column Output].Columns[TRANSFERID]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">7</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\count insert"
+              componentClassID="Microsoft.Aggregate"
+              contactInfo="Aggregate;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Aggregates data with functions such as Average, Sum, Count, Max, and Min. For example, group data to compute the sum of sales per product or the average visits per day."
+              name="count insert"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                  name="KeyScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                  name="Keys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of distinct values in a column that the aggregation counts distinctly. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no CountDistinctScale value is used."
+                  name="CountDistinctScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of distinct values in a column that the aggregation counts distinctly. If a CountDistinctScale value is specified, the value in CountDistinctKeys takes precedence."
+                  name="CountDistinctKeys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage by which memory can be extended during the aggregation. Valid values are between 1 and 100."
+                  name="AutoExtendFactor">25</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\count insert.Inputs[Aggregate Input 1]"
+                  name="Aggregate Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\count insert.Inputs[Aggregate Input 1].Columns[TRANSFERID]"
+                      cachedDataType="i4"
+                      cachedName="TRANSFERID"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ADD TRANSFERID.Outputs[Derived Column Output].Columns[TRANSFERID]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\count insert.Outputs[Aggregate Output 1]"
+                  name="Aggregate Output 1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                      name="KeyScale"
+                      typeConverter="KeyScaleType">0</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                      name="Keys" />
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\count insert.Outputs[Aggregate Output 1].Columns[CountInsert]"
+                      dataType="ui8"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\count insert.Outputs[Aggregate Output 1].Columns[CountInsert]"
+                      name="CountInsert">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\0:invalid}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">2</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\count insert.Outputs[Aggregate Output 1].Columns[TRANSFERID]"
+                      dataType="i4"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\count insert.Outputs[Aggregate Output 1].Columns[TRANSFERID]"
+                      name="TRANSFERID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ADD TRANSFERID.Outputs[Derived Column Output].Columns[TRANSFERID]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">7</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\count update"
+              componentClassID="Microsoft.Aggregate"
+              contactInfo="Aggregate;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Aggregates data with functions such as Average, Sum, Count, Max, and Min. For example, group data to compute the sum of sales per product or the average visits per day."
+              name="count update"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                  name="KeyScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                  name="Keys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of distinct values in a column that the aggregation counts distinctly. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no CountDistinctScale value is used."
+                  name="CountDistinctScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of distinct values in a column that the aggregation counts distinctly. If a CountDistinctScale value is specified, the value in CountDistinctKeys takes precedence."
+                  name="CountDistinctKeys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage by which memory can be extended during the aggregation. Valid values are between 1 and 100."
+                  name="AutoExtendFactor">25</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\count update.Inputs[Aggregate Input 1]"
+                  name="Aggregate Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\count update.Inputs[Aggregate Input 1].Columns[TRANSFERID]"
+                      cachedDataType="i4"
+                      cachedName="TRANSFERID"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ADD TRANSFERID.Outputs[Derived Column Output].Columns[TRANSFERID]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\count update.Outputs[Aggregate Output 1]"
+                  name="Aggregate Output 1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                      name="KeyScale"
+                      typeConverter="KeyScaleType">0</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                      name="Keys" />
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\count update.Outputs[Aggregate Output 1].Columns[countUpdate]"
+                      dataType="ui8"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\count update.Outputs[Aggregate Output 1].Columns[countUpdate]"
+                      name="countUpdate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\0:invalid}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">2</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\count update.Outputs[Aggregate Output 1].Columns[NUM_TRANSFERT]"
+                      dataType="i4"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\count update.Outputs[Aggregate Output 1].Columns[NUM_TRANSFERT]"
+                      name="NUM_TRANSFERT">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ADD TRANSFERID.Outputs[Derived Column Output].Columns[TRANSFERID]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">7</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DELETE ERROR"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DELETE ERROR"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[ERROR_AUDIT]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DELETE ERROR.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DELETE ERROR.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DELETE ERROR.Inputs[OLE DB Destination Input].Columns[TRANSFERID]"
+                      cachedDataType="i4"
+                      cachedName="TRANSFERID"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DELETE ERROR.Inputs[OLE DB Destination Input].ExternalColumns[TRANSFERID]"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ADD TRANSFERID.Outputs[Derived Column Output].Columns[TRANSFERID]" />
+                    <inputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DELETE ERROR.Inputs[OLE DB Destination Input].Columns[ErrorColumn]"
+                      cachedDataType="i4"
+                      cachedName="ErrorColumn"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DELETE ERROR.Inputs[OLE DB Destination Input].ExternalColumns[INFO_ERROR]"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO DELETE.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]" />
+                    <inputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DELETE ERROR.Inputs[OLE DB Destination Input].Columns[COLOR_CODE]"
+                      cachedDataType="numeric"
+                      cachedName="COLOR_CODE"
+                      cachedPrecision="4"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DELETE ERROR.Inputs[OLE DB Destination Input].ExternalColumns[LINE_PK]"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[COLOR_CODE]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DELETE ERROR.Inputs[OLE DB Destination Input].ExternalColumns[TABLE_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="TABLE_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DELETE ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ERRORID]"
+                      dataType="numeric"
+                      name="ERRORID"
+                      precision="10" />
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DELETE ERROR.Inputs[OLE DB Destination Input].ExternalColumns[TRANSFERID]"
+                      dataType="numeric"
+                      name="TRANSFERID"
+                      precision="10" />
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DELETE ERROR.Inputs[OLE DB Destination Input].ExternalColumns[LINE_PK]"
+                      dataType="numeric"
+                      name="LINE_PK"
+                      precision="10" />
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DELETE ERROR.Inputs[OLE DB Destination Input].ExternalColumns[INFO_ERROR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="INFO_ERROR" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DELETE ERROR.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DELETE ERROR.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DELETE ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DELETE ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DELETE ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DELETE ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO DELETE"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="DO DELETE"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">delete from ARTICLE_COLOR_LOOKUP
+where ARTICLE_CODE=?
+and COLOR_CODE=?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO DELETE.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO DELETE.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="RedirectRow"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO DELETE.Inputs[OLE DB Command Input].Columns[ARTICLE_CODE]"
+                      cachedDataType="numeric"
+                      cachedName="ARTICLE_CODE"
+                      cachedPrecision="6"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO DELETE.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[ARTICLE_CODE]" />
+                    <inputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO DELETE.Inputs[OLE DB Command Input].Columns[COLOR_CODE]"
+                      cachedDataType="numeric"
+                      cachedName="COLOR_CODE"
+                      cachedPrecision="4"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO DELETE.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[COLOR_CODE]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO DELETE.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="numeric"
+                      name="Param_0"
+                      precision="6">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO DELETE.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="numeric"
+                      name="Param_1"
+                      precision="4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO DELETE.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO DELETE.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO DELETE.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO DELETE.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO DELETE.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO DELETE.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO DELETE.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO DELETE.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="DO INSERT"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">INSERT INTO ARTICLE_COLOR_LOOKUP
+VALUES (?,?,?,?,?,?,?,?)</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="RedirectRow"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Inputs[OLE DB Command Input].Columns[ARTICLE_CODE]"
+                      cachedDataType="numeric"
+                      cachedName="ARTICLE_CODE"
+                      cachedPrecision="6"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[ARTICLE_CODE]" />
+                    <inputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Inputs[OLE DB Command Input].Columns[COLOR_CODE]"
+                      cachedDataType="numeric"
+                      cachedName="COLOR_CODE"
+                      cachedPrecision="4"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[COLOR_CODE]" />
+                    <inputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Inputs[OLE DB Command Input].Columns[ARTICLE_LABEL]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="45"
+                      cachedName="ARTICLE_LABEL"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[ARTICLE_LABEL]" />
+                    <inputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Inputs[OLE DB Command Input].Columns[COLOR_LABEL]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="COLOR_LABEL"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[COLOR_LABEL]" />
+                    <inputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Inputs[OLE DB Command Input].Columns[CATEGORY]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="CATEGORY"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[CATEGORY]" />
+                    <inputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Inputs[OLE DB Command Input].Columns[SALE_PRICE]"
+                      cachedDataType="numeric"
+                      cachedName="SALE_PRICE"
+                      cachedPrecision="8"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[SALE_PRICE]" />
+                    <inputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Inputs[OLE DB Command Input].Columns[FAMILY_NAME]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="FAMILY_NAME"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[FAMILY_NAME]" />
+                    <inputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Inputs[OLE DB Command Input].Columns[FAMILY_CODE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="FAMILY_CODE"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[FAMILY_CODE]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="numeric"
+                      name="Param_0"
+                      precision="6">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="numeric"
+                      name="Param_1"
+                      precision="4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      dataType="numeric"
+                      name="Param_5"
+                      precision="8"
+                      scale="2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Param_6">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="Param_7">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="DO UPDATE"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">update ARTICLE_COLOR_LOOKUP
+set ARTICLE_LABEL=?,
+COLOR_LABEL=?,
+CATEGORY=?,
+SALE_PRICE=?,
+FAMILY_NAME=?,
+FAMILY_CODE=?
+where
+ARTICLE_CODE=?
+and
+COLOR_CODE=?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="RedirectRow"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Inputs[OLE DB Command Input].Columns[ARTICLE_LABEL]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="45"
+                      cachedName="ARTICLE_LABEL"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[ARTICLE_LABEL]" />
+                    <inputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Inputs[OLE DB Command Input].Columns[COLOR_LABEL]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="COLOR_LABEL"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[COLOR_LABEL]" />
+                    <inputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Inputs[OLE DB Command Input].Columns[CATEGORY]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="CATEGORY"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[CATEGORY]" />
+                    <inputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Inputs[OLE DB Command Input].Columns[SALE_PRICE]"
+                      cachedDataType="numeric"
+                      cachedName="SALE_PRICE"
+                      cachedPrecision="8"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[SALE_PRICE]" />
+                    <inputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Inputs[OLE DB Command Input].Columns[FAMILY_NAME]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="FAMILY_NAME"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[FAMILY_NAME]" />
+                    <inputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Inputs[OLE DB Command Input].Columns[FAMILY_CODE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="FAMILY_CODE"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[FAMILY_CODE]" />
+                    <inputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Inputs[OLE DB Command Input].Columns[ARTICLE_CODE]"
+                      cachedDataType="numeric"
+                      cachedName="ARTICLE_CODE"
+                      cachedPrecision="6"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[ARTICLE_CODE]" />
+                    <inputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Inputs[OLE DB Command Input].Columns[COLOR_CODE]"
+                      cachedDataType="numeric"
+                      cachedName="COLOR_CODE"
+                      cachedPrecision="4"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[COLOR_CODE]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      codePage="1252"
+                      dataType="str"
+                      length="45"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      dataType="numeric"
+                      name="Param_3"
+                      precision="8"
+                      scale="2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="Param_5">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      dataType="numeric"
+                      name="Param_6"
+                      precision="6">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                      dataType="numeric"
+                      name="Param_7"
+                      precision="4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\INSERT ERROR"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="INSERT ERROR"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[ERROR_AUDIT]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\INSERT ERROR.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\INSERT ERROR.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\INSERT ERROR.Inputs[OLE DB Destination Input].Columns[ErrorColumn]"
+                      cachedDataType="i4"
+                      cachedName="ErrorColumn"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\INSERT ERROR.Inputs[OLE DB Destination Input].ExternalColumns[INFO_ERROR]"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]" />
+                    <inputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\INSERT ERROR.Inputs[OLE DB Destination Input].Columns[TRANSFERID]"
+                      cachedDataType="i4"
+                      cachedName="TRANSFERID"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\INSERT ERROR.Inputs[OLE DB Destination Input].ExternalColumns[TRANSFERID]"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ADD TRANSFERID.Outputs[Derived Column Output].Columns[TRANSFERID]" />
+                    <inputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\INSERT ERROR.Inputs[OLE DB Destination Input].Columns[COLOR_CODE]"
+                      cachedDataType="numeric"
+                      cachedName="COLOR_CODE"
+                      cachedPrecision="4"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\INSERT ERROR.Inputs[OLE DB Destination Input].ExternalColumns[LINE_PK]"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[COLOR_CODE]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\INSERT ERROR.Inputs[OLE DB Destination Input].ExternalColumns[TABLE_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="TABLE_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\INSERT ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ERRORID]"
+                      dataType="numeric"
+                      name="ERRORID"
+                      precision="10" />
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\INSERT ERROR.Inputs[OLE DB Destination Input].ExternalColumns[TRANSFERID]"
+                      dataType="numeric"
+                      name="TRANSFERID"
+                      precision="10" />
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\INSERT ERROR.Inputs[OLE DB Destination Input].ExternalColumns[LINE_PK]"
+                      dataType="numeric"
+                      name="LINE_PK"
+                      precision="10" />
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\INSERT ERROR.Inputs[OLE DB Destination Input].ExternalColumns[INFO_ERROR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="INFO_ERROR" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\INSERT ERROR.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\INSERT ERROR.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\INSERT ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\INSERT ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\INSERT ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\INSERT ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\SPLIT"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="SPLIT"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\SPLIT.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\SPLIT.Inputs[Conditional Split Input].Columns[OPERATION]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="OPERATION"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[OPERATION]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\SPLIT.Outputs[insert]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="insert"
+                  synchronousInputId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\SPLIT.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[OPERATION]} == "I"</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">OPERATION == "I"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\SPLIT.Outputs[delete]"
+                  description="Output 2 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="delete"
+                  synchronousInputId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\SPLIT.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[OPERATION]} == "D"</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">OPERATION == "D"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">1</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\SPLIT.Outputs[update]"
+                  description="Output 3 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="update"
+                  synchronousInputId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\SPLIT.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[OPERATION]} == "U"</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">OPERATION == "U"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">2</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\SPLIT.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\SPLIT.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\SPLIT.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\SPLIT.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\SPLIT.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\SPLIT.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\SPLIT.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\SPLIT.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE ERROR"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="UPDATE ERROR"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[ERROR_AUDIT]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE ERROR.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE ERROR.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE ERROR.Inputs[OLE DB Destination Input].Columns[TRANSFERID]"
+                      cachedDataType="i4"
+                      cachedName="TRANSFERID"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE ERROR.Inputs[OLE DB Destination Input].ExternalColumns[TRANSFERID]"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ADD TRANSFERID.Outputs[Derived Column Output].Columns[TRANSFERID]" />
+                    <inputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE ERROR.Inputs[OLE DB Destination Input].Columns[ErrorColumn]"
+                      cachedDataType="i4"
+                      cachedName="ErrorColumn"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE ERROR.Inputs[OLE DB Destination Input].ExternalColumns[INFO_ERROR]"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]" />
+                    <inputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE ERROR.Inputs[OLE DB Destination Input].Columns[COLOR_CODE]"
+                      cachedDataType="numeric"
+                      cachedName="COLOR_CODE"
+                      cachedPrecision="4"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE ERROR.Inputs[OLE DB Destination Input].ExternalColumns[LINE_PK]"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output].Columns[COLOR_CODE]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE ERROR.Inputs[OLE DB Destination Input].ExternalColumns[TABLE_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="TABLE_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ERRORID]"
+                      dataType="numeric"
+                      name="ERRORID"
+                      precision="10" />
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE ERROR.Inputs[OLE DB Destination Input].ExternalColumns[TRANSFERID]"
+                      dataType="numeric"
+                      name="TRANSFERID"
+                      precision="10" />
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE ERROR.Inputs[OLE DB Destination Input].ExternalColumns[LINE_PK]"
+                      dataType="numeric"
+                      name="LINE_PK"
+                      precision="10" />
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE ERROR.Inputs[OLE DB Destination Input].ExternalColumns[INFO_ERROR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="INFO_ERROR" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE ERROR.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE ERROR.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_D"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="UPDATE LINE_AUDIT_D"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE LINE_AUDIT
+SET
+   DELETED_NB= ?
+WHERE
+   TRANSFERID= ?
+AND
+   [TABLE_NAME] = 'ARTICLE_COLOR_LOOKUP'</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_D.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_D.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_D.Inputs[OLE DB Command Input].Columns[CountDelete]"
+                      cachedDataType="ui8"
+                      cachedName="CountDelete"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_D.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\count delete.Outputs[Aggregate Output 1].Columns[CountDelete]" />
+                    <inputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_D.Inputs[OLE DB Command Input].Columns[NUM_TRANSFERT]"
+                      cachedDataType="i4"
+                      cachedName="NUM_TRANSFERT"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_D.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\count delete.Outputs[Aggregate Output 1].Columns[NUM_TRANSFERT]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_D.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="numeric"
+                      name="Param_0"
+                      precision="10">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_D.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="numeric"
+                      name="Param_1"
+                      precision="10">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_D.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_D.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_D.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_D.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_D.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_D.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_D.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_D.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_I"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="UPDATE LINE_AUDIT_I"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE LINE_AUDIT
+SET
+   INSERTED_NB= ?
+WHERE
+   TRANSFERID= ?
+AND
+   [TABLE_NAME] = 'ARTICLE_COLOR_LOOKUP'</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_I.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_I.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_I.Inputs[OLE DB Command Input].Columns[CountInsert]"
+                      cachedDataType="ui8"
+                      cachedName="CountInsert"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_I.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\count insert.Outputs[Aggregate Output 1].Columns[CountInsert]" />
+                    <inputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_I.Inputs[OLE DB Command Input].Columns[TRANSFERID]"
+                      cachedDataType="i4"
+                      cachedName="TRANSFERID"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_I.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\count insert.Outputs[Aggregate Output 1].Columns[TRANSFERID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_I.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="numeric"
+                      name="Param_0"
+                      precision="10">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_I.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="numeric"
+                      name="Param_1"
+                      precision="10">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_I.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_I.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_I.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_I.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_I.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_I.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_I.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_I.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_U"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="UPDATE LINE_AUDIT_U"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE LINE_AUDIT
+SET
+   UPDATED_NB= ?
+WHERE
+   TRANSFERID= ?
+AND
+   [TABLE_NAME] = 'ARTICLE_COLOR_LOOKUP'</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_U.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[sqlServer destination]"
+                  connectionManagerRefId="Package.ConnectionManagers[sqlServer destination]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_U.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_U.Inputs[OLE DB Command Input].Columns[NUM_TRANSFERT]"
+                      cachedDataType="i4"
+                      cachedName="NUM_TRANSFERT"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_U.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\count update.Outputs[Aggregate Output 1].Columns[NUM_TRANSFERT]" />
+                    <inputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_U.Inputs[OLE DB Command Input].Columns[countUpdate]"
+                      cachedDataType="ui8"
+                      cachedName="countUpdate"
+                      externalMetadataColumnId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_U.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\count update.Outputs[Aggregate Output 1].Columns[countUpdate]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_U.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="numeric"
+                      name="Param_0"
+                      precision="10">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_U.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="numeric"
+                      name="Param_1"
+                      precision="10">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_U.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_U.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_U.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_U.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_U.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_U.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_U.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_U.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[Aggregate Output 1]"
+              endId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_I.Inputs[OLE DB Command Input]"
+              name="Aggregate Output 1"
+              startId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\count insert.Outputs[Aggregate Output 1]" />
+            <path
+              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[Aggregate Output 11]"
+              endId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_U.Inputs[OLE DB Command Input]"
+              name="Aggregate Output 1"
+              startId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\count update.Outputs[Aggregate Output 1]" />
+            <path
+              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[Aggregate Output 12]"
+              endId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_D.Inputs[OLE DB Command Input]"
+              name="Aggregate Output 1"
+              startId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\count delete.Outputs[Aggregate Output 1]" />
+            <path
+              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[delete]"
+              endId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO DELETE.Inputs[OLE DB Command Input]"
+              name="delete"
+              startId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\SPLIT.Outputs[delete]" />
+            <path
+              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[Derived Column Output]"
+              endId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\SPLIT.Inputs[Conditional Split Input]"
+              name="Derived Column Output"
+              startId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ADD TRANSFERID.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[insert]"
+              endId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Inputs[OLE DB Command Input]"
+              name="insert"
+              startId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\SPLIT.Outputs[insert]" />
+            <path
+              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Error Output]"
+              endId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE ERROR.Inputs[OLE DB Destination Input]"
+              name="OLE DB Command Error Output"
+              startId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Outputs[OLE DB Command Error Output]" />
+            <path
+              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Error Output1]"
+              endId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\INSERT ERROR.Inputs[OLE DB Destination Input]"
+              name="OLE DB Command Error Output"
+              startId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Outputs[OLE DB Command Error Output]" />
+            <path
+              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
+              endId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DELETE ERROR.Inputs[OLE DB Destination Input]"
+              name="OLE DB Command Error Output"
+              startId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO DELETE.Outputs[OLE DB Command Error Output]" />
+            <path
+              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Output]"
+              endId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\count insert.Inputs[Aggregate Input 1]"
+              name="OLE DB Command Output"
+              startId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT.Outputs[OLE DB Command Output]" />
+            <path
+              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Output1]"
+              endId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\count update.Inputs[Aggregate Input 1]"
+              name="OLE DB Command Output"
+              startId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Outputs[OLE DB Command Output]" />
+            <path
+              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Output2]"
+              endId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\count delete.Inputs[Aggregate Input 1]"
+              name="OLE DB Command Output"
+              startId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO DELETE.Outputs[OLE DB Command Output]" />
+            <path
+              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Source Output]"
+              endId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ADD TRANSFERID.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[update]"
+              endId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE.Inputs[OLE DB Command Input]"
+              name="update"
+              startId="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\SPLIT.Outputs[update]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\TRANSFER_AUDIT"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{D09F6949-BD4B-4391-8719-14520A49FF8C}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TRANSFER_AUDIT"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E336BD99-FC7C-426B-BF45-DC24B5C6404E}"
+          SQLTask:SqlStatementSource="insert into TRANSFER_AUDIT VALUES (GETDATE());&#xA;SELECT ? = SCOPE_IDENTITY();" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::IDTransfert"
+            SQLTask:ParameterDirection="Output"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{07C0FEAB-C699-412E-B828-903CAC151FED}"
+      DTS:From="Package\TRANSFER_AUDIT"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\LINE_AUDIT" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{2CE98AC7-74DA-4C44-BDFC-B36075F156DF}"
+      DTS:From="Package\LINE_AUDIT"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="146,42"
+          Id="Package\LINE_AUDIT"
+          TopLeft="274,105" />
+        <NodeLayout
+          Size="147,42"
+          Id="Package\TRANSFER_AUDIT"
+          TopLeft="270,26" />
+        <NodeLayout
+          Size="282,42"
+          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC"
+          TopLeft="256.5,199.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="345.25,68">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37"
+              Start="0,0"
+              End="0,29.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="347,147">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="50.5,52.5"
+              Start="0,0"
+              End="50.5,45">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.25"
+                    Point2="0,26.25"
+                    Point3="4,26.25" />
+                  <mssgle:LineSegment
+                    End="46.5,26.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="46.5,26.25"
+                    Point2="50.5,26.25"
+                    Point3="50.5,30.25" />
+                  <mssgle:LineSegment
+                    End="50.5,45" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="134,42"
+          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO DELETE"
+          TopLeft="466,247" />
+        <NodeLayout
+          Size="193,42"
+          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_U"
+          TopLeft="748,406" />
+        <NodeLayout
+          Size="193,42"
+          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_D"
+          TopLeft="448,410" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE ERROR"
+          TopLeft="926,317" />
+        <NodeLayout
+          Size="141,42"
+          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\count update"
+          TopLeft="761,318" />
+        <NodeLayout
+          Size="137,42"
+          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\count delete"
+          TopLeft="429,316" />
+        <NodeLayout
+          Size="227,42"
+          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC"
+          TopLeft="416,14" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE LINE_AUDIT_I"
+          TopLeft="278,408" />
+        <NodeLayout
+          Size="133,42"
+          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO INSERT"
+          TopLeft="183,245" />
+        <NodeLayout
+          Size="152,42"
+          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DELETE ERROR"
+          TopLeft="589,320" />
+        <NodeLayout
+          Size="139,42"
+          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DO UPDATE"
+          TopLeft="812,241" />
+        <NodeLayout
+          Size="106,42"
+          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\SPLIT"
+          TopLeft="475,155" />
+        <NodeLayout
+          Size="165,42"
+          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ADD TRANSFERID"
+          TopLeft="435,82" />
+        <NodeLayout
+          Size="152,42"
+          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\INSERT ERROR"
+          TopLeft="67,328" />
+        <NodeLayout
+          Size="135,42"
+          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\count insert"
+          TopLeft="261,328" />
+        <EdgeLayout
+          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[update]"
+          TopLeft="552.5,197">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="329,44"
+              Start="0,0"
+              End="329,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.3865030674847" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.3865030674847"
+                    Point2="0,15.3865030674847"
+                    Point3="4,15.3865030674847" />
+                  <mssgle:LineSegment
+                    End="325,15.3865030674847" />
+                  <mssgle:CubicBezierSegment
+                    Point1="325,15.3865030674847"
+                    Point2="329,15.3865030674847"
+                    Point3="329,19.3865030674847" />
+                  <mssgle:LineSegment
+                    End="329,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="148.6975,20.3865030674847,31.605,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Source Output]"
+          TopLeft="529.5,56">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-12,26"
+              Start="0,0"
+              End="-12,18.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,9" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9"
+                    Point2="0,13"
+                    Point3="-4,13" />
+                  <mssgle:LineSegment
+                    End="-8,13" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-8,13"
+                    Point2="-12,13"
+                    Point3="-12,17" />
+                  <mssgle:LineSegment
+                    End="-12,18.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Output2]"
+          TopLeft="512,289">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-14.5,27"
+              Start="0,0"
+              End="-14.5,19.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,6.99115044247788" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,6.99115044247788"
+                    Point2="0,10.9911504424779"
+                    Point3="-4,10.9911504424779" />
+                  <mssgle:LineSegment
+                    End="-10.5,10.9911504424779" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-10.5,10.9911504424779"
+                    Point2="-14.5,10.9911504424779"
+                    Point3="-14.5,14.9911504424779" />
+                  <mssgle:LineSegment
+                    End="-14.5,19.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Output1]"
+          TopLeft="859.666666666667,283">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-28.1666666666666,35"
+              Start="0,0"
+              End="-28.1666666666666,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.2389758179232" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.2389758179232"
+                    Point2="0,14.2389758179232"
+                    Point3="-4,14.2389758179232" />
+                  <mssgle:LineSegment
+                    End="-24.1666666666666,14.2389758179232" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-24.1666666666666,14.2389758179232"
+                    Point2="-28.1666666666666,14.2389758179232"
+                    Point3="-28.1666666666666,18.2389758179232" />
+                  <mssgle:LineSegment
+                    End="-28.1666666666666,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Output]"
+          TopLeft="270.333333333333,287">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="58.1666666666667,41"
+              Start="0,0"
+              End="58.1666666666667,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.6924219910847" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.6924219910847"
+                    Point2="0,16.6924219910847"
+                    Point3="4,16.6924219910847" />
+                  <mssgle:LineSegment
+                    End="54.1666666666667,16.6924219910847" />
+                  <mssgle:CubicBezierSegment
+                    Point1="54.1666666666667,16.6924219910847"
+                    Point2="58.1666666666667,16.6924219910847"
+                    Point3="58.1666666666667,20.6924219910847" />
+                  <mssgle:LineSegment
+                    End="58.1666666666667,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Error Output2]"
+          TopLeft="554,289">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="111,31"
+              Start="0,0"
+              End="111,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8.61946902654867" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8.61946902654867"
+                    Point2="0,12.6194690265487"
+                    Point3="4,12.6194690265487" />
+                  <mssgle:LineSegment
+                    End="107,12.6194690265487" />
+                  <mssgle:CubicBezierSegment
+                    Point1="107,12.6194690265487"
+                    Point2="111,12.6194690265487"
+                    Point3="111,16.6194690265487" />
+                  <mssgle:LineSegment
+                    End="111,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-15.20890625,17.6194690265487,141.4178125,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Error Output1]"
+          TopLeft="228.666666666667,287">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-85.6666666666667,41"
+              Start="0,0"
+              End="-85.6666666666667,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.6924219910847" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.6924219910847"
+                    Point2="0,16.6924219910847"
+                    Point3="-4,16.6924219910847" />
+                  <mssgle:LineSegment
+                    End="-81.6666666666667,16.6924219910847" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-81.6666666666667,16.6924219910847"
+                    Point2="-85.6666666666667,16.6924219910847"
+                    Point3="-85.6666666666667,20.6924219910847" />
+                  <mssgle:LineSegment
+                    End="-85.6666666666667,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-113.542239583333,21.6924219910847,141.4178125,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[OLE DB Command Error Output]"
+          TopLeft="903.333333333333,283">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="99.6666666666666,34"
+              Start="0,0"
+              End="99.6666666666666,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,9.83214793741109" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9.83214793741109"
+                    Point2="0,13.8321479374111"
+                    Point3="4,13.8321479374111" />
+                  <mssgle:LineSegment
+                    End="95.6666666666666,13.8321479374111" />
+                  <mssgle:CubicBezierSegment
+                    Point1="95.6666666666666,13.8321479374111"
+                    Point2="99.6666666666666,13.8321479374111"
+                    Point3="99.6666666666666,17.8321479374111" />
+                  <mssgle:LineSegment
+                    End="99.6666666666666,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-20.8755729166667,18.8321479374111,141.4178125,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[insert]"
+          TopLeft="503.5,197">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-254,48"
+              Start="0,0"
+              End="-254,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.7852760736196" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.7852760736196"
+                    Point2="0,16.7852760736196"
+                    Point3="-4,16.7852760736196" />
+                  <mssgle:LineSegment
+                    End="-250,16.7852760736196" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-250,16.7852760736196"
+                    Point2="-254,16.7852760736196"
+                    Point3="-254,20.7852760736196" />
+                  <mssgle:LineSegment
+                    End="-254,40.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-139.94998046875,21.7852760736196,25.8999609375,9.451171875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[Derived Column Output]"
+          TopLeft="517.5,124">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="10.5,31"
+              Start="0,0"
+              End="10.5,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.5"
+                    Point2="0,15.5"
+                    Point3="4,15.5" />
+                  <mssgle:LineSegment
+                    End="6.5,15.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="6.5,15.5"
+                    Point2="10.5,15.5"
+                    Point3="10.5,19.5" />
+                  <mssgle:LineSegment
+                    End="10.5,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[delete]"
+          TopLeft="530.5,197">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50"
+              Start="0,0"
+              End="0,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-14.19595703125,16.37548828125,28.3919140625,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[Aggregate Output 12]"
+          TopLeft="497.5,358">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="47,52"
+              Start="0,0"
+              End="47,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22"
+                    Point2="0,26"
+                    Point3="4,26" />
+                  <mssgle:LineSegment
+                    End="43,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="43,26"
+                    Point2="47,26"
+                    Point3="47,30" />
+                  <mssgle:LineSegment
+                    End="47,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[Aggregate Output 11]"
+          TopLeft="831.5,360">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="13,46"
+              Start="0,0"
+              End="13,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19"
+                    Point2="0,23"
+                    Point3="4,23" />
+                  <mssgle:LineSegment
+                    End="9,23" />
+                  <mssgle:CubicBezierSegment
+                    Point1="9,23"
+                    Point2="13,23"
+                    Point3="13,27" />
+                  <mssgle:LineSegment
+                    End="13,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC.Paths[Aggregate Output 1]"
+          TopLeft="328.5,370">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="44.5,38"
+              Start="0,0"
+              End="44.5,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15"
+                    Point2="0,19"
+                    Point3="4,19" />
+                  <mssgle:LineSegment
+                    End="40.5,19" />
+                  <mssgle:CubicBezierSegment
+                    Point1="40.5,19"
+                    Point2="44.5,19"
+                    Point3="44.5,23" />
+                  <mssgle:LineSegment
+                    End="44.5,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\UPDATE ERROR">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\ARTICLE_COLOR_LOKKUP_INC">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\DELETE ERROR">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\TRANSFER ARTICLE_COLOR_LOOKUP_INC\INSERT ERROR">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
