@@ -8,7 +8,7 @@
     <TransactionalDeployment>false</TransactionalDeployment>
     <PartitionDeployment>DeployPartitions</PartitionDeployment>
     <RoleDeployment>DeployRolesRetainMembers</RoleDeployment>
-    <ProcessingOption>DoNotProcess</ProcessingOption>
+    <ProcessingOption>Default</ProcessingOption>
     <OutputScript></OutputScript>
     <ImpactAnalysisFile></ImpactAnalysisFile>
     <ConfigurationSettingsDeployment>Deploy</ConfigurationSettingsDeployment>
@@ -40,28 +40,21 @@
       </ObjectSnapshot>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.Dimension</Type>
-        <TimeStamp>+vIEscjIN5WwmOk61pFpqcx5T/Y=12/12/2017 12:54:1007/12/2017 14:20:09</TimeStamp>
+        <TimeStamp>h0e0ua7bMs1QvC6+w0DoR3KX8cA=18/12/2017 10:11:1907/12/2017 14:20:09</TimeStamp>
         <ID>
           <String>OUTLET LOOKUP</String>
         </ID>
       </ObjectSnapshot>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.Dimension</Type>
-        <TimeStamp>Jmyj0CXvRGhbw+9XlJcvlbB5ON8=07/12/2017 14:41:1407/12/2017 14:20:09</TimeStamp>
+        <TimeStamp>PUnTe+mcwJv+vucbAa4LgJyI3Io=18/12/2017 10:11:1907/12/2017 14:20:09</TimeStamp>
         <ID>
           <String>ARTICLE LOOKUP</String>
         </ID>
       </ObjectSnapshot>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.Dimension</Type>
-        <TimeStamp>YeEy6WGOV0EaBPka3X5wDELqFaU=12/12/2017 13:03:2212/12/2017 12:59:25</TimeStamp>
-        <ID>
-          <String>ARTICLE COLOR LOOKUP</String>
-        </ID>
-      </ObjectSnapshot>
-      <ObjectSnapshot>
-        <Type>Microsoft.AnalysisServices.Dimension</Type>
-        <TimeStamp>QBj9M4Ps8Rml7BdRYixraTUfSEw=12/12/2017 13:05:1812/12/2017 13:04:10</TimeStamp>
+        <TimeStamp>dwWniF/RnklLbcoP+Hg/AIcbckA=29/12/2017 11:29:4212/12/2017 13:04:10</TimeStamp>
         <ID>
           <String>ARTICLE COLOR LOOKUP 1</String>
         </ID>
@@ -85,5 +78,5 @@
   </Snapshot>
   <AssemblyLocations />
   <ProcessingComplete>true</ProcessingComplete>
-  <LastDeployed>2017-12-18T09:08:59.81Z</LastDeployed>
+  <LastDeployed>2017-12-29T10:30:17.746667Z</LastDeployed>
 </DeploymentSnapshot>

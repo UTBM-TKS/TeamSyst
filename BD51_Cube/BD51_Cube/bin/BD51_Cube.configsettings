@@ -22,9 +22,6 @@
         <ID>ARTICLE LOOKUP</ID>
       </Dimension>
       <Dimension>
-        <ID>ARTICLE COLOR LOOKUP</ID>
-      </Dimension>
-      <Dimension>
         <ID>ARTICLE COLOR LOOKUP 1</ID>
       </Dimension>
     </Dimensions>

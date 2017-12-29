@@ -32,12 +32,8 @@
       <FullPath>ARTICLE.dim</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>ARTICLE COLOR LOOKUP.dim</Name>
-      <FullPath>ARTICLE COLOR LOOKUP.dim</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>ARTICLE COLOR LOOKUP 1.dim</Name>
-      <FullPath>ARTICLE COLOR LOOKUP 1.dim</FullPath>
+      <Name>ARTICLE_COLOR.dim</Name>
+      <FullPath>ARTICLE_COLOR.dim</FullPath>
     </ProjectItem>
   </Dimensions>
   <DataSources>
